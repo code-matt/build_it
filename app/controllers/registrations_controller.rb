@@ -8,23 +8,22 @@ class RegistrationsController < Devise::RegistrationsController
       return render :json => {:success => true}
     else
       clean_up_passwords resource
+      @fields = new_worker.errors.keys.to_s.delete(':[] ').split(',')
       @errors = new_worker.errors.full_messages
-      respond_to do |format|
-      # format.html { render partial: 'change', locals: { apis: @apis }}
-        format.html { render partial: 'registration_errors',
-         locals: { errors: @errors }}
-      end
-      # return render :json => {:success => false}
+      render :json => { errors: @errors, fields: @fields  }
+      # respond_to do |format|
+        # format.html { render partial: 'registration_errors',
+        #  locals: { errors: @errors, fields: @fields  }}
+      # end
     end
   end
-  ##new_worker.errors.full_messages
 
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.
   def sign_up(resource_name, resource)
     sign_in(resource_name, resource)
   end
-    # binding.pry
+
   def worker_params
     params.require(:worker).permit(:email, :password, :password_confirmation)
   end

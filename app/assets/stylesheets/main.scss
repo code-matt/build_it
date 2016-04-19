@@ -3,6 +3,10 @@ html, body {
   height: 100%;
 }
 
+.k-tooltip{
+   background: #EDE2D3 !important; //specify tooltip's color
+}
+
 body {
   background-color: #D0A66F;
   margin: 0;
@@ -22,12 +26,6 @@ input#light-box{
   position: absolute;
   left: 50%;
   top: 50%;
-
-  /*
-  *  Where the magic happens
-  *  Centering method from CSS Tricks
-  *  http://css-tricks.com/centering-percentage-widthheight-elements/
-  */
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
@@ -46,12 +44,19 @@ input#light-box{
   position: absolute;
   left: 50%;
   top: 50%;
-
-  /*
-  *  Where the magic happens
-  *  Centering method from CSS Tricks
-  *  http://css-tricks.com/centering-percentage-widthheight-elements/
-  */
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+#worker-signup-form {
+  box-shadow: 2px 2px #000000;
+  border-radius: 15px;
+  color: #ffffff;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);

@@ -1,5 +1,5 @@
 window.onload = init();
-
+var submitted = 0;
 function init()
 {
   $('#sign_up_button').click(function(event)
@@ -50,22 +50,23 @@ function init()
                     console.log(data);
                     return alert('Success!!!!!!!');
                   } else {
-                    // $('#container').append(data);
                     console.log(data);
-                    // $("#worker_email").kendoTooltip({
-                    //   content: "Tooltip content!",
-                    //   showAfter: 1000,
-                    //   autoHide: false
-                    // });
-                    // return alert('failure!');
-                    tooltip = $("#worker_email").kendoTooltip({
-                      position: "right",
-                      showOn: "mouseenter",
-                      autoHide: true,
-                      content: function() {
-                          return data;
-                      },
-                    });
+                    for (var i = 0; i < data.errors.length; i++) {
+                      if (submitted == 1){
+                        $("#worker_" + data.fields[i] + "").data("kendoTooltip").destroy();
+                        $("#worker_" + data.fields[i] + "").css("background-color", "#EDE2D3")
+
+                      }
+                      tooltip = $("#worker_" + data.fields[i] + "").kendoTooltip({
+                        position: "right",
+                        showOn: "mouseenter",
+                        autoHide: true,
+                        content: data.errors[i],
+                      });
+                      tooltip.css("background-color", "#D0806F");
+                      tooltip.show();
+                    }
+                    submitted = 1;
                   }
                 });
               }
@@ -76,17 +77,4 @@ function init()
       }
     );
   });
-
-  // $("form#sign_up_user").bind "ajax:success", (e, data, status, xhr)
-  //   {
-  //     if(data.success)
-  //     {
-  //       $('#sign_up').modal('hide')
-  //       $('#sign_up_button').hide()
-  //       $('#submit_comment').slideToggle(1000, "easeOutBack" )
-  //     else{
-  //       alert('failure!')
-  //       }
-  //     }
-  //   }
 }
