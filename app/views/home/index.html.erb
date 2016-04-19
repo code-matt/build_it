@@ -2,21 +2,22 @@
 <% if !@type.nil? %>
   <%= link_to "Sign Out", destroy_worker_session_path %>
 <% else %>
-  <div class="row">
-    <div class="medium-5 medium-centered columns lighter-bg"
-      <div class="row" id="sign-in">
+  <div class="row" id="container">
+    <div class="medium-5 medium-centered columns lighter-bg container" id="sign-in">
         <div class="centered-text dark-color">
-          <h3><b>Sign in</b></h3>
+          <h3><b>Sign In</b></h3>
         </div>
         <%= form_for(:worker, :url => session_path(:worker)) do |f| %>
           <%= f.text_field :email, id: 'light-box' %>
           <%= f.password_field :password, id: 'light-box' %>
-          <%= f.submit 'Sign in' %>
+          <%= f.submit 'Sign In' %>
         <% end %>
+        <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
         <%= link_to "Sign up as worker", new_worker_registration_path %>
         ||
         <%= link_to "Sign up as contractor", new_contractor_registration_path%>
-      </div>
     </div>
   </div>
 <% end %>
+
+<%= javascript_include_tag "sign_up.js" %>
