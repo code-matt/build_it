@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
   # get 'products/:id' => 'catalog#view'
-  post 'workers' => 'registrations#create'
+  # post 'workers' => 'registrations#create'
 
 
   namespace :api do
     namespace :v1 do
       resources :signup
+      resources :dashboard
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

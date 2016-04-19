@@ -7,10 +7,12 @@
         <div class="centered-text dark-color">
           <h3><b>Sign In</b></h3>
         </div>
-        <%= form_for(:worker, :url => session_path(:worker)) do |f| %>
-          <%= f.text_field :email, id: 'light-box' %>
-          <%= f.password_field :password, id: 'light-box' %>
-          <%= f.submit 'Sign In' %>
+        <%= form_for(:worker, :url => session_path(:worker),
+            :format => :json,
+            :remote => true) do |f| %>
+          <%= f.text_field :email, id: 'light-box', class: "email-field" %>
+          <%= f.password_field :password, id: 'light-box', class: "password-field"  %>
+          <%= f.submit 'Sign In', id: "sign-in-button" %>
         <% end %>
         <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
         <%= link_to "Sign up as worker", new_worker_registration_path %>
@@ -20,6 +22,8 @@
   </div>
 <% end %>
 
+
+<%= javascript_include_tag "sign_in.js" %>
 <%= javascript_include_tag "sign_up.js" %>
 <%= javascript_include_tag "dashboard.js" %>
 <%= javascript_include_tag "kendo.tooltip.min.js" %>

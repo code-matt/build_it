@@ -9,6 +9,7 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( sign_in.js )
 Rails.application.config.assets.precompile += %w( sign_up.js )
 Rails.application.config.assets.precompile += %w( kendo.tooltip.min.js )
 Rails.application.config.assets.precompile += %w( kendo.core.min.js )
