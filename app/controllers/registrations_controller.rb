@@ -11,10 +11,6 @@ class RegistrationsController < Devise::RegistrationsController
       @fields = new_worker.errors.keys.to_s.delete(':[] ').split(',')
       @errors = new_worker.errors.full_messages
       render :json => { errors: @errors, fields: @fields  }
-      # respond_to do |format|
-        # format.html { render partial: 'registration_errors',
-        #  locals: { errors: @errors, fields: @fields  }}
-      # end
     end
   end
 
