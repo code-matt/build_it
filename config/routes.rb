@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :workers, controllers: { sessions: 'sessions' }
+  devise_for :workers, controllers: { sessions: 'sessions', registrations: 'registrations' }
   devise_for :contractors, controllers: { sessions: 'sessions' }
 
   root 'home#index'
+  # get 'products/:id' => 'catalog#view'
+  post 'workers' => 'registrations#create'
+
 
   namespace :api do
     namespace :v1 do
