@@ -34,6 +34,10 @@ input#light-box{
   -ms-transform: translate(-50%, -50%);
 }
 
+.rounded-border{
+  border-radius: 9px;
+}
+
 #select-type {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;

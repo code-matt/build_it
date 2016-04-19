@@ -3,7 +3,6 @@ module Api
     class SignupController < ApplicationController
       def index
         respond_to do |format|
-        # format.html { render partial: 'change', locals: { apis: @apis }}
           format.html { render partial: 'type_selection'}
         end
       end

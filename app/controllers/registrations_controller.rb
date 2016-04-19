@@ -1,11 +1,3 @@
-# class RegistrationsController < Devise::RegistrationsController
-#   private
-#
-#   def sign_up_params
-#     params.require(:user).permit(:first_name, :last_name,
-#       :email, :password, :password_confirmation, :profile_photo)
-#   end
-# end
 class RegistrationsController < Devise::RegistrationsController
 
   def create
@@ -16,9 +8,16 @@ class RegistrationsController < Devise::RegistrationsController
       return render :json => {:success => true}
     else
       clean_up_passwords resource
-      return render :json => {:success => false}
+      @errors = new_worker.errors.full_messages
+      respond_to do |format|
+      # format.html { render partial: 'change', locals: { apis: @apis }}
+        format.html { render partial: 'registration_errors',
+         locals: { errors: @errors }}
+      end
+      # return render :json => {:success => false}
     end
   end
+  ##new_worker.errors.full_messages
 
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.

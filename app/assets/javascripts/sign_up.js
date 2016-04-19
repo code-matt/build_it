@@ -46,9 +46,26 @@ function init()
 
                 $("form#sign_up_worker").bind("ajax:success", function(e, data, status, xhr) {
                   if (data.success) {
+                    // $('#container').append(data);
+                    console.log(data);
                     return alert('Success!!!!!!!');
                   } else {
-                    return alert('failure!');
+                    // $('#container').append(data);
+                    console.log(data);
+                    // $("#worker_email").kendoTooltip({
+                    //   content: "Tooltip content!",
+                    //   showAfter: 1000,
+                    //   autoHide: false
+                    // });
+                    // return alert('failure!');
+                    tooltip = $("#worker_email").kendoTooltip({
+                      position: "right",
+                      showOn: "mouseenter",
+                      autoHide: true,
+                      content: function() {
+                          return data;
+                      },
+                    });
                   }
                 });
               }
