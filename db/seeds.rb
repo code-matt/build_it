@@ -12,16 +12,16 @@
 # Job(id: integer, title: string, description: string, contractor_id: integer, created_at: datetime, updated_at: datetime)
 
 ####WORKER
-worker1 = Worker.create(email: "worker1@worker.com", password: "worker1")
-worker2 = Worker.create(email: "worker2@worker.com", password: "worker2")
-worker3 = Worker.create(email: "worker3@worker.com", password: "worker3")
-worker4 = Worker.create(email: "worker4@worker.com", password: "worker4")
-worker5 = Worker.create(email: "worker5@worker.com", password: "worker5")
-worker6 = Worker.create(email: "worker6@worker.com", password: "worker6")
-worker7 = Worker.create(email: "worker7@worker.com", password: "worker7")
-worker8 = Worker.create(email: "worker8@worker.com", password: "worker8")
-worker9 = Worker.create(email: "worker9@worker.com", password: "worker9")
-worker10 = Worker.create(email: "worker10@worker.com", password: "worker10")
+worker1 = Worker.create(email: "worker1@worker.com", password: "-worker1")
+worker2 = Worker.create(email: "worker2@worker.com", password: "-worker2")
+worker3 = Worker.create(email: "worker3@worker.com", password: "-worker3")
+worker4 = Worker.create(email: "worker4@worker.com", password: "-worker4")
+worker5 = Worker.create(email: "worker5@worker.com", password: "-worker5")
+worker6 = Worker.create(email: "worker6@worker.com", password: "-worker6")
+worker7 = Worker.create(email: "worker7@worker.com", password: "-worker7")
+worker8 = Worker.create(email: "worker8@worker.com", password: "-worker8")
+worker9 = Worker.create(email: "worker9@worker.com", password: "-worker9")
+worker10 = Worker.create(email: "worker10@worker.com", password: "-worker10")
 
 
 ####CONTRACTOR
@@ -40,22 +40,22 @@ contractor10 = Contractor.create(email: "contractor10@contractor.com", password:
 #JOB
 job1 = Job.create(title: "Job1 Title",
  description: "Job1 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor8)
+ contractor_id: contractor8.id)
 job2 = Job.create(title: "Job2 Title",
  description: "Job2 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor2)
+ contractor_id: contractor2.id)
 job3 = Job.create(title: "Job3 Title",
  description: "Job3 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor1)
+ contractor_id: contractor1.id)
 job4 = Job.create(title: "Job4 Title",
  description: "Job4 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor6)
+ contractor_id: contractor6.id)
 job5 = Job.create(title: "Job5 Title",
  description: "Job5 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor3)
+ contractor_id: contractor3.id)
 job6 = Job.create(title: "Job6 Title",
  description: "Job6 description descriptiondescriptiondescriptiondescriptionde",
- contractor: contractor5)
+ contractor_id: contractor5.id)
 
  ##SIGNUP
  Signup.create(job: job1, worker: worker1)

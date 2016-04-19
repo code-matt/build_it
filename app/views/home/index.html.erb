@@ -14,10 +14,9 @@
           <%= f.password_field :password, id: 'light-box', class: "password-field"  %>
           <%= f.submit 'Sign In', id: "sign-in-button" %>
         <% end %>
-        <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
-        <%= link_to "Sign up as worker", new_worker_registration_path %>
-        ||
-        <%= link_to "Sign up as contractor", new_contractor_registration_path%>
+        <div style="padding-bottom: 10px;">
+          <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
+        </div>
     </div>
   </div>
 <% end %>
