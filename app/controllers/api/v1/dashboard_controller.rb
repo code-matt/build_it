@@ -1,11 +1,22 @@
 module Api
   module V1
     class DashboardController < ApplicationController
+      before_action :authenticate!
+
       def index
-        respond_to do |format|
-          format.html { render partial: 'feed'}
+        type = logged_in?
+
+        if type == "worker"
+          respond_to do |format|
+            format.html { render partial: 'worker_feed'}
+          end
+        elsif type == "contractor"
+          respond_to do |format|
+            format.html { render partial: 'contractor_feed'}
+          end
         end
       end
+
     end
   end
 end

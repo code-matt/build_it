@@ -1,16 +1,37 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    new_worker = Worker.new(worker_params)
+    binding.pry
+    type = params.keys[1]
 
-    if new_worker.save
-      set_flash_message :notice, :signed_up
-      return render :json => {:success => true}
-    else
-      clean_up_passwords resource
-      @fields = new_worker.errors.keys.to_s.delete(':[] ').split(',')
-      @errors = new_worker.errors.full_messages
-      render :json => { errors: @errors, fields: @fields  }
+    if type == "worker"
+      new_worker = Worker.new(worker_params)
+
+      if new_worker.save
+        set_flash_message :notice, :signed_up
+        sign_in(:worker, new_worker)
+        return render :json => {:success => true}
+      else
+        clean_up_passwords resource
+        @fields = new_worker.errors.keys.to_s.delete(':[] ').split(',')
+        @errors = new_worker.errors.full_messages
+        render :json => { errors: @errors, fields: @fields  }
+      end
+    end
+
+    if type == "contractor"
+      new_contractor = Contractor.new(contractor_params)
+
+      if new_contractor.save
+        set_flash_message :notice, :signed_up
+        sign_in(:contractor, new_contractor)
+        return render :json => {:success => true}
+      else
+        clean_up_passwords resource
+        @fields = new_worker.errors.keys.to_s.delete(':[] ').split(',')
+        @errors = new_worker.errors.full_messages
+        render :json => { errors: @errors, fields: @fields  }
+      end
     end
   end
 
@@ -22,6 +43,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   def worker_params
     params.require(:worker).permit(:email, :password, :password_confirmation)
+  end
+
+  def contractor_params
+    params.require(:contractor).permit(:email, :password, :password_confirmation)
   end
 
 end

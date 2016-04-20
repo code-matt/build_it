@@ -2,10 +2,10 @@
     <div class="centered-text dark-color">
       <h3><b>Signup</b></h3>
     </div>
-    <%= form_for(Worker.new,
-          :as => :worker,
-          :url => registration_path(:worker),
-          :html => {:id => "sign_up_worker" },
+    <%= form_for(resource,
+          :as => resource_name,
+          :url => registration_path(resource_name),
+          :html => {:id => "sign_up_contractor" },
           :format => :json,
           :remote => true) do |f| %>
       <%= devise_error_messages! %>

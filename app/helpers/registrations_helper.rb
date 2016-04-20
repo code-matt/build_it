@@ -1,6 +1,6 @@
 module RegistrationsHelper
   def resource_name
-    :worker
+    :contractor
   end
 
   def resource
