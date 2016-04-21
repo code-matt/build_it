@@ -7,10 +7,12 @@ module Api
         type = logged_in?
 
         if type == "worker"
+          @jobs = current_worker.jobs
           respond_to do |format|
             format.html { render partial: 'worker_feed'}
           end
         elsif type == "contractor"
+          @jobs = current_contractor.jobs
           respond_to do |format|
             format.html { render partial: 'contractor_feed'}
           end

@@ -1,7 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    binding.pry
     type = params.keys[1]
 
     if type == "worker"

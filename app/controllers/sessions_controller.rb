@@ -17,4 +17,16 @@ class SessionsController < Devise::SessionsController
     end
     sign_in(resource_name, resource)
   end
+
+  def sign_in_params
+    devise_parameter_sanitizer.sanitize(:sign_in)
+  end
+
+  def new
+  binding.pry
+  self.resource = resource_class.new(sign_in_params)
+  clean_up_passwords(resource)
+  yield resource if block_given?
+  respond_with(resource, serialize_options(resource))
+  end
 end

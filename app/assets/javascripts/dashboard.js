@@ -2,6 +2,7 @@ var submitted = 0;
 function init_worker_dashboard(){
   console.log('I am a workers dashboard')
   $('#container').children().fadeOut(1000);
+  initNavbar();
 
   var request = $.ajax( {
     method: "GET",

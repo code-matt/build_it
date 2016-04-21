@@ -13,6 +13,6 @@ $( '#sign-in-button' )
     )
     request.done(
       function( data ) {
-        init_dashboard();
+        init_worker_dashboard();
       });
     });

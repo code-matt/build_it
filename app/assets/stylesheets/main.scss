@@ -18,6 +18,40 @@ input#light-box{
   background-color: #EDE2D3;
 }
 
+.red-debug {
+  background-color: red;
+}
+.purple-debug {
+  background-color: purple;
+}
+.blue-debug {
+  background-color: blue;
+}
+.green-debug {
+  background-color: green;
+}
+
+.top-bar {
+  position: fixed;
+  height: 10vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  box-shadow: 2px 2px #000000;
+}
+
+#element {
+    display: table;
+    margin: 0 auto;
+}
+
+#container {
+  height: 90vh;
+  padding-top: 10vh;
+}
+
 #sign-in {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
@@ -68,12 +102,13 @@ input#light-box{
   color: #ffffff;
   text-align: center;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  margin-left: 36px;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -50%);
+  // -webkit-transform: translate(-50%, -50%);
+  // -o-transform: translate(-50%, -50%);
+  // -ms-transform: translate(-50%, -50%);
 }
 #contractor-signup-form {
   box-shadow: 2px 2px #000000;
