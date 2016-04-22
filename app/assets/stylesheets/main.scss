@@ -14,6 +14,10 @@ body {
   font-family: arial;
 }
 
+.nav-div:hover{
+  background-color: #03A0CC;
+}
+
 input#light-box{
   background-color: #EDE2D3;
 }
@@ -32,13 +36,6 @@ input#light-box{
 }
 
 .top-bar {
-  position: fixed;
-  height: 10vh;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
   box-shadow: 2px 2px #000000;
 }
 
@@ -48,8 +45,6 @@ input#light-box{
 }
 
 #container {
-  height: 90vh;
-  padding-top: 10vh;
 }
 
 #sign-in {
@@ -100,15 +95,12 @@ input#light-box{
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
   color: #ffffff;
-  text-align: center;
-  position: absolute;
-  margin-left: 36px;
-  // left: 50%;
-  // top: 50%;
-  // transform: translate(-50%, -50%);
-  // -webkit-transform: translate(-50%, -50%);
-  // -o-transform: translate(-50%, -50%);
-  // -ms-transform: translate(-50%, -50%);
+}
+
+.thin-border {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
 }
 #contractor-signup-form {
   box-shadow: 2px 2px #000000;

@@ -5,28 +5,33 @@
     initNavbar();
   </script>
 <% else %>
-<!-- <div class="row" id="container"> -->
-    <!-- <div id="map" style="height: 100px; width: 100px;"></div> -->
-  <div class="top-bar medium-5 columns lightest-bg float-center rounded-border">
+  <div class="row">
+    <div class="top-bar medium-5 medium-centered columns lightest-bg rounded-border">
+      <div class="medium-12 columns" id="navbar-content">
+        <div class="medium-3 columns rounded-border nav-div end" style="box-shadow: 2px 2px #000000;">
+          <%= link_to(image_tag("home_icon.png"), root_path, id: "home-link") %>
+        </div>
+    </div>
   </div>
-  <div class="medium-6 medium-centered columns lighter-bg container" id="container" style="height: 100vh;">
-    <div class="medium-5 medium-centered columns lightest-bg container" id="sign-in">
-      <div class="centered-text dark-color">
-        <h3><b>Sign In</b></h3>
-      </div>
-      <%= form_for(:worker, :url => session_path(:worker),
-          :format => :json,
-          :remote => true) do |f| %>
-        <%= f.text_field :email, id: 'light-box', class: "email-field" %>
-        <%= f.password_field :password, id: 'light-box', class: "password-field"  %>
-        <%= f.submit 'Sign In', id: "sign-in-button" %>
-      <% end %>
-      <div style="padding-bottom: 10px;">
-        <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
+  <div class="row">
+    <div class="medium-6 medium-centered columns" id="container" style="height: 100vh">
+      <div class="medium-5 columns lightest-bg" id="sign-in">
+        <div class="centered-text dark-color">
+          <h3><b>Sign In</b></h3>
+        </div>
+        <%= form_for(:worker, :url => session_path(:worker),
+            :format => :json,
+            :remote => true) do |f| %>
+          <%= f.text_field :email, id: 'light-box', class: "email-field" %>
+          <%= f.password_field :password, id: 'light-box', class: "password-field"  %>
+          <%= f.submit 'Sign In', id: "sign-in-button" %>
+        <% end %>
+        <div style="padding-bottom: 10px;">
+          <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
+        </div>
       </div>
     </div>
   </div>
-  <!-- </div> -->
 <% end %>
 
 <%= javascript_include_tag "sign_in.js" %>
@@ -37,6 +42,6 @@
 <%= javascript_include_tag "kendo.tooltip.min.js" %>
 <%= javascript_include_tag "kendo.core.min.js" %>
 <%= javascript_include_tag "kendo.popup.min.js" %>
-<!-- <script async defer
+<script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpSkqL5I-YcxmMFgK6yI8hIku0xOZFDY&callback=initMap">
-</script> -->
+</script>

@@ -1,24 +1,30 @@
-<!-- <div class = "row" id="feed"> -->
-  <div class="medium-5 medium-centered columns lightest-bg" id="feed" style="height: 89vh;  bottom: 2px;">
-    <div class="centered-text dark-color">
-      <% @jobs.each do |job| %>
-        <div class="row" style="padding-top: 20px;">
-          <div class="medium-11 columns lightest-bg medium-centered rounded-border" style="font-size: 14px; box-shadow: 2px 2px #000000;">
-            <div class="medium-12 columns purple-debug">
-              PURPLE
-            </div>
-            <div class="medium-5 columns red-debug" style="height: 100%;">
-              RED
-            </div>
-            <div class="medium-7 columns green-debug">
-              <div><%= job.title %></div>
-            </div>
-            <div class="medium-12 columns blue-debug">
-              <div><%= job.description %></div>
-            </div>
+<div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
+  <div class="centered-text dark-color">
+    <% @jobs.each_with_index do |job, index| %>
+      <div class="row post" style="padding-top: 20px; margin-left: -55px;">
+        <%= hidden_field( :address, :field, :value => job.address ) %>
+        <div class="medium-11 clearfix columns lightest-bg medium-centered rounded-border thin-border" style="font-size: 14px;">
+          <div class="medium-12 columns lighter-bg" style="border-bottom: solid; border-width: 2px">
+            <%= job.title %> - Created by: <%= job.contractor.email %>
+          </div>
+          <div class="medium-5 columns lighter-bg" style="height: 105px; border-left: solid; border-width: 2px;">
+            <div id="map-canvas-<%= index %>" style="height: 100%"></div>
+          </div>
+          <div class="medium-7 columns lighter-bg" style="border-left: solid; border-right: solid; border-width: 2px; text-align: left;">
+            <div><%= "Hourly Rate:" %></div>
+            <div><%= "Start Date:" %></div>
+            <div><%= "Start Time:" %></div>
+            <div><%= "End Date:" %></div>
+            <div><%= "End Time:" %></div>
+          </div>
+          <div class="medium-12 columns lighter-bg" style="border-top: solid; border-width: 2px; border-right: solid; border-left: solid;">
+            <div><%= job.description %></div>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+    <script>
+      // initMaps();
+    </script>
   </div>
-<!-- </div> -->
+</div>

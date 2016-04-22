@@ -4,7 +4,7 @@ function signUpWorkerButton(){
       event.preventDefault();
       var request = $.ajax( {
         method: "GET",
-        query: "worker",
+        data: {type: "worker"},
         url: "/api/v1/signup/worker"
       } );
       request.done(
@@ -59,7 +59,7 @@ function signUpContractorButton(){
       event.preventDefault();
       var request = $.ajax( {
         method: "GET",
-        data: "contractor",
+        data: {type: "contractor"},
         url: "/api/v1/signup/worker"
       } );
       request.done(

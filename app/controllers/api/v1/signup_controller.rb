@@ -8,8 +8,18 @@ module Api
       end
 
       def show
-        respond_to do |format|
-          format.html { render partial: 'worker_signup_form'}
+        type = params[:type]
+
+        if type == "worker"
+          respond_to do |format|
+            format.html { render partial: 'worker_signup_form'}
+          end
+        end
+
+        if type == "contractor"
+          respond_to do |format|
+            format.html { render partial: 'contractor_signup_form'}
+          end
         end
       end
 

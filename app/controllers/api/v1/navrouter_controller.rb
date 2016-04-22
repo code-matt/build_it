@@ -2,8 +2,9 @@ module Api
   module V1
     class NavrouterController < ApplicationController
       skip_before_filter  :verify_authenticity_token
-      
+
       def index
+        @type = logged_in?
         if params[:task] == "load"
           render_partial('navbar')
         end

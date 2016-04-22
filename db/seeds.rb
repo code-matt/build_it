@@ -40,22 +40,28 @@ contractor10 = Contractor.create(email: "contractor10@contractor.com", password:
 #JOB
 job1 = Job.create(title: "Job1 Title",
  description: "But I must explain to you how all this nter consequences that are extremely painful. Nor again is there a resultant pleasure?",
- contractor_id: contractor8.id)
+ contractor_id: contractor8.id,
+ address: "33 Harrison Ave. Boston, Ma")
 job2 = Job.create(title: "Job2 Title, A longer title",
  description: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, produces no resultant pleasure?",
- contractor_id: contractor2.id)
+ contractor_id: contractor2.id,
+ address: "33 Harrison Ave. Boston, Ma")
 job3 = Job.create(title: "Job3 Title Title",
  description: "But I must explain to you how all this mistaken idea of denouncing pleasure or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure hiain that produces no resultant pleasure?",
- contractor_id: contractor1.id)
+ contractor_id: contractor1.id,
+ address: "33 Harrison Ave. Boston, Ma")
 job4 = Job.create(title: "Job4 Title Title Title Title",
  description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
- contractor_id: contractor6.id)
+ contractor_id: contractor6.id,
+ address: "33 Harrison Ave. Boston, Ma")
 job5 = Job.create(title: "Job5 Title",
  description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
- contractor_id: contractor3.id)
+ contractor_id: contractor3.id,
+ address: "33 Harrison Ave. Boston, Ma")
 job6 = Job.create(title: "Job6 Title",
  description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
- contractor_id: contractor5.id)
+ contractor_id: contractor5.id,
+ address: "33 Harrison Ave. Boston, Ma")
 
  ##SIGNUP
  Signup.create(job: job1, worker: worker1)
