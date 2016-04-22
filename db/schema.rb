@@ -36,9 +36,12 @@ ActiveRecord::Schema.define(version: 20160419193733) do
   add_index "contractors", ["reset_password_token"], name: "index_contractors_on_reset_password_token", unique: true, using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
+    t.text     "title",                                                 null: false
+    t.text     "description",                                           null: false
     t.string   "address",       default: "33 Harrison Ave. Boston, Ma", null: false
+    t.date     "start_date",                                            null: false
+    t.time     "start_time",                                            null: false
+    t.time     "end_time",                                              null: false
     t.integer  "contractor_id"
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false

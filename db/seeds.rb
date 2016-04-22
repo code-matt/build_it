@@ -41,27 +41,45 @@ contractor10 = Contractor.create(email: "contractor10@contractor.com", password:
 job1 = Job.create(title: "Job1 Title",
  description: "But I must explain to you how all this nter consequences that are extremely painful. Nor again is there a resultant pleasure?",
  contractor_id: contractor8.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-05-02"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 job2 = Job.create(title: "Job2 Title, A longer title",
- description: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, produces no resultant pleasure?",
+ description: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was",
  contractor_id: contractor2.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-05-03"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 job3 = Job.create(title: "Job3 Title Title",
- description: "But I must explain to you how all this mistaken idea of denouncing pleasure or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure hiain that produces no resultant pleasure?",
+ description: "But I must explain to you how all this mistaken idea of denouncing pleasure or desires to obtain painm umstances occur in which toil and pain can procure hiain that produces no resultant pleasure?",
  contractor_id: contractor1.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-05-01"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 job4 = Job.create(title: "Job4 Title Title Title Title",
  description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
  contractor_id: contractor6.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-05-03"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 job5 = Job.create(title: "Job5 Title",
- description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
+ description: "his mistaken idea of denouncing pleasure and praising",
  contractor_id: contractor3.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-04-29"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 job6 = Job.create(title: "Job6 Title",
  description: "his mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer",
  contractor_id: contractor5.id,
- address: "33 Harrison Ave. Boston, Ma")
+ address: "33 Harrison Ave. Boston, Ma",
+ start_date: Date.iso8601("2016-05-02"),
+ start_time: "10:00:00",
+ end_time: "13:00:00")
 
  ##SIGNUP
  Signup.create(job: job1, worker: worker1)

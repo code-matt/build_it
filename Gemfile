@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+gem 'money-rails'
 group :development, :test do
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
