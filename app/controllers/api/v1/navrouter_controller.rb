@@ -9,6 +9,12 @@ module Api
           render_partial('navbar')
         end
       end
+      def show
+        @job = Job.find(params[:id])
+        respond_to do |format|
+          format.html { render partial: "show_job"}
+        end
+      end
 
       def render_partial(partial)
         respond_to do |format|

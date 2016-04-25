@@ -1,7 +1,9 @@
 var submitted = 0;
 function init_worker_dashboard(){
   console.log('I am a workers dashboard');
-  $('#container').children().fadeOut(1000);
+  $('#container').children().fadeOut(1000, function(){
+    $(this).remove();
+  });
 
   if(isHomeContentPresent())
   {
@@ -24,6 +26,7 @@ function init_worker_dashboard(){
       $( '#feed' )
         .fadeIn( 1000 );
       loopMaps();
+      postsListener();
   });
 }
 function init_contractor_dashboard(){
@@ -59,6 +62,46 @@ function isHomeContentPresent()
   }
 }
 
+function postsListener()
+{
+  posts_arr = $('.post');
+  $.each
+    (posts_arr,function(index, value)
+      {
+        value.addEventListener("click", showJob)
+      }
+    )
+}
+function showJob(){
+  id = event.currentTarget.children.id_field.value;
+  console.log("The id is " + id);
+
+  var request = $.ajax( {
+    method: "GET",
+    data: {id: id},
+    url: "/api/v1/navrouter/" + id
+  } );
+
+  request.fail(
+    function( data ){
+      console.log("error!! " + data)
+    }
+  )
+
+  request.done(
+    function( data ) {
+      $('#container').children().fadeOut(1000, function(){
+        $(this).remove();
+      });
+      $( '#container' )
+        .append( data );
+      $( '#job-details' )
+        .fadeOut( 0 );
+      $( '#job-details' )
+        .fadeIn( 1000 );
+  });
+}
+
 function loopMaps() {
   posts_arr = $('.post');
   for (var i = 0; i < posts_arr.length; i++) {
@@ -88,14 +131,14 @@ function placeMap(lat, long ,index){
     zoom:15,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
-  map=new google.maps.Map(document.getElementById("map-canvas-" + index),mapProp);
+  map = new google.maps.Map(document.getElementById("map-canvas-" + index),mapProp);
 }
 
-function createMarker(place) {
-  placeLoc = place.geometry.location;
-  marker = new google.maps.Marker({
-    map: map,
-    animation: google.maps.Animation.DROP,
-    position: placeLoc
-  });
-}
+// function createMarker(place) {
+//   placeLoc = place.geometry.location;
+//   marker = new google.maps.Marker({
+//     map: map,
+//     animation: google.maps.Animation.DROP,
+//     position: placeLoc
+//   });
+// }

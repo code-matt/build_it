@@ -1,0 +1,17 @@
+<div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
+  <div class="centered-text dark-color">
+    <div id="job-details">
+      <h3><%= @job.title %> - details</h3>
+    </div>
+    <div class="medium-12 clearfix columns lightest-bg medium-centered rounded-border thin-border post" style="font-size: 14px; margin-top: 10px; margin-bottom: 10px;">
+      <%= hidden_field( :address, :field, :value => @job.address ) %>
+      <%= hidden_field( :id, :field, :value => @job.id ) %>
+      <div><%= "Hourly Rate: $#{Money.new(@job.hourly_rate_cents).dollars}" %></div>
+      <div><%= "Start Date: #{@job.start_date}" %></div>
+      <div><%= "Start Time: #{@job.start_time}" %></div>
+      <div><%= "End Time:#{@job.end_time}" %></div>
+      <div id="map-canvas">
+      </div>
+    </div>
+  </div>
+</div>
