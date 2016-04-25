@@ -7,7 +7,7 @@ module Api
         type = logged_in?
 
         if type == "worker"
-          @jobs = current_worker.jobs
+          @events = Event.where(worker: current_worker)
           respond_to do |format|
             format.html { render partial: 'worker_feed'}
           end
@@ -18,7 +18,6 @@ module Api
           end
         end
       end
-
     end
   end
 end

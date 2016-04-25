@@ -3,8 +3,8 @@ function init_worker_dashboard(){
   console.log('I am a workers dashboard');
   $('#container').children().fadeOut(1000, function(){
     $(this).remove();
-    loopMaps();
-    postsListener();
+    // loopMaps();
+    // postsListener();
   });
 
   if(isHomeContentPresent())
