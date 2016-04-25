@@ -23,6 +23,17 @@ module Api
         end
       end
 
+      def job
+        Signup.create(job: Job.find(params[:id]), worker: current_worker)
+      end
+
+      def resign
+        signup = Signup.where(job: Job.find(params[:id]), worker: current_worker)
+        Signup.destroy(signup)
+
+        render json: {status: "success!"}
+      end
+
     end
   end
 end

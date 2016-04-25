@@ -10,8 +10,20 @@
       <div><%= "Start Date: #{@job.start_date}" %></div>
       <div><%= "Start Time: #{@job.start_time}" %></div>
       <div><%= "End Time:#{@job.end_time}" %></div>
-      <div id="map-canvas">
+      <div class="medium-12 columns" id="map-canvas-0" style="height: 300px;">
       </div>
+      <div class="medium-9 columns">
+        <%= @job.description %>
+      </div>
+      <% if Signup.where(job: @job.id, worker: current_worker) %>
+        <div class="medium-3 columns">
+          <%= button_to "RESIGN", root_path, :method => :get, id: "resign_job_button" %>
+        </div>
+      <% else %>
+        <div class="medium-3 columns">
+          <%= button_to "SIGN UP", root_path, :method => :get, id: "signup_job_button" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

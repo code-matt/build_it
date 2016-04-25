@@ -3,6 +3,8 @@ function init_worker_dashboard(){
   console.log('I am a workers dashboard');
   $('#container').children().fadeOut(1000, function(){
     $(this).remove();
+    loopMaps();
+    postsListener();
   });
 
   if(isHomeContentPresent())
@@ -25,8 +27,6 @@ function init_worker_dashboard(){
         .fadeOut( 0 );
       $( '#feed' )
         .fadeIn( 1000 );
-      loopMaps();
-      postsListener();
   });
 }
 function init_contractor_dashboard(){
@@ -72,35 +72,6 @@ function postsListener()
       }
     )
 }
-function showJob(){
-  id = event.currentTarget.children.id_field.value;
-  console.log("The id is " + id);
-
-  var request = $.ajax( {
-    method: "GET",
-    data: {id: id},
-    url: "/api/v1/navrouter/" + id
-  } );
-
-  request.fail(
-    function( data ){
-      console.log("error!! " + data)
-    }
-  )
-
-  request.done(
-    function( data ) {
-      $('#container').children().fadeOut(1000, function(){
-        $(this).remove();
-      });
-      $( '#container' )
-        .append( data );
-      $( '#job-details' )
-        .fadeOut( 0 );
-      $( '#job-details' )
-        .fadeIn( 1000 );
-  });
-}
 
 function loopMaps() {
   posts_arr = $('.post');
@@ -128,17 +99,20 @@ function geocode(address, index)
 function placeMap(lat, long ,index){
   var mapProp = {
     center:new google.maps.LatLng(lat, long),
-    zoom:15,
+    zoom:18,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map-canvas-" + index),mapProp);
+  createMarker(lat, long, map);
 }
 
-// function createMarker(place) {
-//   placeLoc = place.geometry.location;
-//   marker = new google.maps.Marker({
-//     map: map,
-//     animation: google.maps.Animation.DROP,
-//     position: placeLoc
-//   });
-// }
+function createMarker(lat, long, map) {
+  placeLoc = {}
+  placeLoc.lat = lat;
+  placeLoc.lng = long;
+  marker = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.DROP,
+    position: placeLoc
+  });
+}

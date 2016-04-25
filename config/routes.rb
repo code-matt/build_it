@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :dashboard
       resources :navrouter, only: [:show]
       post '/navrouter' => 'navrouter#index'
+      get '/signup-job/:id' => 'signup#job'
+      get '/resign-job/:id' => 'signup#resign'
     end
   end
 end
