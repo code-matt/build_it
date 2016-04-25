@@ -25,11 +25,21 @@ module Api
 
       def job
         Signup.create(job: Job.find(params[:id]), worker: current_worker)
+        Event.create(name: "new_signup",
+         job: Job.find(params[:id]),
+         worker: current_worker,
+         contractor: Job.find(params[:id].contractor))
+
+         render json: {status: "success!"}
       end
 
       def resign
         signup = Signup.where(job: Job.find(params[:id]), worker: current_worker)
         Signup.destroy(signup)
+        Event.create(name: "resign_job",
+         job: Job.find(params[:id]),
+         worker: current_worker,
+         contractor: Job.find(params[:id]).contractor)
 
         render json: {status: "success!"}
       end
