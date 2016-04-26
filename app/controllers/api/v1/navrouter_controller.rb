@@ -8,6 +8,9 @@ module Api
         if params[:task] == "load"
           render_partial('navbar')
         end
+        if params[:task] == "search"
+          render_partial('search')
+        end
       end
       def show
         @job = Job.find(params[:id])
