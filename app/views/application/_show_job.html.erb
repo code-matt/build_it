@@ -7,9 +7,9 @@
       <%= hidden_field( :address, :field, :value => @job.address ) %>
       <%= hidden_field( :id, :field, :value => @job.id ) %>
       <div><%= "Hourly Rate: $#{Money.new(@job.hourly_rate_cents).dollars}" %></div>
-      <div><%= "Start Date: #{@job.start_date}" %></div>
-      <div><%= "Start Time: #{@job.start_time}" %></div>
-      <div><%= "End Time:#{@job.end_time}" %></div>
+      <div><%= "Start Date: #{@job.start_date.to_formatted_s(:long)}" %></div>
+      <div><%= "Start Time: #{@job.start_time.to_formatted_s(:long)}" %></div>
+      <div><%= "End Time:#{@job.end_time.to_formatted_s(:long)}" %></div>
       <div class="medium-12 columns" id="map-canvas-0" style="height: 300px;">
       </div>
       <div class="medium-9 columns">

@@ -83,6 +83,7 @@ function initControlPannelLink()
         function( data ) {
           $('#container').children().fadeOut(1000, function(){
             $(this).remove();
+            loopMaps();
           });
           $( '#container' )
             .append( data );

@@ -11,9 +11,9 @@
         </div>
         <div class="medium-7 columns lighter-bg" style="border-left: solid; border-right: solid; border-width: 2px; text-align: left;">
           <div><%= "Hourly Rate: $#{Money.new(job.hourly_rate_cents).dollars}" %></div>
-          <div><%= "Start Date: #{job.start_date}" %></div>
-          <div><%= "Start Time: #{job.start_time}" %></div>
-          <div><%= "End Time:#{job.end_time}" %></div>
+          <div><%= "Start Date: #{job.start_date.to_formatted_s(:long)}" %></div>
+          <div><%= "Start Time: #{job.start_time.to_formatted_s(:long)}" %></div>
+          <div><%= "End Time:#{job.end_time.to_formatted_s(:long)}" %></div>
         </div>
         <div class="medium-12 columns lighter-bg" style="border-top: solid; border-width: 2px; border-right: solid; border-left: solid;">
           <div><%= job.description %></div>
