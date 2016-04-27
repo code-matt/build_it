@@ -12,7 +12,12 @@ gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'money-rails'
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'selenium-webdriver'
 end
