@@ -4,15 +4,15 @@ module Api
       before_action :authenticate!
 
       def index
-        type = logged_in?
+        @type = logged_in?
 
-        if type == "worker"
+        if @type == "worker"
           @events = Event.where(worker: current_worker).order('created_at DESC')
           respond_to do |format|
             format.html { render partial: 'worker_feed'}
           end
-        elsif type == "contractor"
-          @jobs = current_contractor.jobs
+        elsif @type == "contractor"
+          @events = Event.where(worker: current_contractor).order('created_at DESC')
           respond_to do |format|
             format.html { render partial: 'contractor_feed'}
           end

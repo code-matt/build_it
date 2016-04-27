@@ -7,7 +7,7 @@ Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, {js_errors: false})
 end
 
-feature "worker logs in" do
+feature "worker features" do
   scenario "registered worker signs in", js: true do
     visit root_path
     fill_in 'worker[email]', with: "worker1@worker.com"

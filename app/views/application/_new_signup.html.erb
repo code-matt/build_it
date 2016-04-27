@@ -1,9 +1,22 @@
-<div class="medium-12 clearfix columns lightest-bg medium-centered rounded-border thin-border post" style="font-size: 14px; margin-top: 10px; margin-bottom: 10px;">
-  <div class="medium-4 columns rounded-border">
-    <%= image_tag("checkmark.png", size: "100x100") %>
+<% if @type == "worker" %>
+  <div class="medium-12 clearfix columns lightest-bg medium-centered rounded-border thin-border post" style="font-size: 14px; margin-top: 10px; margin-bottom: 10px;">
+    <div class="medium-4 columns rounded-border">
+      <%= image_tag("checkmark.png", size: "100x100") %>
+    </div>
+    <div class="medium-8 columns rounded-border">
+      <div>You have signed up for a new job!</div>
+      <div><%= event.job.title %></div>
+    </div>
   </div>
-  <div class="medium-8 columns rounded-border">
-    <div>You have signed up for a new job!</div>
-    <div><%= event.job.title %></div>
+<% end %>
+<% if @type == "contractor" %>
+  <div class="medium-12 clearfix columns lightest-bg medium-centered rounded-border thin-border post" style="font-size: 14px; margin-top: 10px; margin-bottom: 10px;">
+    <div class="medium-4 columns rounded-border">
+      <%= image_tag("checkmark.png", size: "100x100") %>
+    </div>
+    <div class="medium-8 columns rounded-border">
+      <div>A worker has signed up for one of your jobs!</div>
+      <div><%= event.job.title %></div>
+    </div>
   </div>
-</div>
+<% end %>
