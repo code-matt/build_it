@@ -7,7 +7,7 @@ module Api
         type = logged_in?
 
         if type == "worker"
-          @events = Event.where(worker: current_worker)
+          @events = Event.where(worker: current_worker).order('created_at DESC')
           respond_to do |format|
             format.html { render partial: 'worker_feed'}
           end

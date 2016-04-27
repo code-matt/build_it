@@ -28,7 +28,7 @@ module Api
         Event.create(name: "new_signup",
          job: Job.find(params[:id]),
          worker: current_worker,
-         contractor: Job.find(params[:id].contractor))
+         contractor: Job.find(params[:id]).contractor)
 
          render json: {status: "success!"}
       end

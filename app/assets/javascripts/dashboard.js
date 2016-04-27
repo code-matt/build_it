@@ -107,7 +107,7 @@ function placeMap(lat, long ,index){
 }
 
 function createMarker(lat, long, map) {
-  placeLoc = {}
+  placeLoc = {};
   placeLoc.lat = lat;
   placeLoc.lng = long;
   marker = new google.maps.Marker({

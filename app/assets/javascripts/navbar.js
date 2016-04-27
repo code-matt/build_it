@@ -11,10 +11,12 @@ function initNavbar(){
         .append( data );
       initDashboardLink();
       initSearchLink();
+      initControlPannelLink();
   });
 }
 
-function initDashboardLink(){
+function initDashboardLink()
+{
   $( '#dashboard-link' )
     .click( function( event ) {
       event.preventDefault();
@@ -23,62 +25,72 @@ function initDashboardLink(){
         method: "POST",
         data: {type: {"email": $('.email-field').val(), "password": $('.password-field').val()}, "commit": "Sign In"},
         url: "/" + type + "s/sign_in"
-      } );
+      });
       request.fail(
         function(data){
           //KENDO IN THE ERROR MESSAGES FOR data.responseText
-        }
-      );
+      });
       request.done(
         function( data ) {
           init_worker_dashboard();
-        });
       });
+  });
 }
-function initSearchLink(){
-$( '#search-link' )
-  .click( function( event ) {
-    event.preventDefault();
-    var request = $.ajax( {
-      method: "GET",
-      data: {task: "search"},
-      url: "/api/v1/navrouter"
-    } );
-    request.fail(
-      function(data){
-        //KENDO IN THE ERROR MESSAGES FOR data.responseText
-      }
-    );
-    request.done(
-      function( data ) {
-        $('#container').children().fadeOut(1000, function(){
-          $(this).remove();
-        });
-        $( '#container' )
-          .append( data );
-        $( '#search-container' )
-          .fadeOut( 0 );
-        $( '#search-container' )
-          .fadeIn( 1000 );
+function initSearchLink()
+{
+  $( '#search-link' )
+    .click( function( event ) {
+      event.preventDefault();
+      var request = $.ajax({
+        method: "GET",
+        data: {task: "search"},
+        url: "/api/v1/navrouter"
       });
-    });
+      request.fail(
+        function(data){
+          //KENDO IN THE ERROR MESSAGES FOR data.responseText
+      });
+      request.done(
+        function( data ) {
+          $('#container').children().fadeOut(1000, function(){
+            $(this).remove();
+          });
+          $( '#container' )
+            .append( data );
+          $( '#search-container' )
+            .fadeOut( 0 );
+          $( '#search-container' )
+            .fadeIn( 1000 );
+            initSearch();
+      });
+  });
 }
-//
-// $( '#controlpannel-link' )
-//   .click( function( event ) {
-//     event.preventDefault();
-//     var request = $.ajax( {
-//       method: "POST",
-//       data: {"worker": {"email": $('.email-field').val(), "password": $('.password-field').val()}, "commit": "Sign In"},
-//       url: "/workers/sign_in"
-//     } );
-//     request.fail(
-//       function(data){
-//         //KENDO IN THE ERROR MESSAGES FOR data.responseText
-//       }
-//     );
-//     request.done(
-//       function( data ) {
-//         init_worker_dashboard();
-//       });
-//     });
+
+function initControlPannelLink()
+  {
+    $( '#controlpannel-link' ).click( function( event ){
+      event.preventDefault();
+      var request = $.ajax({
+        method: "GET",
+        data: {task: "controlpannel"},
+        url: "/api/v1/navrouter"
+      });
+      request.fail(
+        function(data){
+          //KENDO IN THE ERROR MESSAGES FOR data.responseText
+      });
+      request.done(
+        function( data ) {
+          $('#container').children().fadeOut(1000, function(){
+            $(this).remove();
+          });
+          $( '#container' )
+            .append( data );
+          $( '#search-container' )
+            .fadeOut( 0 );
+          $( '#search-container' )
+            .fadeIn( 1000 );
+            initControlPannel();
+      });
+  });
+}

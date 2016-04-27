@@ -14,7 +14,6 @@ body {
   font-family: arial;
 }
 
-
 .nav-div:hover{
   background-color: #03A0CC;
 }
@@ -25,6 +24,12 @@ body {
 
 input#light-box{
   background-color: #EDE2D3;
+}
+
+.search-input {
+  background-color: #EDE2D3;
+  height: 30px;
+  margin-top: 20px;
 }
 
 .red-debug {
@@ -100,6 +105,7 @@ input#light-box{
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
   color: #ffffff;
+  overflow-y: scroll;
 }
 
 .thin-border {

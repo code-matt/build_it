@@ -11,6 +11,19 @@ module Api
         if params[:task] == "search"
           render_partial('search')
         end
+        if params[:task] == "search-query"
+          @results = Job.where("description LIKE ?" , "%#{params[:query]}%")
+          respond_to do |format|
+            format.html { render partial: "search_results", locals: { results: @results }}
+          end
+        end
+        if params[:task] == "controlpannel"
+          @jobs = current_worker.jobs
+          @worker = current_worker
+          respond_to do |format|
+            format.html { render partial: 'worker_controlpannel'}
+          end
+        end
       end
       def show
         @job = Job.find(params[:id])

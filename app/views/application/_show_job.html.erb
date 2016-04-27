@@ -15,7 +15,7 @@
       <div class="medium-9 columns">
         <%= @job.description %>
       </div>
-      <% if Signup.where(job: @job.id, worker: current_worker) %>
+      <% if Signup.find_by(job: @job.id, worker: current_worker) %>
         <div class="medium-3 columns">
           <%= button_to "RESIGN", root_path, :method => :get, id: "resign_job_button" %>
         </div>
