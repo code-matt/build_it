@@ -6,9 +6,16 @@
   <div class="small-3 medium-3 columns end rounded-border nav-div" style="box-shadow: 2px 2px #000000;">
     <%= link_to(image_tag("hard_hat.png"), root_path, id: "dashboard-link") %>
   </div>
-  <div class="small-3 medium-3 columns end rounded-border nav-div" style="box-shadow: 2px 2px #000000;">
-    <%= link_to(image_tag("search.png"), root_path, id: "search-link") %>
-  </div>
+  <% if @type == 'worker' %>
+    <div class="small-3 medium-3 columns end rounded-border nav-div" style="box-shadow: 2px 2px #000000;">
+      <%= link_to(image_tag("search.png"), root_path, id: "search-link") %>
+    </div>
+  <% end %>
+  <% if @type == 'contractor' %>
+    <div class="small-3 medium-3 columns end rounded-border nav-div" style="box-shadow: 2px 2px #000000;">
+      <%= link_to(image_tag("add-new.png"), root_path, id: "add-new-link") %>
+    </div>
+  <% end %>
   <div class="small-3 medium-3 columns end rounded-border nav-div" style="box-shadow: 2px 2px #000000;">
     <%= link_to(image_tag("control_pannel.png"), root_path, id: "controlpannel-link") %>
   </div>

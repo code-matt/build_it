@@ -26,7 +26,6 @@ function init_worker_dashboard()
   });
 }
 function init_contractor_dashboard(){
-  console.log('I am a contractors dashboard');
   $('#container').children().fadeOut(1000);
 
   var request = $.ajax({

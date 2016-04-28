@@ -9,8 +9,16 @@ function initNavbar()
   request.done(function( data ) {
     $( '.top-bar' )
       .append( data );
+    type = $('#type_field').val();
+
     initDashboardLink();
-    initSearchLink();
+    if (type == "worker"){
+      initSearchLink();
+    }
+    if (type == "contractor"){
+      initAddNewLink();
+    }
+
     initControlPannelLink();
   });
 }
@@ -63,6 +71,35 @@ function initSearchLink()
       $( '#search-container' )
         .fadeIn( 1000 );
         initSearch();
+    });
+  });
+}
+
+function initAddNewLink()
+{
+  $( '#add-new-link' ).click( function( event ){
+    event.preventDefault();
+
+    var request = $.ajax({
+      method: "POST",
+      data: {task: "add"},
+      url: "/api/v1/addnew"
+    });
+
+    request.fail(function(data){
+        //KENDO IN THE ERROR MESSAGES FOR data.responseText
+    });
+    request.done(function( data ){
+      $('#container').children().fadeOut(1000, function(){
+        $(this).remove();
+      });
+      $( '#container' )
+        .append( data );
+      $( '#add-container' )
+        .fadeOut( 0 );
+      $( '#add-container' )
+        .fadeIn( 1000 );
+        initAdd();
     });
   });
 }

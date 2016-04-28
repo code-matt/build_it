@@ -7,6 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
       new_worker = Worker.new(worker_params)
 
       if new_worker.save
+        Event.create(name: "new_signup_notice",
+         job: nil,
+         worker: new_worker,
+         contractor: nil)
         set_flash_message :notice, :signed_up
         sign_in(:worker, new_worker)
         return render :json => {:success => true}
@@ -22,6 +26,10 @@ class RegistrationsController < Devise::RegistrationsController
       new_contractor = Contractor.new(contractor_params)
 
       if new_contractor.save
+        Event.create(name: "new_signup_notice",
+         job: nil,
+         worker: nil,
+         contractor: new_contractor)
         set_flash_message :notice, :signed_up
         sign_in(:contractor, new_contractor)
         return render :json => {:success => true}

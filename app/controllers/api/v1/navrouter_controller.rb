@@ -28,12 +28,19 @@ module Api
             format.html { render partial: 'worker_controlpannel'}
           end
         end
-        
+
       end
       def show
         @job = Job.find(params[:id])
         respond_to do |format|
           format.html { render partial: "show_job"}
+        end
+      end
+
+      def addnew
+        @job = Job.new
+        respond_to do |format|
+          format.html { render partial: "add_job"}
         end
       end
 

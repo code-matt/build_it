@@ -1,0 +1,34 @@
+<div class="medium-5 medium-centered columns lightest-bg container" id="worker-signup-form">
+  <div class="centered-text dark-color">
+    <h3><b>New Job</b></h3>
+  </div>
+  <%= form_for(@job,
+  :as => :job,
+  :url => api_v1_job_index_path(:job),
+  :html => {:id => "add_job" },
+  :format => :json,
+  :remote => true) do |f| %>
+  <%= devise_error_messages! %>
+  <div>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.text_field :start_date %>
+  </div>
+  <div>
+    <%= f.text_field :start_time %>
+  </div>
+  <div>
+    <%= f.text_field :end_time %>
+  </div>
+  <div>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.submit "Sign up" %>
+  </div>
+  <% end %>
+</div>

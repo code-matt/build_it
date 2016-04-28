@@ -12,7 +12,7 @@ module Api
             format.html { render partial: 'worker_feed'}
           end
         elsif @type == "contractor"
-          @events = Event.where(worker: current_contractor).order('created_at DESC')
+          @events = Event.where(contractor: current_contractor).order('created_at DESC')
           respond_to do |format|
             format.html { render partial: 'contractor_feed'}
           end

@@ -1,7 +1,6 @@
 function showJob()
 {
   id = event.currentTarget.children.id_field.value;
-  console.log("The id is " + id);
 
   var request = $.ajax({
     method: "GET",
