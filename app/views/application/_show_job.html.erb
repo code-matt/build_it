@@ -1,5 +1,5 @@
 <div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
-  <div class="centered-text dark-color">
+  <div class="centered-text">
     <div id="job-details">
       <h3><%= @job.title %> - details</h3>
     </div>
@@ -17,11 +17,11 @@
       </div>
       <% if Signup.find_by(job: @job.id, worker: current_worker) %>
         <div class="medium-3 columns">
-          <%= button_to "RESIGN", root_path, :method => :get, id: "resign_job_button" %>
+          <%= button_to "RESIGN", root_path, :method => :get, id: "resign_job_button", class: "button" %>
         </div>
       <% else %>
         <div class="medium-3 columns">
-          <%= button_to "SIGN UP", root_path, :method => :get, id: "signup_job_button" %>
+          <%= button_to "SIGN UP", root_path, :method => :get, id: "signup_job_button", class: "button" %>
         </div>
       <% end %>
     </div>

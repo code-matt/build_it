@@ -1,14 +1,14 @@
 <div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
-  <div class="centered-text dark-color">
+  <div class="centered-text">
     Jobs you are signed up for.
-    <table>
-      <% @jobs.each_with_index do |job, index| %>
+    <% @jobs.each_with_index do |job, index| %>
+      <table>
         <tr id="<%= job.id %>">
           <td><%= job.title %></td>
-          <td><%= button_to "View", root_path, :method => :get, class: 'view-button' %></td>
-          <td><%= button_to "Resign", root_path, :method => :get, class: 'resign-button' %></td>
+          <td><%= button_to "View", root_path, :method => :get, class: 'view-button button' %></td>
+          <td><%= button_to "Resign", root_path, :method => :get, class: 'resign-button button' %></td>
         </tr>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
   </div>
 </div>

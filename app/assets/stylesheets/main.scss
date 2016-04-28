@@ -1,6 +1,9 @@
+@import "settings";
+
 html, body {
   width: 100%;
   height: 100%;
+  color: #FFFFFF;
 }
 
 .k-tooltip{
@@ -8,7 +11,7 @@ html, body {
 }
 
 body {
-  background-color: #D0A66F;
+  background-color: $BI-light-grey;
   margin: 0;
   overflow: hidden;
   font-family: arial;
@@ -22,8 +25,42 @@ body {
   background-color: #03A0CC;
 }
 
+tbody {
+   border: 2px solid white;
+   background-color: #474747;
+}
+
 input#light-box{
-  background-color: #EDE2D3;
+  background-color: $BI-light-grey;
+}
+input#search{
+  background-color: $BI-light-grey;
+}
+input#job_title{
+  background-color: $BI-light-grey;
+}
+input#job_description{
+  background-color: $BI-light-grey;
+}
+input#job_start_date{
+  background-color: $BI-light-grey;
+}
+input#job_start_time{
+  background-color: $BI-light-grey;
+}
+input#job_end_time{
+  background-color: $BI-light-grey;
+}
+input#job_address{
+  background-color: $BI-light-grey;
+}
+
+.input-bg{
+  background-color: $BI-light-grey;
+}
+
+.white-text{
+  color: white;
 }
 
 .search-input {
@@ -60,7 +97,7 @@ input#light-box{
 #sign-in {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -72,13 +109,13 @@ input#light-box{
 }
 
 .rounded-border{
-  border-radius: 9px;
+  border-radius: 2px;
 }
 
 #select-type {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -91,7 +128,7 @@ input#light-box{
 #worker-signup-form {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -110,13 +147,13 @@ input#light-box{
 
 .thin-border {
     border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
+    border-width: 2px;
+    border-color: #FFFFFF;
 }
 #contractor-signup-form {
   box-shadow: 2px 2px #000000;
   border-radius: 15px;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -128,29 +165,30 @@ input#light-box{
 }
 .centered-text{
   text-align: center;
+  color: #FFFFFF;
 }
 
 .lightest-bg{
-  background-color: #EDE2D3;
+  background-color: $BI-dark-gray;
 }
 .lighter-bg{
-  background-color: #DBC1A0;
+  background-color: $BI-dark-gray;
 }
 .light-bg{
-  background-color: #C28432;
+  background-color: $BI-dark-gray;
 }
 .dark-bg{
-  background-color: #B46702;
+  background-color: $BI-light-grey;
 }
 .lightest-color{
   color: #EDE2D3;
 }
 .lighter-color{
-  color: #DBC1A0;
+  color: $BI-dark-gray;
 }
 .light-color{
   color: #C28432;
 }
 .dark-color{
-  color: #B46702;
+  color: $BI-light-grey;
 }

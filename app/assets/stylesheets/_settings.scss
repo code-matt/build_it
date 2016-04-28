@@ -42,6 +42,10 @@
 
 @import 'util/util';
 
+// 1. Build.it
+// ---------
+$BI-dark-gray: #262626;
+$BI-light-grey: #474747;
 // 1. Global
 // ---------
 
@@ -564,4 +568,3 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
-

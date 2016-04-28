@@ -11,12 +11,13 @@
         <div class="medium-3 columns rounded-border nav-div end" style="box-shadow: 2px 2px #000000;">
           <%= link_to(image_tag("home_icon.png", size: "100x100"), root_path, id: "home-link") %>
         </div>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="medium-6 medium-centered columns" id="container" style="height: 100vh">
       <div class="medium-5 columns lightest-bg" id="sign-in">
-        <div class="centered-text dark-color">
+        <div class="centered-text">
           <h3><b>Sign In</b></h3>
         </div>
         <%= form_for(:worker, :url => session_path(:worker),
@@ -24,10 +25,10 @@
             :remote => true) do |f| %>
           <%= f.text_field :email, id: 'light-box', class: "email-field" %>
           <%= f.password_field :password, id: 'light-box', class: "password-field"  %>
-          <%= f.submit 'Sign In', id: "sign-in-button" %>
+          <%= f.submit 'Sign In', id: "sign-in-button", class: "button" %>
         <% end %>
         <div style="padding-bottom: 10px;">
-          <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button" %>
+          <%= button_to "Sign Up", root_path, :method => :get, id: "sign_up_button", class: "button" %>
         </div>
       </div>
     </div>

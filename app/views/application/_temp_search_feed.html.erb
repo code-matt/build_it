@@ -1,5 +1,5 @@
 <div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
-  <div class="centered-text dark-color">
+  <div class="centered-text">
     <% @jobs.each_with_index do |job, index| %>
         <div class="medium-12 clearfix columns lightest-bg medium-centered rounded-border thin-border post" style="font-size: 14px; margin-top: 10px; margin-bottom: 10px;">
           <%= hidden_field( :address, :field, :value => job.address ) %>
