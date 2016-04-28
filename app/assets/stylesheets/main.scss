@@ -30,29 +30,51 @@ tbody {
    background-color: #474747;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
 input#light-box{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#search{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_title{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_description{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_start_date{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_start_time{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_end_time{
   background-color: $BI-light-grey;
+  color: white;
 }
 input#job_address{
   background-color: $BI-light-grey;
+  color: white;
 }
 
 .input-bg{
