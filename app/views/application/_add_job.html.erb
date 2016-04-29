@@ -1,11 +1,11 @@
-<div class="medium-5 medium-centered columns lightest-bg" id="worker-signup-form" style="margin-top: 50px;">
+<div class="medium-5 medium-centered columns lightest-bg" id="worker-signup-form" style="margin-top: 50px; overflow-y: scroll;">
   <div class="centered-text">
     <h3><b>New Job</b></h3>
   </div>
   <%= form_for(@job,
     :as => :job,
     :url => api_v1_job_index_path(:job),
-    :html => {:id => "add_job" }, :html => { :class => "white-text" },
+    :html => {:id => "add_job" },
     :format => :json,
     :remote => true) do |f| %>
     <%= devise_error_messages! %>
@@ -16,19 +16,19 @@
       <%= f.text_field :description %>
     </div>
     <div>
-      <%= f.text_field :start_date %>
+      <%= f.date_field :start_date %>
     </div>
     <div>
-      <%= f.text_field :start_time %>
+      <%= f.time_field :start_time %>
     </div>
     <div>
-      <%= f.text_field :end_time %>
+      <%= f.time_field :end_time %>
     </div>
     <div>
       <%= f.text_field :address %>
     </div>
     <div>
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Add Job" %>
     </div>
   <% end %>
 </div>

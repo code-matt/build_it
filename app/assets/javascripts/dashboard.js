@@ -1,9 +1,12 @@
 var submitted = 0;
+function initPartialData(data,divID){
+  $('#container').children().remove();
+  $( '#container' )
+    .append( data );
+  finishRotation(divID);
+}
 function init_worker_dashboard()
 {
-  $('#container').children().fadeOut(1000, function(){
-    $(this).remove();
-  });
 
   if(isHomeContentPresent()){
     $( '#navbar-content' ).children().remove();
@@ -17,12 +20,7 @@ function init_worker_dashboard()
   });
 
   request.done(function( data ){
-    $( '#container' )
-      .append( data );
-    $( '#feed' )
-      .fadeOut( 0 );
-    $( '#feed' )
-      .fadeIn( 1000 );
+    rotateContainer(data,'initFeed','feed');
   });
 }
 function init_contractor_dashboard(){

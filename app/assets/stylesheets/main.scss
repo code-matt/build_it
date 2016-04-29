@@ -10,11 +10,15 @@ html, body {
    background: #EDE2D3 !important; //specify tooltip's color
 }
 
+label{
+  color: white;
+}
+
 body {
   background-color: $BI-light-grey;
   margin: 0;
   overflow: hidden;
-  font-family: arial;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .nav-div:hover{

@@ -61,16 +61,7 @@ function initSearchLink()
         //KENDO IN THE ERROR MESSAGES FOR data.responseText
     });
     request.done(function( data ){
-      $('#container').children().fadeOut(1000, function(){
-        $(this).remove();
-      });
-      $( '#container' )
-        .append( data );
-      $( '#search-container' )
-        .fadeOut( 0 );
-      $( '#search-container' )
-        .fadeIn( 1000 );
-        initSearch();
+      rotateContainer(data,'initSearchRotate','search-container');
     });
   });
 }
@@ -90,16 +81,7 @@ function initAddNewLink()
         //KENDO IN THE ERROR MESSAGES FOR data.responseText
     });
     request.done(function( data ){
-      $('#container').children().fadeOut(1000, function(){
-        $(this).remove();
-      });
-      $( '#container' )
-        .append( data );
-      $( '#add-container' )
-        .fadeOut( 0 );
-      $( '#add-container' )
-        .fadeIn( 1000 );
-        initAdd();
+      rotateContainer(data,'initFeed','add_new');
     });
   });
 }
@@ -120,17 +102,7 @@ function initControlPannelLink()
     });
 
     request.done(function( data ) {
-      $('#container').children().fadeOut(1000, function(){
-        $(this).remove();
-        loopMaps();
-      });
-      $( '#container' )
-        .append( data );
-      $( '#search-container' )
-        .fadeOut( 0 );
-      $( '#search-container' )
-        .fadeIn( 1000 );
-        initControlPannel();
+      rotateContainer(data,'initCPRotate','worker-CP');
     });
   });
 }

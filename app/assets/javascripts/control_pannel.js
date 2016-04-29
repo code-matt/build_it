@@ -1,6 +1,9 @@
-function initControlPannel()
-{
-  initControlPannelButtons();
+function initCPRotate(){
+  $('#container').children().remove();
+  $( '#container' )
+    .append( data );
+  finishRotation(divID,"initControlPannelButtons");
+  initControlPannelButtons()
 }
 
 function initControlPannelButtons()
@@ -28,18 +31,7 @@ function showJobCP()
     //KENDO IN THE ERROR MESSAGES FOR data.responseText
   });
   request.done(function( data ) {
-    $('#container').children().fadeOut(1000, function(){
-      $(this).remove();
-      showMap();
-      initSignUpButton();
-      initResignButton();
-    });
-    $( '#container' )
-      .append( data );
-    $( '#job-details' )
-      .fadeOut( 0 );
-    $( '#job-details' )
-      .fadeIn( 1000 );
+    rotateContainer(data,'initFeed','job-show');
   });
 }
 

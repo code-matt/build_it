@@ -16,7 +16,7 @@ feature "contractor features" do
     sleep 1
     expect(page).to have_content('A worker has signed up for one of your jobs!')
   end
-  
+
   scenario "contractor adds a new job", js: true do
     visit root_path
     fill_in 'worker[email]', with: "contractor1@contractor.com"
@@ -31,7 +31,7 @@ feature "contractor features" do
     fill_in 'job[start_time]', with: "12:33"
     fill_in 'job[end_time]', with: "14:55"
     fill_in 'job[address]', with: "15 Gordon St. Waltham, MA"
-    click_button 'Sign up'
+    click_button 'Add Job'
     sleep 1
     expect(page).to have_content('You have created a new job!')
   end

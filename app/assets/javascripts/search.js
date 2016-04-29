@@ -1,10 +1,19 @@
+function initSearchRotate(){
+  $('#container').children().remove();
+  $( '#container' )
+    .append( data ).promise().done(function(){
+      initSearch();
+    });
+  finishRotation(divID);
+  // initSearch();
+}
+
 function initSearch()
 {
   $( '#search-button' ).click( function( event ) {
-    $('#results-container').children().fadeOut(100, function(){
+    $('#results-container').children().fadeOut(1000, function(){
       $(this).remove();
     });
-    event.preventDefault();
 
     type = $('#type_field').val();
     var request = $.ajax( {
