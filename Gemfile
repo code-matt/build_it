@@ -11,6 +11,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'money-rails'
+gem 'web-console', '~> 2.0'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
