@@ -5,16 +5,25 @@ function rotateContainer(data,initFunction,divID)
     180,
     500,
     {
-    // complete: this[initFunction].apply(this, Array.prototype.slice.call(data, 1)),
     complete: initPartialData.call(this, data, divID),
     }
   );
-  initSearch();
-  initControlPannelButtons();
-  showMap();
-  initSignUpButton();
-  initResignButton();
-  initAdd();
+  switch(divID) {
+    case "search-container":
+        initSearch();
+        break;
+    case "worker-CP":
+        initControlPannelButtons();
+        break;
+    case "job-show":
+        showMap();
+        initSignUpButton();
+        initResignButton();
+        break;
+    case "add_new":
+        initAdd();
+        break;
+  }
 }
 
 function finishRotation(divID,func1,func2){
