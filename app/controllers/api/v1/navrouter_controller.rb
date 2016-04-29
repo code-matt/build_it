@@ -9,11 +9,7 @@ module Api
         if params[:task] == "load"
           render_partial('navbar')
         end
-
-        if params[:task] == "search"
-          render_partial('search')
-        end
-
+        
         if params[:task] == "search-query"
           @results = Job.where("description LIKE ?" , "%#{params[:query]}%")
           respond_to do |format|
