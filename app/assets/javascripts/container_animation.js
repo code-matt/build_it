@@ -4,9 +4,7 @@ function rotateContainer(data,initFunction,divID)
   $('#' + divID ).rotate3Di(
     180,
     500,
-    {
-    complete: initPartialData.call(this, data, divID),
-    }
+    { complete: initPartialData.call(this, data, divID) }
   );
   switch(divID) {
     case "search-container":
