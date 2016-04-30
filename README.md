@@ -9,7 +9,7 @@ in what they see after logging in. Mobile Friendly!
 
 ##Heroku Link
 
-###-soon-
+###https://build-it-la.herokuapp.com/
 
 ## Technologies Utilized
 
