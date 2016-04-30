@@ -11,7 +11,7 @@ module Api
         end
 
         if params[:task] == "search-query"
-          @results = Job.where("description LIKE ?" , "%#{params[:query]}%")
+          @results = search(params[:query])
           respond_to do |format|
             format.html { render partial: "search_results", locals: { results: @results }}
           end
@@ -48,6 +48,16 @@ module Api
         respond_to do |format|
           format.html { render partial: partial}
         end
+      end
+
+      def search(query)
+        results_desc = Job.where("description LIKE ?" , "%#{query}%")
+        results_title = Job.where("title LIKE ?" , "%#{query}%")
+        @results = []
+        @results << results_desc
+        @results << results_title
+        @results = @results.flatten
+        @results = @results.uniq
       end
     end
   end

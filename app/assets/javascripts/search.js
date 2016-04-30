@@ -29,8 +29,6 @@ function initSearch()
     request.done(function( data ) {
       $( '#results-container' )
         .append( data );
-      loopMaps();
-      postsListener();
     });
   });
 }
