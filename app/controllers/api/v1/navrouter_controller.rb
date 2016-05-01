@@ -51,8 +51,8 @@ module Api
       end
 
       def search(query)
-        results_desc = Job.where("description LIKE ?" , "%#{query}%")
-        results_title = Job.where("title LIKE ?" , "%#{query}%")
+        results_desc = Job.where("description ILIKE ?" , "%#{query}%")
+        results_title = Job.where("title ILIKE ?" , "%#{query}%")
         @results = []
         @results << results_desc
         @results << results_title
