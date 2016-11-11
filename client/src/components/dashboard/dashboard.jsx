@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import NavBar from '../navbar/navbar'
 
 
-var Baz = React.createClass({
+var Dashboard = React.createClass({
   render: function () {
     return (
       <div>
@@ -14,4 +14,4 @@ var Baz = React.createClass({
   }
 })
 
-export default Baz
+export default Dashboard

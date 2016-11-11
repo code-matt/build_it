@@ -16,7 +16,7 @@ var NavBar = React.createClass({
     return (
       <div>
         <Link to="/">Home2</Link>
-        <Link to="/baz">Home2</Link>
+        <Link to="/dashboard">Home2</Link>
         <h1>this is a navbar component</h1>
       </div>
     )
