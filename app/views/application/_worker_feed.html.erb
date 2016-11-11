@@ -1,7 +1,0 @@
-<div class="medium-5 medium-centered columns lightest-bg" id="feed" style="width: auto; margin-top: 10px; height: 100vh;">
-  <div class="centered-text">
-    <% @events.each do |event| %>
-      <%= render partial: event.name, locals: {event: event, type: @type} %>
-    <% end %>
-  </div>
-</div>

@@ -1,26 +1,24 @@
-#Build.it
+# README
 
-##Breakable-Toy Description
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-A shell of a sharing economy app meant to connect local day laborers
-and contractors. I went for a single page app design. There are two
-different user models which are provided a slightly different experience
-in what they see after logging in. Mobile Friendly!
+Things you may want to cover:
 
-##Heroku Link
+* Ruby version
 
-###https://build-it-la.herokuapp.com/
+* System dependencies
 
-## Technologies Utilized
+* Configuration
 
-* Rails
+* Database creation
 
-* Ajax
+* Database initialization
 
-* JQuery
+* How to run the test suite
 
-* Devise (User Authentication)
+* Services (job queues, cache servers, search engines, etc.)
 
-* Kendo Tooltip JS library
+* Deployment instructions
 
-* Foundation/sass
+* ...
