@@ -12,12 +12,7 @@ class Dashboard extends Component {
     }
   }
   componentDidMount () {
-    // _jobService.getJobs()
-    //   .then((res) => {
-    //     this.setState({
-    //       jobs: res
-    //     })
-    //   })
+
   }
   handleSearch (coords) {
     _jobService.getJobs(coords)
