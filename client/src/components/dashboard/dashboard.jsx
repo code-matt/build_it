@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import NavBar from '../navbar/navbar'
 import _jobService from '../../network/jobs'
+import SearchBox from './search'
 
 class Dashboard extends Component {
   constructor () {
@@ -22,7 +23,8 @@ class Dashboard extends Component {
     const jobs = renderJobs(this.state.jobs)
     return (
       <div>
-        Bazbabababazz
+        <SearchBox />
+        Search to find jobs..
         {jobs}
       </div>
     )
@@ -33,9 +35,9 @@ function renderJobs (jobs) {
   if (jobs.length > 0) {
     return jobs.map((job, index) => (
       <Job key={index} job={job} />
-        ))
+  )) } else {
+    return []
   }
-  else return []
 }
 
 const Job = ({job}) => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 
 var NavBar = React.createClass({
   handleClick: function (action) {
