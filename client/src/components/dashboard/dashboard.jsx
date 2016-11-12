@@ -11,9 +11,6 @@ class Dashboard extends Component {
     }
   }
   componentDidMount () {
-    // this.setState({
-    //   jobs: _jobService.getJobs()
-    // })
     _jobService.getJobs()
       .then((res) => {
         this.setState({
