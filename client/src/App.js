@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Login from './components/login/login'
 import Dashboard from './components/dashboard/dashboard'
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, hashHistory, browserHistory} from 'react-router'
 import _authService from './network/auth'
 
 class App extends Component {
@@ -15,10 +15,31 @@ class App extends Component {
       loggedIn: false
     }
   }
+  navigate (data) {
+    switch (data) {
+      case 'logout':
+        _authService.logout()
+        browserHistory.push('/')
+        break
+      case 'login':
+        browserHistory.push('/')
+        break
+      case 'dashboard':
+        browserHistory.push('/dashboard')
+        break
+    }
+  }
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      children: nextProps.children
+    })
+  }
   render () {
     return (
       <div>
-        <Router history={hashHistory}>
+        <NavBar navigateFunc={this.navigate.bind(this)} />
+        <Router history={browserHistory}>
+          <Route path='/logout' component={Logout} />
           <Route path='/' component={Login} />
           <Route path='/dashboard' component={Dashboard} onEnter={requireAuth} />
         </Router>
@@ -26,7 +47,7 @@ class App extends Component {
     )
   }
 }
-function requireAuth(nextState, replace) {
+function requireAuth (nextState, replace) {
   if (!_authService.loggedIn()) {
     replace({
       pathname: '/',
