@@ -42,7 +42,7 @@ function createUser (email, pass, cb) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      auth: {
+      user: {
         email: 'qq@qq.com',
         password: '12345678'
       }
@@ -75,5 +75,7 @@ function signIn (email, pass, cb) {
       } else {
         cb({ authenticated: false })
       }
+    }).catch((error) => {
+      cb({ authenticated: false })
     })
 }

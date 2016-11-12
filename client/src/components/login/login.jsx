@@ -12,16 +12,19 @@ var Login = React.createClass({
     const pass = this.refs.pass.value
 
     _authService.login(email, pass, (loggedIn) => {
-      if (!loggedIn)
-        { return this.setState({ error: true }) }
-
-      const { location } = this.props
-
-      if (location.state && location.state.nextPathname) {
-        this.props.router.replace(location.state.nextPathname)
+      if (!loggedIn) {
+        console.log('login failed')
       } else {
-        this.props.router.replace('/')
+        console.log('login success!')
       }
+
+      // const { location } = this.props
+
+      // if (location.state && location.state.nextPathname) {
+      //   this.props.router.replace(location.state.nextPathname)
+      // } else {
+      //   this.props.router.replace('/')
+      // }
     })
   },
 
