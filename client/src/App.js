@@ -39,7 +39,6 @@ class App extends Component {
       <div>
         <NavBar navigateFunc={this.navigate.bind(this)} />
         <Router history={browserHistory}>
-          <Route path='/logout' component={Logout} />
           <Route path='/' component={Login} />
           <Route path='/dashboard' component={Dashboard} onEnter={requireAuth} />
         </Router>
