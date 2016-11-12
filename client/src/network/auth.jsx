@@ -6,7 +6,7 @@ module.exports = {
       this.onChange(true)
       return
     }
-    pretendRequest(email, pass, (res) => {
+    signIn(email, pass, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token
         if (cb) cb(true)
@@ -35,16 +35,45 @@ module.exports = {
   onChange () {}
 }
 
-function pretendRequest (email, pass, cb) {
+function createUser (email, pass, cb) {
+  fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      auth: {
+        email: 'qq@qq.com',
+        password: '12345678'
+      }
+    })
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson)
+    })
+}
 
-  setTimeout(() => {
-    if (email === 'joe@example.com' && pass === 'password1') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
-      })
-    } else {
-      cb({ authenticated: false })
-    }
-  }, 0)
+function signIn (email, pass, cb) {
+  fetch('http://localhost:3000/api/v1/knock/auth_token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      auth: {
+        email: email,
+        password: pass
+      }
+    })
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      if (responseJson.jwt) {
+        cb({
+          authenticated: true,
+          token: responseJson.jwt
+        })
+      } else {
+        cb({ authenticated: false })
+      }
+    })
 }
