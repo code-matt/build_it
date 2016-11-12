@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 
-var JobDetail = React.createClass({
+class JobDetail extends Component {
   componentDidMount () {
     // get details
-  },
-  render: function () {
+  }
+  render () {
     return (
       <div>
         Job Details
       </div>
     )
   }
-})
+}
 
 export default JobDetail

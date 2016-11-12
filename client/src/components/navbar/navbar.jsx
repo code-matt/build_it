@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-var NavBar = React.createClass({
-  handleClick: function (action) {
+class NavBar extends Component{
+  handleClick (action) {
     this.props.navigateFunc(action)
-  },
-  render: function () {
+  }
+  render () {
     return (
       <div>
         <div onClick={() => this.handleClick('login')}>Login</div>
@@ -13,7 +13,7 @@ var NavBar = React.createClass({
       </div>
     )
   }
-})
+}
 
 NavBar.propTypes = {
   navigateFunc: React.PropTypes.func,
