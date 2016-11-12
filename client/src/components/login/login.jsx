@@ -18,13 +18,13 @@ var Login = React.createClass({
         console.log('login success!')
       }
 
-      // const { location } = this.props
+      const { location } = this.props
 
-      // if (location.state && location.state.nextPathname) {
-      //   this.props.router.replace(location.state.nextPathname)
-      // } else {
-      //   this.props.router.replace('/')
-      // }
+      if (location.state && location.state.nextPathname) {
+        this.props.router.replace(location.state.nextPathname)
+      } else {
+        this.props.router.replace('/dashboard')
+      }
     })
   },
 
