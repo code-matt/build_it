@@ -12,12 +12,6 @@ var Login = React.createClass({
     const pass = this.refs.pass.value
 
     _authService.login(email, pass, (loggedIn) => {
-      if (!loggedIn) {
-        console.log('login failed')
-      } else {
-        console.log('login success!')
-      }
-
       const { location } = this.props
 
       if (location.state && location.state.nextPathname) {

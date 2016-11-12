@@ -43,8 +43,8 @@ function createUser (email, pass, cb) {
     },
     body: JSON.stringify({
       user: {
-        email: 'qq@qq.com',
-        password: '12345678'
+        email: email,
+        password: pass
       }
     })
   }).then((response) => response.json())
