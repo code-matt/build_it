@@ -1,6 +1,6 @@
 module.exports = {
-  getJobs () {
-    return fetch('http://localhost:3000/api/v1/jobs', {
+  getJobs (coords) {
+    return fetch('http://localhost:3000/api/v1/jobs?lat=' + coords.lat + '&lng=' + coords.lng, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')

@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20161112181726) do
     t.text     "title",       null: false
     t.text     "description", null: false
     t.string   "address",     null: false
+    t.float    "lat"
+    t.float    "lng"
     t.integer  "hourly_rate", null: false
     t.date     "start_date",  null: false
     t.time     "start_time",  null: false

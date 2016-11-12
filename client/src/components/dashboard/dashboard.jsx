@@ -12,8 +12,17 @@ class Dashboard extends Component {
     }
   }
   componentDidMount () {
-    _jobService.getJobs()
+    // _jobService.getJobs()
+    //   .then((res) => {
+    //     this.setState({
+    //       jobs: res
+    //     })
+    //   })
+  }
+  handleSearch (coords) {
+    _jobService.getJobs(coords)
       .then((res) => {
+        console.log(res)
         this.setState({
           jobs: res
         })
@@ -23,7 +32,7 @@ class Dashboard extends Component {
     const jobs = renderJobs(this.state.jobs)
     return (
       <div>
-        <SearchBox />
+        <SearchBox searchFunc={this.handleSearch.bind(this)} />
         Search to find jobs..
         {jobs}
       </div>

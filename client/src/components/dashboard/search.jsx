@@ -19,8 +19,9 @@ class SearchBox extends Component {
   handleSubmit (event) {
     event.preventDefault()
     _google.geocode(this.state.value)
-      .then((res) => {
-        console.log(res)
+      .then((coords) => {
+        console.log(coords)
+        this.props.searchFunc(coords)
       })
   }
 
@@ -35,5 +36,10 @@ class SearchBox extends Component {
     )
   }
 }
+
+SearchBox.propTypes = {
+  searchFunc: React.PropTypes.func,
+}
+
 
 export default SearchBox

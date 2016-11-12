@@ -4,6 +4,8 @@ class CreateJobs < ActiveRecord::Migration[5.0]
       t.text :title, null: false, limit: 25
       t.text :description, null: false, limit: 200
       t.string :address, null: false
+      t.float :lat
+      t.float :lng
       t.integer :hourly_rate, null: false
       t.date :start_date, null: false
       t.time :start_time, null: false
