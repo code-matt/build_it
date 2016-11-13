@@ -4,7 +4,6 @@ import {
   GoogleMap,
   Marker
 } from '../../lib'
-import Helmet from "react-helmet";
 
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
@@ -18,6 +17,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
       <Marker
         {...marker}
         onRightClick={() => props.onMarkerRightClick(marker)}
+        onClick={() => props.onMarkerClick(marker)}
       />
     ))}
   </GoogleMap>
@@ -60,6 +60,7 @@ export default class JobsMap extends Component {
   handleMapLoad = this.handleMapLoad.bind(this);
   handleMapClick = this.handleMapClick.bind(this);
   handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
+  handleMarkerClick = this.handleMarkerClick.bind(this)
 
   handleMapLoad(map) {
     this._mapComponent = map;
@@ -68,42 +69,22 @@ export default class JobsMap extends Component {
     }
   }
 
-  /*
-   * This is called when you click on the map.
-   * Go and try click now.
-   */
+  handleMarkerClick(targetMarker) {
+    console.log(targetMarker)
+    console.log("hi")
+  }
+
   handleMapClick(event) {
-    const nextMarkers = [
-      ...this.state.markers,
-      {
-        position: event.latLng,
-        defaultAnimation: 2,
-        key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-      },
-    ];
-    this.setState({
-      markers: nextMarkers,
-    });
+
   }
 
   handleMarkerRightClick(targetMarker) {
-    /*
-     * All you modify is data, and the view is driven by data.
-     * This is so called data-driven-development. (And yes, it's now in
-     * web front end and even with google maps API.)
-     */
-    const nextMarkers = this.state.markers.filter(marker => marker !== targetMarker);
-    this.setState({
-      markers: nextMarkers,
-    });
+
   }
 
   render() {
     return (
       <div style={{height: `100%`}}>
-        <Helmet
-          title="Getting Started"
-        />
         <GettingStartedGoogleMap
           containerElement={
             <div style={{ height: `100%` }} />
@@ -115,6 +96,7 @@ export default class JobsMap extends Component {
           onMapClick={this.handleMapClick}
           markers={this.state.markers}
           onMarkerRightClick={this.handleMarkerRightClick}
+          onMarkerClick={this.handleMarkerClick}
           center={this.props.center}
         />
       </div>

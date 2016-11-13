@@ -3,10 +3,10 @@ import { Link } from 'react-router'
 import NavBar from '../navbar/navbar'
 import _jobService from '../../network/jobs'
 import SearchBox from './search'
-// import {GoogleMap,Marker,InfoWindow} from 'react-google-maps'
 import JobsMap from '../map/map'
 
 class Dashboard extends Component {
+
   constructor () {
     super()
     this.state = {
@@ -18,9 +18,7 @@ class Dashboard extends Component {
       }
     }
   }
-  componentDidMount () {
 
-  }
   handleSearch (coords) {
     this.setState({
       center: coords
@@ -33,9 +31,7 @@ class Dashboard extends Component {
         })
       })
   }
-  resultsToMarkers () {
 
-  }
   render () {
     const jobs = renderJobs(this.state.jobs)
     return (
