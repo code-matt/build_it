@@ -9,9 +9,10 @@ import Helmet from "react-helmet";
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={3}
+    defaultZoom={14}
     defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
     onClick={props.onMapClick}
+    center={props.center}
   >
     {props.markers.map(marker => (
       <Marker
@@ -93,6 +94,7 @@ export default class JobsMap extends Component {
           onMapClick={this.handleMapClick}
           markers={this.state.markers}
           onMarkerRightClick={this.handleMarkerRightClick}
+          center={this.props.center}
         />
       </div>
     );

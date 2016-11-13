@@ -10,13 +10,20 @@ class Dashboard extends Component {
   constructor () {
     super()
     this.state = {
-      jobs: []
+      jobs: [],
+      center: {
+        lat: 42.3708967,
+        lng: -71.236024399
+      }
     }
   }
   componentDidMount () {
 
   }
   handleSearch (coords) {
+    this.setState({
+      center: coords
+    })
     _jobService.getJobs(coords)
       .then((res) => {
         console.log(res)
@@ -33,7 +40,7 @@ class Dashboard extends Component {
         Search to find jobs..
         {jobs}
         <div style={{height: 500 + 'px'}}>
-          <JobsMap />
+          <JobsMap center={this.state.center} />
         </div>
       </div>
     )
