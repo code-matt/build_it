@@ -36,6 +36,27 @@ export default class JobsMap extends Component {
     }],
   };
 
+  props = {
+    jobs: []
+  }
+  componentWillReceiveProps (props) {
+    this.setState({markers: this.jobs2markers(props.jobs)});
+  }
+  jobs2markers (jobs) {
+    var arr = []
+    for(let job in jobs){
+      var j = jobs[job]
+      arr.push({
+        position: {
+          lat: j.lat,
+          lng: j.lng,
+        },
+        key: j.id,
+        defaultAnimation: 2,
+      })
+    }
+    return arr
+  }
   handleMapLoad = this.handleMapLoad.bind(this);
   handleMapClick = this.handleMapClick.bind(this);
   handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
