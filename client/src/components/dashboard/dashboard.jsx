@@ -11,7 +11,6 @@ class Dashboard extends Component {
     super()
     this.state = {
       jobs: [],
-      markers: [],
       center: {
         lat: 42.3708967,
         lng: -71.236024399
@@ -32,6 +31,10 @@ class Dashboard extends Component {
       })
   }
 
+  markerClickedCB (marker) {
+    console.log(marker)
+  }
+
   render () {
     const jobs = renderJobs(this.state.jobs)
     return (
@@ -40,7 +43,10 @@ class Dashboard extends Component {
         Search to find jobs..
         {jobs}
         <div style={{height: 500 + 'px'}}>
-          <JobsMap center={this.state.center} jobs={this.state.jobs} />
+          <JobsMap 
+            center={this.state.center}
+            jobs={this.state.jobs}
+            markerCB={this.markerClickedCB.bind(this)} />
         </div>
       </div>
     )
