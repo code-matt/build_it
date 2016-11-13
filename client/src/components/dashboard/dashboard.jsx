@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import NavBar from '../navbar/navbar'
 import _jobService from '../../network/jobs'
 import SearchBox from './search'
+// import {GoogleMap,Marker,InfoWindow} from 'react-google-maps'
+import JobsMap from '../map/map'
 
 class Dashboard extends Component {
   constructor () {
@@ -30,6 +32,9 @@ class Dashboard extends Component {
         <SearchBox searchFunc={this.handleSearch.bind(this)} />
         Search to find jobs..
         {jobs}
+        <div style={{height: 500 + 'px'}}>
+          <JobsMap />
+        </div>
       </div>
     )
   }
