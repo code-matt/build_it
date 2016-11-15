@@ -6,14 +6,31 @@ import {
   OverlayView
 } from '../../lib'
 
-function customMarker () {
+function customMarker (pic_url) {
   var google = window.google
   return({
     anchor: new google.maps.Point(16, 16),
+    // url: 'data:image/svg+xml;utf-8, \
+    //   <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
+    //     <defs> \
+    //       <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100"> \
+    //         <image xlink:href="' + pic_url + '" x="0" y="0" width="100" height="100" /> \
+    //       </pattern> \
+    //     </defs> \
+    //     <path fill="url(#img1)" stroke="white" stroke-width="1.5" d="M3.5 3.5h25v25h-25z" ></path> \
+    //   </svg>'
     url: 'data:image/svg+xml;utf-8, \
-      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
-        <path fill="red" stroke="white" stroke-width="1.5" d="M3.5 3.5h25v25h-25z" ></path> \
-      </svg>'
+    <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
+      <defs> \
+          <pattern id="imgpattern" x="0" y="0" width="1" height="1"> \
+            <image width="32" height="32" \
+                  xlink:href="' + pic_url + '" /> \
+          </pattern> \
+      </defs> \
+      <path fill="url(#imgpattern)" stroke="black" stroke-width="1.5" \
+            d="M3.5 3.5h25v25h-25z"> \
+      </path> \
+    </svg>'
   })
 }
 
@@ -65,7 +82,8 @@ export default class JobsMap extends Component {
         },
         key: j.id,
         defaultAnimation: 2,
-        icon: customMarker()
+        icon: j.pic_url
+        // icon: customMarker(j.pic_url)
       })
     }
     return arr

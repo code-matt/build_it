@@ -8,6 +8,8 @@ gem 'geokit-rails'
 
 gem "fog-aws"
 gem 'carrierwave-aws'
+gem 'rmagick'
+gem "mini_magick"
 
 #auth
 gem 'knock'

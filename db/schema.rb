@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161113203635) do
     t.date     "start_date",  null: false
     t.time     "start_time",  null: false
     t.time     "end_time",    null: false
+    t.string   "pic_url"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
