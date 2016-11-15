@@ -13,7 +13,6 @@ class SearchBox extends Component {
     this.setState({
       value: event.target.value
     })
-    console.log(this.state.value)
   }
 
   handleSubmit (event) {

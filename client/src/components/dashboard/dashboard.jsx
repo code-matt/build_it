@@ -43,7 +43,7 @@ class Dashboard extends Component {
         Search to find jobs..
         {jobs}
         <div style={{height: 500 + 'px'}}>
-          <JobsMap 
+          <JobsMap
             center={this.state.center}
             jobs={this.state.jobs}
             markerCB={this.markerClickedCB.bind(this)} />

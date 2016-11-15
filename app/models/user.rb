@@ -7,9 +7,10 @@ end
 
 class User < ActiveRecord::Base
   has_secure_password
+  mount_uploader :avatar, AvatarUploader
 
-  validates :email, :password, presence: true
+  # validates :email, :password, presence: true
   validates :email, uniqueness: true
   validates :email, email: true
-  validates :password, length: { minimum: 7 }
+  # validates :password, length: { minimum: 7 }
 end

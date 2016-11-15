@@ -6,12 +6,17 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'geokit-rails'
 
+gem "fog-aws"
+gem 'carrierwave-aws'
+
 #auth
 gem 'knock'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
