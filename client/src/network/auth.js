@@ -2,17 +2,17 @@ module.exports = {
   login (email, pass, cb) {
     cb = arguments[arguments.length - 1]
     if (localStorage.token) {
-      if (cb) cb(true)
+      if (cb) cb(true, [])
       this.onChange(true)
       return
     }
     signIn(email, pass, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token
-        if (cb) cb(true)
+        if (cb) cb(true, [])
         this.onChange(true)
       } else {
-        if (cb) cb(false)
+        if (cb) cb(false, res.errors)
         this.onChange(false)
       }
     })
@@ -22,23 +22,30 @@ module.exports = {
     createUser(email, pass, (res) => {
       console.log(res)
       if (res.signupSuccess) {
-        this.login(email,pass,cb)
-      } else { 
+        this.login(email, pass, cb)
+      } else {
         cb(false)
       }
     })
   },
-
+  check (cb) {
+    cb = arguments[arguments.length - 1]
+    checkProfile(res => {
+      if (res.response.status === 'true') {
+        cb(true)
+      } else {
+        cb(false)
+      }
+    })
+  },
   getToken () {
     return localStorage.token
   },
-
   logout (cb) {
     delete localStorage.token
     if (cb) cb()
     this.onChange(false)
   },
-
   loggedIn () {
     return !!localStorage.token
   },
@@ -93,9 +100,35 @@ function signIn (email, pass, cb) {
           token: responseJson.jwt
         })
       } else {
-        cb({ authenticated: false })
+        cb({
+          authenticated: false,
+          errors: [{
+            div: 'non-specific',
+            message: 'Username and or password do not match'
+          }]
+        })
       }
     }).catch((error) => {
-      cb({ authenticated: false })
+      cb({
+        authenticated: false,
+        errors: [{
+          div: 'non-specific',
+          message: 'Username and or password do not match'
+        }]
+      })
+    })
+}
+
+function checkProfile (cb) {
+  fetch('http://localhost:3000/api/v1/profilecheck/', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      cb({
+        response: responseJson
+      })
     })
 }

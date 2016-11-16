@@ -9,9 +9,8 @@ class NavBar extends Component{
   render () {
     return (
       <div>
-        <div onClick={() => this.handleClick('login')}>Login</div>
-        <div onClick={() => this.handleClick('dashboard')}>Dashboard</div>
         <div onClick={() => this.handleClick('logout')}>Logout</div>
+        <div onClick={() => this.handleClick('profile')}>Profile</div>
       </div>
     )
   }

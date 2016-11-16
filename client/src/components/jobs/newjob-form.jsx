@@ -19,7 +19,7 @@ class NewJobForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <label><input ref='title' placeholder='email' defaultValue='Job Title' /></label>
           <label><input ref='address' placeholder='password' defaultValue='Job Address' /></label><br />
-          <button type='submit'>Sbmit Job</button>
+          <button type='submit'>Submit Job</button>
         </form>
       </div>
     )

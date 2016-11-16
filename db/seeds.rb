@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create(email: "qq@qq.com", password: "12345678")
+user = User.create(email: "qq@qq.com", password: "12345678", profile_finished: false)
 src = File.join(Rails.root,"client/public/test.png")
 file = File.new(src)
 user.avatar = file

@@ -12,6 +12,7 @@ import JobsMap from '../map/map'
 import NewJobModal from '../modals/newjob'
 import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
+import FinishProfileModal from '../modals/finish-profile-guard'
 
 // toast
 import Notifications, {notify} from 'react-notify-toast'
@@ -48,19 +49,23 @@ class Dashboard extends Component {
   newJobCB () {
     var $ = window.$
     if (_authService.loggedIn()) {
-      $('#newJobModal').modal('show')
+      _authService.check(function (finished) {
+        if (finished) {
+          $('#newJobModal').modal('show')
+        } else {
+          $('#profileModal').modal('show')
+        }
+      })
     } else {
       $('#signupModal').modal('show')
     }
   }
 
   render () {
-    const jobs = renderJobs(this.state.jobs)
     return (
       <div>
         <SearchBox searchFunc={this.handleSearch.bind(this)} />
         Search to find jobs..
-        {jobs}
         <div style={{height: 500 + 'px'}}>
           <JobsMap
             center={this.state.center}
@@ -71,26 +76,10 @@ class Dashboard extends Component {
         <NewJobModal />
         <LoginModal />
         <LoginSignupModal />
+        <FinishProfileModal />
       </div>
     )
   }
-}
-
-function renderJobs (jobs) {
-  if (jobs.length > 0) {
-    return jobs.map((job, index) => (
-      <Job key={index} job={job} />
-  )) } else {
-    return []
-  }
-}
-
-const Job = ({job}) => {
-  return (
-    <job>
-      <p>{job.title}</p>
-    </job>
-    )
 }
 
 export default Dashboard

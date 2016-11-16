@@ -5,7 +5,14 @@ import Notifications, {notify} from 'react-notify-toast'
 
 import _authService from '../../network/auth'
 
-var LoginForm = React.createClass({
+class LoginForm extends Component {
+  constructor () {
+    super()
+    this.state = {
+      errors: []
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
   handleSubmit (event) {
     event.preventDefault()
 
@@ -13,38 +20,54 @@ var LoginForm = React.createClass({
     const pass = this.refs.pass.value
     const $ = window.$
 
-    _authService.login(email, pass, (loggedIn) => {
-      // const { location } = this.props
-
-      // if (location.state && location.state.nextPathname) {
-      //   this.props.router.replace(location.state.nextPathname)
-      // } else {
-      //   this.props.router.replace('/')
-      // }
+    _authService.login(email, pass, (loggedIn, errors) => {
       if (localStorage.token) {
+        this.setState({errors: []})
         $('#signupModal').modal('hide')
         notify.show('Login Successful!', 'success', 2000)
       } else {
         // $('#signupModal').modal('hide')
+        console.log(errors)
+        this.setState({errors: errors})
         notify.show('Login Failure :()', 'error', 2000)
       }
     })
-  },
-
+  }
+  // componentWillReceiveProps (props) {
+  //   this.setState({errors: props.errors})
+  // }
   render () {
     return (
       <div>
         <div>
           Already a member? Sign in
           <form onSubmit={this.handleSubmit}>
+            { renderErrors(this.state.errors, 'non-specific') }
             <label><input ref='email' placeholder='email' defaultValue='joe@example.com' /></label>
-            <label><input ref='pass' placeholder='password' /></label> (hint: password1)<br />
+            <label><input ref='pass' placeholder='password' /></label><br />
             <button type='submit'>login</button>
           </form>
         </div>
       </div>
     )
   }
-})
+}
+
+function renderErrors (errors, section) {
+  if (errors.length > 0) {
+    return errors.map((error, index) => (
+      error.div === section ? <Error key={index} error={error} /> : null
+  )) } else {
+    return []
+  }
+}
+
+const Error = ({error}) => {
+  return (
+    <error>
+      <p>{error.message}</p>
+    </error>
+    )
+}
 
 export default LoginForm
