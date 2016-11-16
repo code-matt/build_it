@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
 class NavBar extends Component{
+
   handleClick (action) {
     this.props.navigateFunc(action)
   }
+
   render () {
     return (
       <div>
@@ -16,7 +18,7 @@ class NavBar extends Component{
 }
 
 NavBar.propTypes = {
-  navigateFunc: React.PropTypes.func,
+  navigateFunc: React.PropTypes.func
 }
 
 export default NavBar

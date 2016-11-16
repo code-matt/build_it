@@ -34,13 +34,13 @@ class App extends Component {
       children: nextProps.children
     })
   }
+  // onEnter={requireAuth}
   render () {
     return (
       <div>
         <NavBar navigateFunc={this.navigate.bind(this)} />
         <Router history={browserHistory}>
-          <Route path='/' component={Login} />
-          <Route path='/dashboard' component={Dashboard} onEnter={requireAuth} />
+          <Route path='/' component={Dashboard} />
         </Router>
       </div>
     )

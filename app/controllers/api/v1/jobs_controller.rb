@@ -1,7 +1,7 @@
 module Api
   module V1
     class JobsController < ApplicationController
-      before_action :authenticate_user
+      # before_action :authenticate_user
 
       def index
         coords = {lat: params["lat"], lng: params["lng"]}

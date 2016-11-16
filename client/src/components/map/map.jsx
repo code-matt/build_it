@@ -6,34 +6,6 @@ import {
   OverlayView
 } from '../../lib'
 
-function customMarker (pic_url) {
-  var google = window.google
-  return({
-    anchor: new google.maps.Point(16, 16),
-    // url: 'data:image/svg+xml;utf-8, \
-    //   <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
-    //     <defs> \
-    //       <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100"> \
-    //         <image xlink:href="' + pic_url + '" x="0" y="0" width="100" height="100" /> \
-    //       </pattern> \
-    //     </defs> \
-    //     <path fill="url(#img1)" stroke="white" stroke-width="1.5" d="M3.5 3.5h25v25h-25z" ></path> \
-    //   </svg>'
-    url: 'data:image/svg+xml;utf-8, \
-    <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
-      <defs> \
-          <pattern id="imgpattern" x="0" y="0" width="1" height="1"> \
-            <image width="32" height="32" \
-                  xlink:href="' + pic_url + '" /> \
-          </pattern> \
-      </defs> \
-      <path fill="url(#imgpattern)" stroke="black" stroke-width="1.5" \
-            d="M3.5 3.5h25v25h-25z"> \
-      </path> \
-    </svg>'
-  })
-}
-
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
@@ -83,12 +55,12 @@ export default class JobsMap extends Component {
         key: j.id,
         defaultAnimation: 2,
         icon: j.pic_url
-        // icon: customMarker(j.pic_url)
       })
     }
     return arr
   }
   handleMapLoad = this.handleMapLoad.bind(this);
+  addNewJob = this.addNewJob.bind(this);
   handleMapClick = this.handleMapClick.bind(this);
   handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
   handleMarkerClick = this.handleMarkerClick.bind(this)
@@ -97,7 +69,49 @@ export default class JobsMap extends Component {
     this._mapComponent = map;
     if (map) {
       console.log(map.getZoom());
+      this.addCustomElements(map)
     }
+  }
+
+  addCustomElements (map) {
+    var google = window.google
+    var centerControlDiv = document.createElement('div');
+    var centerControl = new this.CenterControl(centerControlDiv, map, this);
+    centerControlDiv.index = 1;
+    map.context.googleMapObj.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv)
+  }
+
+  CenterControl (controlDiv, map, component) {
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginBottom = '22px';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = 'Click to recenter the map';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.color = 'rgb(25,25,25)';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '16px';
+    controlText.style.lineHeight = '38px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.innerHTML = 'Add New Job';
+    controlUI.appendChild(controlText);
+
+    controlUI.addEventListener('click', function() {
+      component.addNewJob()
+    });
+  }
+
+  addNewJob () {
+    this.props.newJobCB()
   }
 
   handleMarkerClick(targetMarker) {
@@ -136,4 +150,5 @@ export default class JobsMap extends Component {
 
 JobsMap.propTypes = {
   markerCB: React.PropTypes.func,
+  newJobCB: React.PropTypes.func
 }

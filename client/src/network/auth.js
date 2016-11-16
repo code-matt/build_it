@@ -17,6 +17,17 @@ module.exports = {
       }
     })
   },
+  create (email, pass, cb) {
+    cb = arguments[arguments.length - 1]
+    createUser(email, pass, (res) => {
+      console.log(res)
+      if (res.signupSuccess) {
+        this.login(email,pass,cb)
+      } else { 
+        console.log('signup failed')
+      }
+    })
+  },
 
   getToken () {
     return localStorage.token
@@ -50,6 +61,15 @@ function createUser (email, pass, cb) {
   }).then((response) => response.json())
     .then((responseJson) => {
       console.log(responseJson)
+      if (responseJson.status === 'success') {
+        cb({
+          signupSuccess: true
+        })
+      } else {
+        cb({ signupSuccess: false })
+      }
+    }).catch((error) => {
+      cb({ signupSuccess: false })
     })
 }
 

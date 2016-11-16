@@ -7,8 +7,12 @@ class NewJob extends Component {
   }
   render () {
     return (
-      <div>
-        New Job
+      <div id="newJobModal" className="modal fade bs-example-modal-lg alerts" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div className="modal-dialog modal-lg" role="document">
+          <div className="modal-content">
+            new jerb
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
-import NavBar from '../navbar/navbar'
+
+// services
 import _jobService from '../../network/jobs'
+import _authService from '../../network/auth'
+
+// components
 import SearchBox from './search'
 import JobsMap from '../map/map'
+
+// modals
+import NewJob from '../jobs/new-job'
+import SignUp from '../signup/signup'
 
 class Dashboard extends Component {
 
@@ -35,6 +42,16 @@ class Dashboard extends Component {
     console.log(marker)
   }
 
+  newJobCB () {
+    var $ = window.$
+    console.log(_authService.loggedIn())
+    if (_authService.loggedIn()) {
+      $('#newJobModal').modal('show')
+    } else {
+      $('#signupModal').modal('show')
+    }
+  }
+
   render () {
     const jobs = renderJobs(this.state.jobs)
     return (
@@ -46,8 +63,11 @@ class Dashboard extends Component {
           <JobsMap
             center={this.state.center}
             jobs={this.state.jobs}
-            markerCB={this.markerClickedCB.bind(this)} />
+            markerCB={this.markerClickedCB.bind(this)}
+            newJobCB={this.newJobCB.bind(this)} />
         </div>
+        <NewJob />
+        <SignUp />
       </div>
     )
   }
