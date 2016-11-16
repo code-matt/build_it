@@ -1,20 +1,34 @@
 import React, { Component } from 'react'
 import _authService from '../../network/auth'
+import Notifications, {notify} from 'react-notify-toast'
 
 class SignUpForm extends Component {
   constructor () {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {errors: []}
   }
 
   handleSubmit (event) {
+    var $ = window.$
     event.preventDefault()
 
     const email = this.refs.email.value
     const pass = this.refs.pass.value
 
     _authService.create(email, pass, (loggedIn) => {
-      // toast 
+      if (localStorage.token) {
+        $('#signupModal').modal('hide')
+        notify.show('SignUp Successful!', 'success', 2000)
+      } else {
+        notify.show('SignUp Failure! :()', 'error', 2000)
+        // change error state
+      }
+    })
+  }
+  handleErrors (errors) {
+    this.setState({
+      errors: errors
     })
   }
 

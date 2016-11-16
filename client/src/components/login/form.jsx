@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import NavBar from '../navbar/navbar'
+import Notifications, {notify} from 'react-notify-toast'
 
 import _authService from '../../network/auth'
 
-var Login = React.createClass({
+var LoginForm = React.createClass({
   handleSubmit (event) {
     event.preventDefault()
 
     const email = this.refs.email.value
     const pass = this.refs.pass.value
+    const $ = window.$
 
     _authService.login(email, pass, (loggedIn) => {
-      const { location } = this.props
+      // const { location } = this.props
 
-      if (location.state && location.state.nextPathname) {
-        this.props.router.replace(location.state.nextPathname)
+      // if (location.state && location.state.nextPathname) {
+      //   this.props.router.replace(location.state.nextPathname)
+      // } else {
+      //   this.props.router.replace('/')
+      // }
+      if (localStorage.token) {
+        $('#signupModal').modal('hide')
+        notify.show('Login Successful!', 'success', 2000)
       } else {
-        this.props.router.replace('/')
+        // $('#signupModal').modal('hide')
+        notify.show('Login Failure :()', 'error', 2000)
       }
     })
   },
@@ -38,4 +47,4 @@ var Login = React.createClass({
   }
 })
 
-export default Login
+export default LoginForm

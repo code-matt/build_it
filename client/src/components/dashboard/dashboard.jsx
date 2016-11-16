@@ -9,8 +9,12 @@ import SearchBox from './search'
 import JobsMap from '../map/map'
 
 // modals
-import NewJob from '../jobs/new-job'
-import SignUp from '../signup/signup'
+import NewJobModal from '../modals/newjob'
+import LoginModal from '../modals/login-only'
+import LoginSignupModal from '../modals/login-signup'
+
+// toast
+import Notifications, {notify} from 'react-notify-toast'
 
 class Dashboard extends Component {
 
@@ -31,7 +35,6 @@ class Dashboard extends Component {
     })
     _jobService.getJobs(coords)
       .then((res) => {
-        console.log(res)
         this.setState({
           jobs: res
         })
@@ -44,7 +47,6 @@ class Dashboard extends Component {
 
   newJobCB () {
     var $ = window.$
-    console.log(_authService.loggedIn())
     if (_authService.loggedIn()) {
       $('#newJobModal').modal('show')
     } else {
@@ -66,8 +68,9 @@ class Dashboard extends Component {
             markerCB={this.markerClickedCB.bind(this)}
             newJobCB={this.newJobCB.bind(this)} />
         </div>
-        <NewJob />
-        <SignUp />
+        <NewJobModal />
+        <LoginModal />
+        <LoginSignupModal />
       </div>
     )
   }

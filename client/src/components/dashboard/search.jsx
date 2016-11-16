@@ -19,7 +19,6 @@ class SearchBox extends Component {
     event.preventDefault()
     _google.geocode(this.state.value)
       .then((coords) => {
-        console.log(coords)
         this.props.searchFunc(coords)
       })
   }

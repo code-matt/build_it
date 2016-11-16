@@ -3,10 +3,11 @@ import NavBar from './components/navbar/navbar'
 import './App.css'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Login from './components/login/login'
+// import Login from './components/login/login'
 import Dashboard from './components/dashboard/dashboard'
 import { Router, Route, hashHistory, browserHistory} from 'react-router'
 import _authService from './network/auth'
+import Notifications, {notify} from 'react-notify-toast'
 
 class App extends Component {
   constructor () {
@@ -16,10 +17,11 @@ class App extends Component {
     }
   }
   navigate (data) {
+    var $ = window.$
     switch (data) {
       case 'logout':
         _authService.logout()
-        browserHistory.push('/')
+        notify.show('Successfully logged out.', 'success', 2000)
         break
       case 'login':
         browserHistory.push('/')
@@ -38,6 +40,9 @@ class App extends Component {
   render () {
     return (
       <div>
+        <div className='main'>
+          <Notifications />
+        </div>
         <NavBar navigateFunc={this.navigate.bind(this)} />
         <Router history={browserHistory}>
           <Route path='/' component={Dashboard} />

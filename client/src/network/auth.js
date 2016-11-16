@@ -24,7 +24,7 @@ module.exports = {
       if (res.signupSuccess) {
         this.login(email,pass,cb)
       } else { 
-        console.log('signup failed')
+        cb(false)
       }
     })
   },

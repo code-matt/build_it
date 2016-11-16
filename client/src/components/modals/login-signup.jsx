@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
-import Login from '../login/login'
-import SignUpForm from './form'
+import LoginForm from '../login/form'
+import SignUpForm from '../signup/form'
 
-class SignUp extends Component {
+class LoginSignupModal extends Component {
   render () {
     return (
       <div id='signupModal' className='modal fade bs-example-modal-lg alerts' tabindex='-1' role='dialog' aria-labelledby='myLargeModalLabel'>
         <div className='modal-dialog modal-lg' role='document'>
           <div className='modal-content'>
-            <Login />
+            <LoginForm />
             <SignUpForm />
           </div>
         </div>
@@ -18,4 +18,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+export default LoginSignupModal
