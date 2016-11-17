@@ -12,6 +12,7 @@ class CreateJobs < ActiveRecord::Migration[5.0]
       t.time :end_time, null: false
       t.string :pic_url
       t.belongs_to :user
+      
       t.timestamps null: false
     end
   end

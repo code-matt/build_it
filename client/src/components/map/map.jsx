@@ -54,7 +54,7 @@ export default class JobsMap extends Component {
         },
         key: j.id,
         defaultAnimation: 2,
-        icon: j.pic_url
+        icon: 'https://builditreact.s3.amazonaws.com/uploads/user/avatar/' + j.user_id + '/marker_image.png'
       })
     }
     return arr

@@ -19,6 +19,7 @@ class ProfileForm extends Component {
   onImageDrop (files) {
     let upload = request.post('http://localhost:3000/api/v1/profilepic')
                         .field('file', files[0])
+                        .set('Authorization', 'Bearer ' + localStorage.getItem('token'))
 
     upload.end((err, response) => {
       if (err) {
