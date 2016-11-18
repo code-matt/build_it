@@ -13,6 +13,7 @@ import NewJobModal from '../modals/newjob'
 import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
 import FinishProfileModal from '../modals/finish-profile-guard'
+import JobModal from '../modals/jobdetails'
 
 // toast
 import Notifications, {notify} from 'react-notify-toast'
@@ -46,6 +47,12 @@ class Dashboard extends Component {
     console.log(marker)
   }
 
+  showJobCB (jobInfoElement) {
+    var $ = window.$
+    var jobId = jobInfoElement.id
+    $('#jobModal').modal('show')
+  }
+
   newJobCB () {
     var $ = window.$
     if (_authService.loggedIn()) {
@@ -71,8 +78,10 @@ class Dashboard extends Component {
             center={this.state.center}
             jobs={this.state.jobs}
             markerCB={this.markerClickedCB.bind(this)}
-            newJobCB={this.newJobCB.bind(this)} />
+            newJobCB={this.newJobCB.bind(this)}
+            showJobCB={this.showJobCB.bind(this)} />
         </div>
+        <JobModal />
         <NewJobModal />
         <LoginModal />
         <LoginSignupModal />

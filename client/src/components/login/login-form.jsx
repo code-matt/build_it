@@ -26,16 +26,12 @@ class LoginForm extends Component {
         $('#signupModal').modal('hide')
         notify.show('Login Successful!', 'success', 2000)
       } else {
-        // $('#signupModal').modal('hide')
         console.log(errors)
         this.setState({errors: errors})
         notify.show('Login Failure :()', 'error', 2000)
       }
     })
   }
-  // componentWillReceiveProps (props) {
-  //   this.setState({errors: props.errors})
-  // }
   render () {
     return (
       <div>

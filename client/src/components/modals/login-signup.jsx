@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import _jobService from '../../network/jobs'
 import LoginForm from '../login/login-form'
 import SignUpForm from '../signup/signup-form'
 

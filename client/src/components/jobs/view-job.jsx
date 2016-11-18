@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 
-class JobDetail extends Component {
+class JobDetails extends Component {
   componentDidMount () {
     // get details
   }
@@ -14,4 +14,4 @@ class JobDetail extends Component {
   }
 }
 
-export default JobDetail
+export default JobDetails

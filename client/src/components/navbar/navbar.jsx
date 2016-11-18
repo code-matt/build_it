@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class NavBar extends Component{
+class NavBar extends Component {
 
   handleClick (action) {
     this.props.navigateFunc(action)

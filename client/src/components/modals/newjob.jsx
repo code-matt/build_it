@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import NewJobForm from '../jobs/newjob-form'
 
 class NewJobModal extends Component {
-  componentDidMount () {
-    // get details
-  }
   render () {
     return (
       <div id="newJobModal" className="modal fade bs-example-modal-lg alerts" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

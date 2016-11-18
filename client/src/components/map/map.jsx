@@ -34,18 +34,26 @@ export default class JobsMap extends Component {
   props = {
     jobs: []
   }
+  
   componentWillReceiveProps (props) {
     this.setState({markers: this.jobs2markers(props.jobs)});
   }
   jobs2markers (jobs) {
     var google = window.google
     var arr = []
+    var component = this
     for(let job in jobs){
       var j = jobs[job]
-      var contentString = this.infoBoxInstance(j.title,j.hourly_rate,j.address)
+      var contentString = this.infoBoxInstance(j.title,j.hourly_rate,j.address,j.id)
       var infoWindow = new google.maps.InfoWindow();
-      infoWindow.setContent(contentString[0]);
+      infoWindow.setContent(contentString);
       infoWindow.setPosition({lat:j.lat,lng:j.lng})
+      google.maps.event.addDomListener(
+        infoWindow.content,
+        "click",
+        function(){
+          component.props.showJobCB(this)
+        })
       arr.push({
         title: j.title,
         position: {
@@ -60,29 +68,20 @@ export default class JobsMap extends Component {
     }
     return arr
   }
-  infoBoxInstance (title, rate, address) {
+  infoBoxInstance (title, rate, address, id) {
     var $ = window.$
-    return $('<div class="marker-info-win">'+
+    return $('<div id="' + id + '" class="marker-info-win">'+
       '<div class="marker-inner-win"><span class="info-content">'+
       '<h1 class="marker-heading">'+ title +'</h1>'+
       address + '<br />' + 
-      rate/100 + '$/hr' + 
+      rate/100 + '$/hr' + '<button id="jobInfo' + id + '">Details</button>' +
       '</span>'+
-      '</div></div>');
+      '</div></div>')[0]
   }
-  handleMapLoad = this.handleMapLoad.bind(this);
-  addNewJob = this.addNewJob.bind(this);
-  handleMapClick = this.handleMapClick.bind(this);
-  handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
-  handleMarkerClick = this.handleMarkerClick.bind(this)
 
   handleMapLoad(map) {
     this._mapComponent = map;
-    this.setState({
-      map: map
-    })
     if (map) {
-      console.log(map.getZoom());
       this.addCustomElements(map)
     }
   }
@@ -90,12 +89,12 @@ export default class JobsMap extends Component {
   addCustomElements (map) {
     var google = window.google
     var centerControlDiv = document.createElement('div');
-    var centerControl = new this.CenterControl(centerControlDiv, map, this);
+    var centerControl = new this.AddJobControl(centerControlDiv, map, this);
     centerControlDiv.index = 1;
     map.context.googleMapObj.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv)
   }
 
-  CenterControl (controlDiv, map, component) {
+  AddJobControl (controlDiv, map, component) {
     // Set CSS for the control border.
     var controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#fff';
@@ -162,9 +161,17 @@ export default class JobsMap extends Component {
       </div>
     );
   }
+  handleMapLoad = this.handleMapLoad.bind(this);
+  addNewJob = this.addNewJob.bind(this);
+  handleMapClick = this.handleMapClick.bind(this);
+  handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
+  handleMarkerClick = this.handleMarkerClick.bind(this)
+  infoBoxInstance = this.infoBoxInstance.bind(this)
+  jobs2markers = this.jobs2markers.bind(this)
 }
 
 JobsMap.propTypes = {
   markerCB: React.PropTypes.func,
-  newJobCB: React.PropTypes.func
+  newJobCB: React.PropTypes.func,
+  showJobCB: React.PropTypes.func
 }
