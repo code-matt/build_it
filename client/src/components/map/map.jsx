@@ -27,14 +27,8 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
 export default class JobsMap extends Component {
 
   state = {
-    markers: [{
-      position: {
-        lat: 25.0112183,
-        lng: 121.52067570000001,
-      },
-      key: `Taiwan`,
-      defaultAnimation: 2,
-    }],
+    markers: [],
+    map: null
   };
 
   props = {
@@ -44,20 +38,37 @@ export default class JobsMap extends Component {
     this.setState({markers: this.jobs2markers(props.jobs)});
   }
   jobs2markers (jobs) {
+    var google = window.google
     var arr = []
     for(let job in jobs){
       var j = jobs[job]
+      var contentString = this.infoBoxInstance(j.title,j.hourly_rate,j.address)
+      var infoWindow = new google.maps.InfoWindow();
+      infoWindow.setContent(contentString[0]);
+      infoWindow.setPosition({lat:j.lat,lng:j.lng})
       arr.push({
+        title: j.title,
         position: {
           lat: j.lat,
           lng: j.lng,
         },
         key: j.id,
         defaultAnimation: 2,
-        icon: 'https://builditreact.s3.amazonaws.com/uploads/user/avatar/' + j.user_id + '/marker_image.png'
+        icon: 'https://builditreact.s3.amazonaws.com/uploads/user/avatar/' + j.user_id + '/marker_image.png',
+        infoWindow: infoWindow
       })
     }
     return arr
+  }
+  infoBoxInstance (title, rate, address) {
+    var $ = window.$
+    return $('<div class="marker-info-win">'+
+      '<div class="marker-inner-win"><span class="info-content">'+
+      '<h1 class="marker-heading">'+ title +'</h1>'+
+      address + '<br />' + 
+      rate/100 + '$/hr' + 
+      '</span>'+
+      '</div></div>');
   }
   handleMapLoad = this.handleMapLoad.bind(this);
   addNewJob = this.addNewJob.bind(this);
@@ -67,6 +78,9 @@ export default class JobsMap extends Component {
 
   handleMapLoad(map) {
     this._mapComponent = map;
+    this.setState({
+      map: map
+    })
     if (map) {
       console.log(map.getZoom());
       this.addCustomElements(map)
@@ -116,6 +130,8 @@ export default class JobsMap extends Component {
 
   handleMarkerClick(targetMarker) {
     this.props.markerCB(targetMarker)
+    var map = this._mapComponent.context.googleMapObj
+    targetMarker.infoWindow.open(map)
   }
 
   handleMapClick(event) {
