@@ -22,9 +22,6 @@ ActiveRecord::Schema.define(version: 20161116212704) do
     t.float    "lat"
     t.float    "lng"
     t.integer  "hourly_rate", null: false
-    t.date     "start_date",  null: false
-    t.time     "start_time",  null: false
-    t.time     "end_time",    null: false
     t.string   "pic_url"
     t.integer  "user_id"
     t.datetime "created_at",  null: false

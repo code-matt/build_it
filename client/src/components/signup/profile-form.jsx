@@ -8,12 +8,22 @@ class ProfileForm extends Component {
   constructor () {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.state = {errors: []}
+    this.state = {errors: [],
+      avatarUrl: undefined
+    }
   }
 
   handleSubmit (event) {
     event.preventDefault()
     console.log('profile submitted')
+    _authService.finish(
+      this.refs.firstName.value,
+      this.refs.lastName.value,
+      this.refs.location.value,
+      function (res) {
+        console.log(res)
+      }
+    )
   }
 
   onImageDrop (files) {
@@ -26,8 +36,10 @@ class ProfileForm extends Component {
         console.error(err)
       }
 
-      if (response.body.secure_url !== '') {
-        console.log(response.body)
+      if (response.body.upload) {
+        this.setState({
+          avatarUrl: response.body.upload
+        })
       }
     })
   }
@@ -40,7 +52,10 @@ class ProfileForm extends Component {
           multiple={false}
           accept="image/*"
           onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
+          {!this.state.avatarUrl ? <p>Drop an image or click to select a file to upload.</p> :
+            <div>
+              <img className='img-responsive' src={this.state.avatarUrl} />
+            </div>}
         </Dropzone>
         <form onSubmit={this.handleSubmit}>
           <label><input ref='firstName' placeholder='firstName' defaultValue='First Name' /></label>

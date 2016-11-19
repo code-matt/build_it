@@ -1,5 +1,8 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_user, only: [:is_profile_complete, :upload_profile_pic]
+  before_action :authenticate_user, only: [
+                                            :is_profile_complete,
+                                            :upload_profile_pic,
+                                            :edit_profile]
   def create
     user = User.new(user_params)
     if user.valid? 
@@ -28,6 +31,36 @@ class Api::V1::UsersController < ApplicationController
     file = params["file"]
     user.avatar = file
     user.save
-    render json: {url: user.avatar.url(:marker)}
+    render json: {
+      url: user.avatar.url(:marker),
+      upload: user.avatar.url
+    }
+  end
+
+  def edit_profile
+    user = current_user
+    user.first_name = sanitize(params[:data][:firstName])
+    user.last_name = sanitize(params[:data][:lastName])
+    user.location = sanitize(params[:data][:location])
+    if(user.valid?)
+      user.save
+      render json: test_profile(current_user)
+    else
+      render json: user.errors.full_messages.to_json
+    end
+  end
+
+  def test_profile(user)
+    if user.first_name && user.last_name && user.avatar.url
+      user.profile_finished = true
+      user.save
+      { status: 'success' }
+    else
+      false
+    end
+  end
+
+  def sanitize(input)
+    ActionController::Base.helpers.sanitize(input)
   end
 end

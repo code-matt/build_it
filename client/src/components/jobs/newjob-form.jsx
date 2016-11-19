@@ -17,8 +17,10 @@ class NewJobForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label><input ref='title' placeholder='email' defaultValue='Job Title' /></label>
+          <label><input ref='title' placeholder='email' defaultValue='Job Title' /></label><br />
           <label><input ref='address' placeholder='password' defaultValue='Job Address' /></label><br />
+          <label><input ref='description' placeholder='description' defaultValue='Description' /></label><br />
+          <label><input ref='rate' placeholder='rate' defaultValue='Hourly Rate' /></label><br />
           <button type='submit'>Submit Job</button>
         </form>
       </div>
