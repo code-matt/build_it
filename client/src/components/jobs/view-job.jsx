@@ -12,10 +12,18 @@ class JobDetails extends Component {
     this.setState({selectedJob: props.selectedJob})
     console.log(props.selectedJob)
   }
+  handleSignUp () {
+    console.log('signup')
+  }
   render () {
     return (
       <div>
-        {this.state.selectedJob ? this.state.selectedJob.title : null}
+        {!this.state.selectedJob ? null
+         : <div>
+           {this.state.selectedJob.title}
+           {this.state.selectedJob.description}
+           <button onClick={this.handleSignUp.bind(this)}>Sign Up</button>
+         </div>}
       </div>
     )
   }

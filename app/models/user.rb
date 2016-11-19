@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :email, email: true
   # validates :password, length: { minimum: 7 }
+
+  has_many :signups
+  has_many :jobs, through: :signups
 end

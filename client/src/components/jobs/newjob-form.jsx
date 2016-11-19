@@ -23,7 +23,7 @@ class NewJobForm extends Component {
         $('#newJobModal').modal('hide')
         notify.show('Job Added Successfully!', 'success', 2000)
       } else {
-        notify.show('Errors adding job :()', 'error', 2000)
+        notify.show('Errors adding job :(', 'error', 2000)
       }
     })
   }

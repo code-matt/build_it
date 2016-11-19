@@ -3,4 +3,7 @@ class Job < ActiveRecord::Base
                    :default_formula => :sphere
 
   belongs_to :user
+
+  has_many :signups
+  has_many :users, through: :signups
 end

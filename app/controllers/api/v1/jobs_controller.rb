@@ -12,7 +12,8 @@ module Api
         render json: jobs.to_json
       end
 
-      def show
+      def signup
+        #create signup
       end
 
       def create
@@ -23,7 +24,7 @@ module Api
           render json: {errors: ["Address is invalid!"]}
           return
         end
-        
+
         loc = Geocoder.search(params["job"]["address"])[0].coordinates
         job = Job.new(job_params)
         job.user = current_user

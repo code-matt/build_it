@@ -28,7 +28,7 @@ class LoginForm extends Component {
       } else {
         console.log(errors)
         this.setState({errors: errors})
-        notify.show('Login Failure :()', 'error', 2000)
+        notify.show('Login Failure :(', 'error', 2000)
       }
     })
   }
