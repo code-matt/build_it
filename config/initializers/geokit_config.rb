@@ -25,6 +25,7 @@ Geokit::Geocoders::request_timeout = 3
 # Geokit::Geocoders::GoogleGeocoder.client_id = ''
 # Geokit::Geocoders::GoogleGeocoder.cryptographic_key = ''
 # Geokit::Geocoders::GoogleGeocoder.channel = ''
+Geokit::Geocoders::GoogleGeocoder.api_key = ENV['GOOGLE_GEOKIT_KEY']
 
 # You can also use the free API key instead of signed requests
 # See https://developers.google.com/maps/documentation/geocoding/#api_key
@@ -83,15 +84,15 @@ Geokit::Geocoders::request_timeout = 3
 # Be aware that there are Terms of Use restrictions on how you can use the
 # various geocoders.  Make sure you read up on relevant Terms of Use for each
 # geocoder you are going to use.
-# Geokit::Geocoders::provider_order = [:google,:us]
+Geokit::Geocoders::provider_order = [:google]
 
 # The IP provider order. Valid symbols are :ip,:geo_plugin.
 # As before, make sure you read up on relevant Terms of Use for each.
-# Geokit::Geocoders::ip_provider_order = [:external,:geo_plugin,:ip]
+Geokit::Geocoders::ip_provider_order = [:external,:geo_plugin,:ip]
 
 # Disable HTTPS globally.  This option can also be set on individual
 # geocoder classes.
-# Geokit::Geocoders::secure = false
+Geokit::Geocoders::secure = false
 
 # Control verification of the server certificate for geocoders using HTTPS
 # Geokit::Geocoders::ssl_verify_mode = OpenSSL::SSL::VERIFY_(PEER/NONE)
