@@ -27,8 +27,11 @@ class Dashboard extends Component {
       center: {
         lat: 42.3708967,
         lng: -71.236024399
-      }
+      },
+      selectedJob: undefined
     }
+    this.getJob = this.getJob.bind(this)
+    this.showJobCB = this.showJobCB.bind(this)
   }
 
   handleSearch (coords) {
@@ -50,6 +53,9 @@ class Dashboard extends Component {
   showJobCB (jobInfoElement) {
     var $ = window.$
     var jobId = jobInfoElement.id
+    this.setState({
+      selectedJob: this.getJob(Number(jobId))
+    })
     $('#jobModal').modal('show')
   }
 
@@ -68,6 +74,16 @@ class Dashboard extends Component {
     }
   }
 
+  getJob (jobId) {
+    for (let job in this.state.jobs) {
+      var j = this.state.jobs[job]
+      if (jobId === j.id) {
+        return j
+      }
+    }
+    return null
+  }
+
   render () {
     return (
       <div>
@@ -81,7 +97,8 @@ class Dashboard extends Component {
             newJobCB={this.newJobCB.bind(this)}
             showJobCB={this.showJobCB.bind(this)} />
         </div>
-        <JobModal />
+        <JobModal
+          selectedJob={this.state.selectedJob} />
         <NewJobModal />
         <LoginModal />
         <LoginSignupModal />

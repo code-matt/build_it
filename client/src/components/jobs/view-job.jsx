@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 
 class JobDetails extends Component {
-  componentDidMount () {
-    // get details
+  constructor () {
+    super()
+    this.state = {
+      selectedJob: undefined
+    }
+  }
+  componentWillReceiveProps (props) {
+    this.setState({selectedJob: props.selectedJob})
+    console.log(props.selectedJob)
   }
   render () {
     return (
       <div>
-        Job Details
+        {this.state.selectedJob ? this.state.selectedJob.title : null}
       </div>
     )
   }
