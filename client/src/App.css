@@ -40,3 +40,29 @@
 .searchbtn {
   margin-left: 6px;
 }
+
+.leftjob {
+  overflow: scroll;
+}
+
+.stuffs {
+  overflow-x: hidden;
+}
+
+/*.demo-card-wide.mdl-card {
+  width: 512px;
+}*/
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+26,9fd8ef+56,2ab0ed+100 */
+  background: #e4f5fc; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #e4f5fc 0%, #bfe8f9 26%, #9fd8ef 56%, #2ab0ed 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #e4f5fc 0%,#bfe8f9 26%,#9fd8ef 56%,#2ab0ed 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #e4f5fc 0%,#bfe8f9 26%,#9fd8ef 56%,#2ab0ed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}

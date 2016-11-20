@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 import _authService from '../../network/auth'
 import { Router, Route, hashHistory, browserHistory} from 'react-router'
+import {Button, IconButton} from 'react-toolbox/lib/button'
 
 // components
 import NavBar from '../navbar/navbar'
@@ -16,6 +17,8 @@ import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
 import FinishProfileModal from '../modals/finish-profile-guard'
 import JobModal from '../modals/jobdetails'
+
+import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card'
 
 // toast
 import Notifications, {notify} from 'react-notify-toast'
@@ -105,7 +108,7 @@ class Dashboard extends Component {
   render () {
     return (
       <div className='row'>
-        <div className='col-md-3' style={{height: 100 + 'vh'}}>
+        <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
           <NavBar navigateFunc={this.navigate.bind(this)} />
           <SearchBox searchFunc={this.handleSearch.bind(this)} />
           {renderJobs(this.state.jobs)}
@@ -142,13 +145,23 @@ function renderJobs (jobs) {
 
 const Job = ({job}) => {
   return (
-    <div>
-      <job key={job.id}>
-        <p>{job.title}</p>
-        <p>{job.description}</p>
-      </job>
-    </div>
-    )
+    <Card style={{width: '350px'}}>
+      <CardTitle
+        avatar='https://placeimg.com/80/80/animals'
+        title='Avatar style title'
+        subtitle='Subtitle here'
+      />
+      <CardMedia
+        aspectRatio='wide'
+        image={job.pic_url}
+      />
+      <CardTitle
+        title={job.title}
+        subtitle={job.hourly_rate / 100 + '$/hr'}
+      />
+      <CardText>{job.description}</CardText>
+    </Card>
+  )
 }
 
 export default Dashboard
