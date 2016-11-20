@@ -21,6 +21,7 @@ class SignUpForm extends Component {
       if (localStorage.token) {
         $('#signupModal').modal('hide')
         notify.show('SignUp Successful!', 'success', 2000)
+        this.props.loginCB(true)
       } else {
         notify.show('SignUp Failure! :()', 'error', 2000)
         component.setState({
@@ -78,3 +79,7 @@ const Error = ({error}) => {
 }
 
 export default SignUpForm
+
+SignUpForm.propTypes = {
+  loginCB: React.PropTypes.func,
+}

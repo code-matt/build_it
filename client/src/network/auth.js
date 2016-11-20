@@ -139,7 +139,6 @@ function checkProfile (cb) {
 }
 
 function finishProfile (firstName, lastName, location, cb) {
-  console.log(firstName)
 
   fetch('http://localhost:3000/api/v1/edit_user', {
     method: 'POST',

@@ -44,20 +44,27 @@ class Dashboard extends Component {
     })
   }
 
-  handleSearch (coords) {
-    this.setState({
-      center: coords
-    })
-    _jobService.getJobs(coords)
-      .then((res) => {
-        this.setState({
-          jobs: res
-        })
+  handleSearch (coords, status, searchComponent) {
+    if (status) {
+      this.setState({
+        center: coords
       })
+      _jobService.getJobs(coords)
+        .then((res) => {
+          this.setState({
+            jobs: res
+          })
+          searchComponent.setState({
+            loading: false
+          })
+        })
+    } else {
+      notify.show('Search Failed, Invalid Address :(', 'error', 2000)
+    }
   }
 
   markerClickedCB (marker) {
-    console.log(marker)
+    
   }
 
   showJobCB (jobInfoElement) {
@@ -68,6 +75,7 @@ class Dashboard extends Component {
     })
     $('#jobModal').modal('show')
   }
+
   navigate (data) {
     var $ = window.$
     switch (data) {
@@ -101,6 +109,20 @@ class Dashboard extends Component {
     }
   }
 
+  focusJob (jobId) {
+    for (let job in this.state.jobs) {
+      var j = this.state.jobs[job]
+      if (j.id === jobId) {
+        this.setState({
+          center: {
+            lat: j.lat,
+            lng: j.lng
+          }
+        })
+      }
+    }
+  }
+
   getJob (jobId) {
     for (let job in this.state.jobs) {
       var j = this.state.jobs[job]
@@ -118,7 +140,7 @@ class Dashboard extends Component {
           <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
             <NavBar loggedIn={this.state.loggedIn} navigateFunc={this.navigate.bind(this)} />
             <SearchBox searchFunc={this.handleSearch.bind(this)} />
-            {renderJobs(this.state.jobs)}
+            {renderJobs(this.state.jobs, this)}
           </div>
           <div className='col-md-9'>
             <div style={{height: 100 + 'vh'}}>
@@ -142,18 +164,18 @@ class Dashboard extends Component {
   }
 }
 
-function renderJobs (jobs) {
+function renderJobs (jobs, component) {
   if (jobs.length > 0) {
     return jobs.map((job, index) => (
-      <Job key={index} job={job} />
+      <Job key={index} job={job} parent={component} />
         ))
   }
   else return []
 }
 
-const Job = ({job}) => {
+const Job = ({job, parent}) => {
   return (
-    <div id={job.id} className='card text-md-center'>
+    <div id={job.id} className='card text-md-center' onMouseOver={() => parent.focusJob(job.id)}>
       <div className='card-header'>
         {job.title}
       </div>

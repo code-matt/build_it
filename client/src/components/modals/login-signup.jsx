@@ -17,7 +17,7 @@ class LoginSignupModal extends Component {
                 <div className='col-md-12'>
                   <LoginForm loginCB={this.loginCB.bind(this)} />
                   <hr />
-                  <SignUpForm />
+                  <SignUpForm loginCB={this.loginCB.bind(this)} />
                 </div>
               </div>
             </div>

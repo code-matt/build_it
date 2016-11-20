@@ -4,9 +4,18 @@ module.exports = {
     return fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + key, {})
       .then((response) => response.json())
       .then((res) => {
-        return {
-          lat: res.results[0].geometry.location.lat,
-          lng: res.results[0].geometry.location.lng
+        if (res.results[0]) {
+          return {
+            lat: res.results[0].geometry.location.lat,
+            lng: res.results[0].geometry.location.lng
+          }
+        } else {
+          return [
+            {
+              div: 'non-specific',
+              message: 'Invalid Address. Geocode Failed'
+            }
+          ]
         }
       })
   }

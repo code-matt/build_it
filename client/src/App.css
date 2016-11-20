@@ -49,29 +49,17 @@
   overflow-x: hidden;
 }
 
-/*.demo-card-wide.mdl-card {
-  width: 512px;
-}*/
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+26,9fd8ef+56,2ab0ed+100 */
-  background: #e4f5fc; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #e4f5fc 0%, #bfe8f9 26%, #9fd8ef 56%, #2ab0ed 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,  #e4f5fc 0%,#bfe8f9 26%,#9fd8ef 56%,#2ab0ed 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg,  #e4f5fc 0%,#bfe8f9 26%,#9fd8ef 56%,#2ab0ed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
-
 .card {
   margin-top: 7px;
   margin-bottom: 7px;
   width: 100%;
 }
+
+.card:hover{
+  background-color: #AAE7ED
+}
+
+.card:hover .card-header{ background-color: #A5C2C5 }
 
 .dropzone {
   border: 1px black solid;
@@ -88,4 +76,40 @@
 .navbutton {
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+
+  -webkit-transition: opacity 0.25s, width 0.25s;
+  -moz-transition: opacity 0.25s, width 0.25s;
+  -o-transition: opacity 0.25s, width 0.25s;
+  transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+  cursor:progress;
+}
+
+.has-spinner.active .spinner {
+  opacity: 1;
+  width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+
+.has-spinner.btn-mini.active .spinner {
+    width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+    width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+    width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+    width: 19px;
 }

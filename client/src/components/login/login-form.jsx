@@ -28,7 +28,6 @@ class LoginForm extends Component {
         notify.show('Login Successful!', 'success', 2000)
       } else {
         this.props.loginCB(false)
-        console.log(errors)
         this.setState({errors: errors})
         notify.show('Login Failure :(', 'error', 2000)
       }

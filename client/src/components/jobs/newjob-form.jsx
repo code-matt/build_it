@@ -11,10 +11,8 @@ class NewJobForm extends Component {
   }
 
   handleSubmit (event) {
-    debugger
     var $ = window.$
     event.preventDefault()
-    console.log('job submitted')
     _jobService.new(
       this.refs.title.value,
       this.refs.description.value,

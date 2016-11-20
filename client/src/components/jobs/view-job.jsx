@@ -11,12 +11,10 @@ class JobDetails extends Component {
   }
   componentWillReceiveProps (props) {
     this.setState({selectedJob: props.selectedJob})
-    console.log(props.selectedJob)
   }
-  handleSignUp () {
+  handleSignUp (event) {
     var $ = window.$
     event.preventDefault()
-    console.log('signup clicked')
     _jobService.signup(
       this.state.selectedJob.id
     ).then((res) => {

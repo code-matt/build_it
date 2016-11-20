@@ -16,7 +16,6 @@ class ProfileForm extends Component {
   handleSubmit (event) {
     var $ = window.$
     event.preventDefault()
-    console.log('profile submitted')
     _authService.finish(
       this.refs.firstName.value,
       this.refs.lastName.value,
@@ -65,9 +64,9 @@ class ProfileForm extends Component {
             </div>}
         </Dropzone>
         <form onSubmit={this.handleSubmit}>
-          <label><input ref='firstName' placeholder='firstName' defaultValue='First Name' /></label>
-          <label><input ref='lastName' placeholder='lastName' defaultValue='Last Name' /></label>
-          <label><input ref='location' placeholder='location' defaultValue='Location' /></label><br />
+          <label><input ref='firstName' placeholder='First Name' /></label>
+          <label><input ref='lastName' placeholder='Last Name' /></label>
+          <label><input ref='location' placeholder='Location' /></label><br />
           <button className='btn btn-primary' type='submit'>Submit</button>
         </form>
       </div>
