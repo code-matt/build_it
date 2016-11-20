@@ -26,3 +26,17 @@
 .toast-notification {
   z-index: 1100 !important
 }
+
+.signup {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.job {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.searchbtn {
+  margin-left: 6px;
+}

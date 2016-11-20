@@ -14,7 +14,7 @@ gem 'rmagick'
 gem "mini_magick"
 
 #auth
-gem 'knock'
+gem 'knock', '~> 1.5'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do

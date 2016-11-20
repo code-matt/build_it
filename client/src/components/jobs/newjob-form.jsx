@@ -30,13 +30,15 @@ class NewJobForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className='text-center job'>
         <form onSubmit={this.handleSubmit}>
+          <h4>Add New Job</h4>
+          <hr />
           <label><input ref='title' placeholder='title' defaultValue='Job Title' /></label><br />
           <label><input ref='address' placeholder='address' defaultValue='Job Address' /></label><br />
           <label><input ref='description' placeholder='description' defaultValue='Description' /></label><br />
           <label><input ref='rate' placeholder='rate' defaultValue='Hourly Rate' /></label><br />
-          <button type='submit'>Submit Job</button>
+          <button className='btn btn-primary' type='submit'>Submit Job</button>
         </form>
       </div>
     )

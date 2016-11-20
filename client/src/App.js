@@ -43,7 +43,6 @@ class App extends Component {
         <div className='main'>
           <Notifications />
         </div>
-        <NavBar navigateFunc={this.navigate.bind(this)} />
         <Router history={browserHistory}>
           <Route path='/' component={Dashboard} />
         </Router>

@@ -34,12 +34,12 @@ class SignUpForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className='text-center signup'>
         Sign Up!
         <form onSubmit={this.handleSubmit}>
           <label><input ref='email' placeholder='email' defaultValue='valid e-mail' /></label>
-          <label><input ref='pass' placeholder='password' /></label> (hint: password1)<br />
-          <button type='submit'>SignUp</button>
+          <label><input ref='pass' placeholder='password' /></label><br />
+          <button className='btn btn-primary' type='submit'>SignUp</button>
         </form>
       </div>
     )

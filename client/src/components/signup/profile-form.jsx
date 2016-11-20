@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import _authService from '../../network/auth'
 import Notifications, {notify} from 'react-notify-toast'
 import Dropzone from 'react-dropzone'
-import request from 'superagent';
+import request from 'superagent'
 
 class ProfileForm extends Component {
   constructor () {
@@ -14,6 +14,7 @@ class ProfileForm extends Component {
   }
 
   handleSubmit (event) {
+    var $ = window.$
     event.preventDefault()
     console.log('profile submitted')
     _authService.finish(
@@ -21,7 +22,12 @@ class ProfileForm extends Component {
       this.refs.lastName.value,
       this.refs.location.value,
       function (res) {
-        console.log(res)
+        if (res.profileComplete) {
+          $('#profileModal').modal('hide')
+          notify.show('Profile Edited Successfully', 'success', 2000)
+        } else {
+          notify.show('Errors submitting profile :()', 'error', 2000)
+        }
       }
     )
   }
@@ -50,7 +56,7 @@ class ProfileForm extends Component {
         We need to know a little more about you..
         <Dropzone
           multiple={false}
-          accept="image/*"
+          accept='image/*'
           onDrop={this.onImageDrop.bind(this)}>
           {!this.state.avatarUrl ? <p>Drop an image or click to select a file to upload.</p> :
             <div>
@@ -59,8 +65,8 @@ class ProfileForm extends Component {
         </Dropzone>
         <form onSubmit={this.handleSubmit}>
           <label><input ref='firstName' placeholder='firstName' defaultValue='First Name' /></label>
-          <label><input ref='lastName' placeholder='lastName' defaultValue='Last Name'  /></label>
-          <label><input ref='location' placeholder='location' defaultValue='Location'  /></label><br />
+          <label><input ref='lastName' placeholder='lastName' defaultValue='Last Name' /></label>
+          <label><input ref='location' placeholder='location' defaultValue='Location' /></label><br />
           <button type='submit'>Submit</button>
         </form>
       </div>

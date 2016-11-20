@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _authService from '../../network/auth'
 
 class NavBar extends Component {
 
@@ -8,9 +9,13 @@ class NavBar extends Component {
 
   render () {
     return (
-      <div>
-        <div onClick={() => this.handleClick('logout')}>Logout</div>
-        <div onClick={() => this.handleClick('profile')}>Profile</div>
+      <div className='text-center'>
+        {_authService.loggedIn()
+        ? <div className='btn btn-primary' onClick={() => this.handleClick('logout')}>Logout</div>
+        : <div className='btn btn-primary' onClick={() => this.handleClick('login')}>Login</div>}
+        {_authService.loggedIn()
+          ? <div className='btn btn-primary' onClick={() => this.handleClick('profile')}>Profile</div>
+          : null}
       </div>
     )
   }

@@ -49,8 +49,19 @@ module.exports = {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        job_id: jobId
+        jobId: jobId
       })
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        return responseJson
+      })
+  },
+  signedupcheck (jobId) {
+    return fetch('http://localhost:3000/api/v1/signupcheck?jobId=' + jobId, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
     }).then((response) => response.json())
       .then((responseJson) => {
         return responseJson

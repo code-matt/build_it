@@ -6,4 +6,6 @@ class Job < ActiveRecord::Base
 
   has_many :signups
   has_many :users, through: :signups
+
+  has_many :contracts
 end

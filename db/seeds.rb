@@ -9,13 +9,31 @@ user = User.create(
   email: "qq@qq.com",
   password: "12345678", 
   profile_finished: false)
+user2 = User.create(
+  email: "ee@ee.com",
+  password: "12345678",
+  first_name: "Matt",
+  last_name: "Thompson",
+  location: "Waltham",
+  profile_finished: true)
+user3 = User.create(
+  email: "ww@ww.com",
+  password: "12345678",
+  first_name: "Brett",
+  last_name: "Mordas",
+  location: "Waltham", 
+  profile_finished: true)
 src = File.join(Rails.root,"client/public/marker_image.png")
 file = File.new(src)
 user.avatar = file
 user.save
+user2.avatar = file
+user2.save
+user3.avatar = file
+user3.save
 job1 = Job.create(title: "Plowing Job Title",
  description: "Plowing with my plow and plower bros in the snow.",
- user_id: user.id,
+ user_id: user2.id,
  address: "33 Harrison Ave. Boston, Ma",
  lat: 42.3705967,
  lng: -71.23602439999999,
@@ -31,7 +49,7 @@ job2 = Job.create(title: "Raking Job title",
  pic_url: user.avatar.url)
 job3 = Job.create(title: "Construction Job Title",
  description: "Hey, know how to use a hammer and nails? Join us on the construction site",
- user_id: user.id,
+ user_id: user3.id,
  address: "33 Harrison Ave. Boston, Ma",
  lat: 42.3708567,
  lng: -71.23602439999999,
@@ -39,7 +57,7 @@ job3 = Job.create(title: "Construction Job Title",
  pic_url: user.avatar.url)
 job4 = Job.create(title: "Moving Job Title",
  description: "Like lifting heavy things? Come work with us for a day!",
- user_id: user.id,
+ user_id: user2.id,
  address: "33 Harrison Ave. Boston, Ma",
  lat: 42.3708967,
  lng: 31.23602439999999,

@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
 
   has_many :signups
   has_many :jobs, through: :signups
+
+  has_many :contracts
 end

@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 // services
 import _jobService from '../../network/jobs'
 import _authService from '../../network/auth'
+import { Router, Route, hashHistory, browserHistory} from 'react-router'
 
 // components
+import NavBar from '../navbar/navbar'
 import SearchBox from './search'
 import JobsMap from '../map/map'
 
@@ -58,6 +60,22 @@ class Dashboard extends Component {
     })
     $('#jobModal').modal('show')
   }
+  navigate (data) {
+    var $ = window.$
+    switch (data) {
+      case 'logout':
+        _authService.logout()
+        notify.show('Successfully logged out.', 'success', 2000)
+        break
+      case 'login':
+        browserHistory.push('/')
+        $('#signupModal').modal('show')
+        break
+      case 'dashboard':
+        browserHistory.push('/dashboard')
+        break
+    }
+  }
 
   newJobCB () {
     var $ = window.$
@@ -86,26 +104,51 @@ class Dashboard extends Component {
 
   render () {
     return (
-      <div>
-        <SearchBox searchFunc={this.handleSearch.bind(this)} />
-        Search to find jobs..
-        <div style={{height: 500 + 'px'}}>
-          <JobsMap
-            center={this.state.center}
-            jobs={this.state.jobs}
-            markerCB={this.markerClickedCB.bind(this)}
-            newJobCB={this.newJobCB.bind(this)}
-            showJobCB={this.showJobCB.bind(this)} />
+      <div className='row'>
+        <div className='col-md-3' style={{height: 100 + 'vh'}}>
+          <NavBar navigateFunc={this.navigate.bind(this)} />
+          <SearchBox searchFunc={this.handleSearch.bind(this)} />
+          {renderJobs(this.state.jobs)}
         </div>
-        <JobModal
-          selectedJob={this.state.selectedJob} />
-        <NewJobModal />
-        <LoginModal />
-        <LoginSignupModal />
-        <FinishProfileModal />
+        <div className='col-md-9'>
+          <div style={{height: 100 + 'vh'}}>
+            <JobsMap
+              center={this.state.center}
+              jobs={this.state.jobs}
+              markerCB={this.markerClickedCB.bind(this)}
+              newJobCB={this.newJobCB.bind(this)}
+              showJobCB={this.showJobCB.bind(this)} />
+          </div>
+          <JobModal
+            selectedJob={this.state.selectedJob} />
+          <NewJobModal />
+          <LoginModal />
+          <LoginSignupModal />
+          <FinishProfileModal />
+        </div>
       </div>
     )
   }
+}
+
+function renderJobs (jobs) {
+  if (jobs.length > 0) {
+    return jobs.map((job, index) => (
+      <Job key={index} job={job} />
+        ))
+  }
+  else return []
+}
+
+const Job = ({job}) => {
+  return (
+    <div>
+      <job key={job.id}>
+        <p>{job.title}</p>
+        <p>{job.description}</p>
+      </job>
+    </div>
+    )
 }
 
 export default Dashboard

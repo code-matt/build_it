@@ -25,11 +25,14 @@ class SearchBox extends Component {
 
   render () {
     return (
-      <div>
+      <div className='text-center'>
+        <hr />
+        <h4>Search</h4>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.value} onChange={this.handleChange} />
-          <input type='submit' value='Submit' />
+          <input type='text' value={this.state.value} onChange={this.handleChange} placeholder='Valid Address' />
+          <input className='btn btn-primary searchbtn' type='submit' value='Submit' />
         </form>
+        <hr />
       </div>
     )
   }

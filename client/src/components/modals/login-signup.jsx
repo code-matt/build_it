@@ -5,15 +5,19 @@ import SignUpForm from '../signup/signup-form'
 class LoginSignupModal extends Component {
   render () {
     return (
-      <div id='signupModal' className='modal fade bs-example-modal-lg alerts' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel'>
-        <div className='modal-dialog modal-lg' role='document'>
+      <div id='signupModal' className='modal fade bs-example-modal-lg alerts signup' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel'>
+        <div className='modal-dialog modal-sm' role='document'>
           <div className='modal-content'>
-            <LoginForm />
-            <SignUpForm />
+            <div className='row'>
+              <div className='col-md-12'>
+                <LoginForm />
+                <hr />
+                <SignUpForm />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      </div>)
   }
 }
 
