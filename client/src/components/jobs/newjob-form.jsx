@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 import Notifications, {notify} from 'react-notify-toast'
+import CurrencyMaskedInput from 'react-currency-masked-input'
 
 class NewJobForm extends Component {
 
@@ -10,6 +11,7 @@ class NewJobForm extends Component {
   }
 
   handleSubmit (event) {
+    debugger
     var $ = window.$
     event.preventDefault()
     console.log('job submitted')
@@ -17,7 +19,7 @@ class NewJobForm extends Component {
       this.refs.title.value,
       this.refs.description.value,
       this.refs.address.value,
-      this.refs.rate.value
+      Math.floor(Number(this.refs.rate.value) * 100)
     ).then((res) => {
       if (res.status === 'success') {
         $('#newJobModal').modal('hide')
@@ -37,7 +39,8 @@ class NewJobForm extends Component {
           <label><input ref='title' placeholder='Title' /></label><br />
           <label><input ref='address' placeholder='Valid Address' /></label><br />
           <label><textarea rows='8' ref='description' placeholder='Description' /></label><br />
-          <label><input ref='rate' placeholder='Hourly Rate' /></label><br />
+          Hourly Rate<br />
+          <label><CurrencyMaskedInput ref='rate' placeholder='0' required /></label><br />
           <button className='btn btn-primary' type='submit'>Submit Job</button>
         </form>
       </div>

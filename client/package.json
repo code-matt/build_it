@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "react": "^15.3.2",
+    "react-currency-masked-input": "^1.0.2",
     "react-dom": "^15.3.2",
     "react-dropzone": "^3.7.3",
     "react-helmet": "^3.2.2",
