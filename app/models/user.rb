@@ -9,13 +9,18 @@ class User < ActiveRecord::Base
   has_secure_password
   mount_uploader :avatar, AvatarUploader
 
-  validates :email, :password, presence: true
+  # this only needs to happen on creation since its stored encrypted after
+  validates :email, :password, presence: true, if: :should_validate?
+  validates :password, length: { minimum: 7 }, if: :should_validate?
   validates :email, uniqueness: true
   validates :email, email: true
-  validates :password, length: { minimum: 7 }
 
   has_many :signups
   has_many :jobs, through: :signups
+
+  def should_validate?
+    new_record?
+  end
 
   has_many :contracts
 end
