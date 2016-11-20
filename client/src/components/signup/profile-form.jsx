@@ -52,22 +52,23 @@ class ProfileForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className='text-md-center profileform'>
         We need to know a little more about you..
         <Dropzone
+          className='dropzone'
           multiple={false}
           accept='image/*'
           onDrop={this.onImageDrop.bind(this)}>
           {!this.state.avatarUrl ? <p>Drop an image or click to select a file to upload.</p> :
             <div>
-              <img className='img-responsive' src={this.state.avatarUrl} />
+              <img className='img-fluid' src={this.state.avatarUrl} />
             </div>}
         </Dropzone>
         <form onSubmit={this.handleSubmit}>
           <label><input ref='firstName' placeholder='firstName' defaultValue='First Name' /></label>
           <label><input ref='lastName' placeholder='lastName' defaultValue='Last Name' /></label>
           <label><input ref='location' placeholder='location' defaultValue='Location' /></label><br />
-          <button type='submit'>Submit</button>
+          <button className='btn btn-primary' type='submit'>Submit</button>
         </form>
       </div>
     )

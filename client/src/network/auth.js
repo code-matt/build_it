@@ -19,12 +19,12 @@ module.exports = {
   },
   create (email, pass, cb) {
     cb = arguments[arguments.length - 1]
-    createUser(email, pass, (res) => {
-      console.log(res)
+    createUser(email, pass, (res, errors) => {
+      // console.log(res)
       if (res.signupSuccess) {
         this.login(email, pass, cb)
       } else {
-        cb(false)
+        cb(res, errors)
       }
     })
   },
@@ -73,16 +73,15 @@ function createUser (email, pass, cb) {
     })
   }).then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson)
       if (responseJson.status === 'success') {
         cb({
           signupSuccess: true
-        })
+        }, responseJson)
       } else {
-        cb({ signupSuccess: false })
+        cb({ signupSuccess: false }, responseJson)
       }
     }).catch((error) => {
-      cb({ signupSuccess: false })
+      cb({ signupSuccess: false }, error)
     })
 }
 

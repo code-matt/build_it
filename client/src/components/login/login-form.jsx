@@ -22,10 +22,12 @@ class LoginForm extends Component {
 
     _authService.login(email, pass, (loggedIn, errors) => {
       if (localStorage.token) {
+        this.props.loginCB(true)
         this.setState({errors: []})
         $('#signupModal').modal('hide')
         notify.show('Login Successful!', 'success', 2000)
       } else {
+        this.props.loginCB(false)
         console.log(errors)
         this.setState({errors: errors})
         notify.show('Login Failure :(', 'error', 2000)
@@ -34,15 +36,17 @@ class LoginForm extends Component {
   }
   render () {
     return (
-      <div className='text-center signup'>
-        <div>
-          Already a member? Sign in
-          <form onSubmit={this.handleSubmit}>
-            { renderErrors(this.state.errors, 'non-specific') }
-            <label><input ref='email' placeholder='email' defaultValue='joe@example.com' /></label>
-            <label><input ref='pass' placeholder='password' /></label><br />
-            <button className='btn btn-primary' type='submit'>login</button>
-          </form>
+      <div className='container'>
+        <div className='text-md-center signup'>
+          <div>
+            Already a member? Sign in
+            <form onSubmit={this.handleSubmit}>
+              { renderErrors(this.state.errors, 'non-specific') }
+              <label><input ref='email' placeholder='Valid Email' /></label>
+              <label><input ref='pass' placeholder='Password' /></label><br />
+              <button className='btn btn-primary' type='submit'>login</button>
+            </form>
+          </div>
         </div>
       </div>
     )
@@ -60,10 +64,14 @@ function renderErrors (errors, section) {
 
 const Error = ({error}) => {
   return (
-    <error>
-      <p>{error.message}</p>
-    </error>
+    <div className='alert alert-danger' role='alert'>
+      <strong>{error.message}</strong>
+    </div>
     )
 }
 
 export default LoginForm
+
+LoginForm.propTypes = {
+  loginCB: React.PropTypes.func
+}

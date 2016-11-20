@@ -25,7 +25,7 @@ class SearchBox extends Component {
 
   render () {
     return (
-      <div className='text-center'>
+      <div className='text-md-center'>
         <hr />
         <h4>Search</h4>
         <form onSubmit={this.handleSubmit}>

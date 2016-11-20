@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import _jobService from '../../network/jobs'
 import _authService from '../../network/auth'
 import { Router, Route, hashHistory, browserHistory} from 'react-router'
-import {Button, IconButton} from 'react-toolbox/lib/button'
 
 // components
 import NavBar from '../navbar/navbar'
@@ -17,8 +16,6 @@ import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
 import FinishProfileModal from '../modals/finish-profile-guard'
 import JobModal from '../modals/jobdetails'
-
-import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card'
 
 // toast
 import Notifications, {notify} from 'react-notify-toast'
@@ -33,10 +30,18 @@ class Dashboard extends Component {
         lat: 42.3708967,
         lng: -71.236024399
       },
-      selectedJob: undefined
+      selectedJob: undefined,
+      loggedIn: _authService.loggedIn()
     }
     this.getJob = this.getJob.bind(this)
     this.showJobCB = this.showJobCB.bind(this)
+    this.loginCB = this.loginCB.bind(this)
+  }
+
+  loginCB (loggedIn) {
+    this.setState({
+      loggedIn: loggedIn
+    })
   }
 
   handleSearch (coords) {
@@ -68,6 +73,7 @@ class Dashboard extends Component {
     switch (data) {
       case 'logout':
         _authService.logout()
+        this.loginCB(false)
         notify.show('Successfully logged out.', 'success', 2000)
         break
       case 'login':
@@ -107,27 +113,29 @@ class Dashboard extends Component {
 
   render () {
     return (
-      <div className='row'>
-        <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
-          <NavBar navigateFunc={this.navigate.bind(this)} />
-          <SearchBox searchFunc={this.handleSearch.bind(this)} />
-          {renderJobs(this.state.jobs)}
-        </div>
-        <div className='col-md-9'>
-          <div style={{height: 100 + 'vh'}}>
-            <JobsMap
-              center={this.state.center}
-              jobs={this.state.jobs}
-              markerCB={this.markerClickedCB.bind(this)}
-              newJobCB={this.newJobCB.bind(this)}
-              showJobCB={this.showJobCB.bind(this)} />
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
+            <NavBar loggedIn={this.state.loggedIn} navigateFunc={this.navigate.bind(this)} />
+            <SearchBox searchFunc={this.handleSearch.bind(this)} />
+            {renderJobs(this.state.jobs)}
           </div>
-          <JobModal
-            selectedJob={this.state.selectedJob} />
-          <NewJobModal />
-          <LoginModal />
-          <LoginSignupModal />
-          <FinishProfileModal />
+          <div className='col-md-9'>
+            <div style={{height: 100 + 'vh'}}>
+              <JobsMap
+                center={this.state.center}
+                jobs={this.state.jobs}
+                markerCB={this.markerClickedCB.bind(this)}
+                newJobCB={this.newJobCB.bind(this)}
+                showJobCB={this.showJobCB.bind(this)} />
+            </div>
+            <JobModal
+              selectedJob={this.state.selectedJob} />
+            <NewJobModal />
+            <LoginModal />
+            <LoginSignupModal loginCB={this.loginCB.bind(this)} />
+            <FinishProfileModal />
+          </div>
         </div>
       </div>
     )
@@ -145,22 +153,21 @@ function renderJobs (jobs) {
 
 const Job = ({job}) => {
   return (
-    <Card style={{width: '350px'}}>
-      <CardTitle
-        avatar='https://placeimg.com/80/80/animals'
-        title='Avatar style title'
-        subtitle='Subtitle here'
-      />
-      <CardMedia
-        aspectRatio='wide'
-        image={job.pic_url}
-      />
-      <CardTitle
-        title={job.title}
-        subtitle={job.hourly_rate / 100 + '$/hr'}
-      />
-      <CardText>{job.description}</CardText>
-    </Card>
+    <div id={job.id} className='card text-md-center'>
+      <div className='card-header'>
+        {job.title}
+      </div>
+      <div className='card-block'>
+        <blockquote className='card-blockquote'>
+          <p>{job.description}</p>
+          <footer >
+            {job.address}
+            <br />
+            {job.hourly_rate / 100 + '$/hr'}<button className='btn btn-primary'>Details</button>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
   )
 }
 

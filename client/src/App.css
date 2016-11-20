@@ -38,7 +38,7 @@
 }
 
 .searchbtn {
-  margin-left: 6px;
+  margin-top: 6px;
 }
 
 .leftjob {
@@ -65,4 +65,27 @@
 
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
+}
+
+.card {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.dropzone {
+  border: 1px black solid;
+}
+
+.profileform {
+  padding: 10px;
+}
+
+.navbuttons {
+  margin: 6px;
+}
+
+.navbutton {
+  margin-left: 3px;
+  margin-right: 3px;
 }
