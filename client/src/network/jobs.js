@@ -21,7 +21,7 @@ module.exports = {
         return responseJson
       })
   },
-  new (title, description, address, rate) {
+  newJob (title, description, address, rate) {
     return fetch('http://localhost:3000/api/v1/jobs/', {
       method: 'POST',
       headers: {

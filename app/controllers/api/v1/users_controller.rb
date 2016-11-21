@@ -3,7 +3,8 @@ class Api::V1::UsersController < ApplicationController
                                             :is_profile_complete,
                                             :upload_profile_pic,
                                             :edit_profile,
-                                            :profile]
+                                            :profile,
+                                            :getId]
   def create
     user = User.new(user_params)
     if user.valid? 
@@ -49,6 +50,11 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: user.errors.full_messages.to_json
     end
+  end
+
+  def getId
+    user = current_user
+    render json: {id: user.id}
   end
 
   def profile

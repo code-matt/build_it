@@ -190,7 +190,7 @@ function renderJobs (jobs, component) {
 
 const Job = ({job, parent}) => {
   return (
-    <div id={job.id} className='card text-md-center' onMouseOver={() => parent.focusJob(job.id)}>
+    <div id={job.id} className='card text-md-center jobresult' onMouseOver={() => parent.focusJob(job.id)}>
       <div className='card-block'>
         <blockquote className='card-blockquote'>
           <p>{job.description}</p>

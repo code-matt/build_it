@@ -12,7 +12,9 @@ module.exports = {
         if (!localStorage.searchHistory) {
           localStorage.searchHistory = []
         }
-        debugger
+        this.id(function(res){
+          localStorage.buildItId = res
+        })
         if (cb) cb(true, [])
         this.onChange(true)
       } else {
@@ -48,6 +50,16 @@ module.exports = {
       }
     })
   },
+  id (cb) {
+    cb = arguments[arguments.length - 1]
+    getId(res => {
+      if (res) {
+        cb(res.response.id)
+      } else {
+        cb(false)
+      }
+    })
+  },
   profile (cb) {
     cb = arguments[arguments.length - 1]
     getProfile(res => {
@@ -63,13 +75,16 @@ module.exports = {
   },
   logout (cb) {
     delete localStorage.token
+    delete localStorage.buildItId
     if (cb) cb()
     this.onChange(false)
   },
   loggedIn () {
     return !!localStorage.token
   },
-
+  loggedInId () {
+    return localStorage.buildItId
+  },
   onChange () {}
 }
 
@@ -140,6 +155,20 @@ function signIn (email, pass, cb) {
 
 function checkProfile (cb) {
   fetch('http://localhost:3000/api/v1/profilecheck/', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      cb({
+        response: responseJson
+      })
+    })
+}
+
+function getId (cb) {
+  fetch('http://localhost:3000/api/v1/getid/', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')

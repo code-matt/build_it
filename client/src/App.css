@@ -18,6 +18,14 @@
   font-size: large;
 }
 
+.viewjob-title {
+  padding-top: 37px;
+}
+
+.job-signup-button {
+  padding-top: 10px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -47,6 +55,48 @@
   margin-right: 10px;
 }
 
+.profileimg {
+  border-radius: 25px;
+  border: 2px solid #A4AE97;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.job-signup-btn {
+  margin-top: 15px;
+}
+
+.proposal {
+  width: 100%;
+}
+
+.details-li {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.fa-money {
+  margin-right: 10px;
+  width: 60px;
+  height: 40px;
+  color: #138C50;
+  /*padding-right: 10px;*/
+  border-radius: 10px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.fa-map-marker {
+  margin-right: 10px;
+  text-align: center;
+  width: 60px;
+  height: 44px;
+  color: #159098;
+  /*padding-right: 10px;*/
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
 .leftjob {
   overflow: scroll;
 }
@@ -61,11 +111,17 @@
   width: 100%;
 }
 
-.card:hover{
+.img-circle {
+    border-radius: 50%;
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.jobresult:hover{
   background-color: #AAE7ED
 }
 
-.card:hover .card-header{ background-color: #A5C2C5 }
+/*.card:hover .card-header{ background-color: #A5C2C5 }*/
 
 .dropzone {
   border: 1px black solid;

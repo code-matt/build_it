@@ -17,7 +17,7 @@ class NewJobForm extends Component {
   handleSubmit (event) {
     var $ = window.$
     event.preventDefault()
-    _jobService.new(
+    _jobService.newJob(
       this.refs.title.value,
       this.refs.description.value,
       this.refs.address.value,

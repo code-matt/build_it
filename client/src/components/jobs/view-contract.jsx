@@ -19,8 +19,8 @@ class Contract extends Component {
   render () {
     return (
       <div>
-        {this.state.contract ?
-          <div>
+        {this.state.contract
+          ? <div>
             <div>
               {this.state.selectedJob.title}
               <br />

@@ -14,11 +14,11 @@ class JobModal extends Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
   componentWillReceiveProps (props) {
+    var component = this
+    this.setState({
+      selectedJob: props.selectedJob
+    })
     if (_authService.loggedIn()) {
-      var component = this
-      this.setState({
-        selectedJob: props.selectedJob
-      })
       if (props.selectedJob) {
         _jobService.signedupcheck(props.selectedJob.id)
                 .then((res) => {
@@ -27,15 +27,25 @@ class JobModal extends Component {
                     component.setState({
                       contract: res.contract
                     })
+                    component.refs.contract.setState({
+                      selectedJob: props.selectedJob,
+                      contract: res.contract
+                    })
                   } else {
                     console.log('contract not found')
                     component.setState({
                       contract: undefined
                     })
+                    component.refs.job.setState({
+                      selectedJob: props.selectedJob
+                    })
                   }
                 })
-        this.render()
       }
+    } else {
+      component.setState({
+        contract: undefined
+      })
     }
   }
   render () {
@@ -45,9 +55,11 @@ class JobModal extends Component {
           <div className='modal-content'>
             {this.state.contract
               ? <Contract
+                ref='contract'
                 selectedJob={this.state.selectedJob}
                 contract={this.state.contract} />
               : <JobDetails
+                ref='job'
                 selectedJob={this.state.selectedJob} />}
           </div>
         </div>
