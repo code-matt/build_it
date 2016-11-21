@@ -18,6 +18,13 @@ class SearchBox extends Component {
     })
   }
 
+  updateHistory (address) {
+    var history = localStorage.searchHistory
+    history.pop()
+    history.push(address)
+    console.log(history)
+  }
+
   spinnerClassToggle (spin) {
     if (spin) {
       return 'btn btn-primary searchbtn has-spinner active'

@@ -31,7 +31,8 @@ class Dashboard extends Component {
         lng: -71.236024399
       },
       selectedJob: undefined,
-      loggedIn: _authService.loggedIn()
+      loggedIn: _authService.loggedIn(),
+      focusJob: -1
     }
     this.getJob = this.getJob.bind(this)
     this.showJobCB = this.showJobCB.bind(this)
@@ -60,11 +61,14 @@ class Dashboard extends Component {
         })
     } else {
       notify.show('Search Failed, Invalid Address :(', 'error', 2000)
+      searchComponent.setState({
+        loading: false
+      })
     }
   }
 
   markerClickedCB (marker) {
-    
+
   }
 
   showJobCB (jobInfoElement) {
@@ -114,15 +118,19 @@ class Dashboard extends Component {
   }
 
   focusJob (jobId) {
-    for (let job in this.state.jobs) {
-      var j = this.state.jobs[job]
-      if (j.id === jobId) {
-        this.setState({
-          center: {
-            lat: j.lat,
-            lng: j.lng
-          }
-        })
+    if (jobId !== this.state.focusJob) {
+      // this.refs.map.soloMarkerInfo(jobId)
+      for (let job in this.state.jobs) {
+        var j = this.state.jobs[job]
+        if (j.id === jobId) {
+          this.setState({
+            center: {
+              lat: j.lat,
+              lng: j.lng
+            },
+            focusJob: jobId
+          })
+        }
       }
     }
   }
@@ -151,6 +159,7 @@ class Dashboard extends Component {
           <div className='col-md-9'>
             <div style={{height: 100 + 'vh'}}>
               <JobsMap
+                ref='map'
                 center={this.state.center}
                 jobs={this.state.jobs}
                 markerCB={this.markerClickedCB.bind(this)}

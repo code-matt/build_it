@@ -22,7 +22,7 @@ class JobDetails extends Component {
         $('#jobModal').modal('hide')
         notify.show('signup successful', 'success', 2000)
       } else {
-        notify.show('Error with signup :( ut oh)', 'error', 2000)
+        notify.show('Error with signup :( ut oh', 'error', 2000)
       }
     })
   }
@@ -30,11 +30,13 @@ class JobDetails extends Component {
     return (
       <div>
         {!this.state.selectedJob ? null
-         : <div>
-           {this.state.selectedJob.title}
-           {this.state.selectedJob.description}
-           <button onClick={this.handleSignUp.bind(this)}>Sign Up</button>
-         </div>}
+        : <div className='card'>
+          <div className='card-header'>{this.state.selectedJob.title}</div>
+          <div className='card-block'>
+            <p className='card-text'>{this.state.selectedJob.description}</p>
+            <button className='btn btn-primary' onClick={this.handleSignUp.bind(this)}>Sign Up</button>
+          </div>
+        </div>}
       </div>
     )
   }

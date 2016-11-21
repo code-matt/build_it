@@ -26,6 +26,11 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
 
 export default class JobsMap extends Component {
 
+  constructor () {
+    super()
+    this.soloMarkerInfo = this.soloMarkerInfo.bind(this)
+  }
+
   state = {
     markers: [],
     map: null
@@ -45,7 +50,7 @@ export default class JobsMap extends Component {
     for(let job in jobs){
       var j = jobs[job]
       var contentString = this.infoBoxInstance(j.title,j.hourly_rate,j.address,j.id)
-      var infoWindow = new google.maps.InfoWindow();
+      var infoWindow = new google.maps.InfoWindow({pixelOffset: new google.maps.Size(0, -40)});
       infoWindow.setContent(contentString);
       infoWindow.setPosition({lat:j.lat,lng:j.lng})
       google.maps.event.addDomListener(
@@ -70,11 +75,11 @@ export default class JobsMap extends Component {
   }
   infoBoxInstance (title, rate, address, id) {
     var $ = window.$
-    return $('<div id="' + id + '" class="marker-info-win">'+
-      '<div class="marker-inner-win"><span class="info-content">'+
-      '<h1 class="marker-heading">'+ title +'</h1>'+
+    return $('<div id="' + id + '" class="marker-info-win text-md-center">'+
+      '<div class="marker-inner-win"><span class="info-content" style="padding-bottom: 4px;">'+
+      '<h3 class="marker-heading">'+ title +'</h3><hr />'+
       address + '<br />' + 
-      rate/100 + '$/hr' + '<button id="jobInfo' + id + '">Details</button>' +
+      '<button class="btn btn-primary" id="jobInfo' + id + '">' + rate/100 + '$/hr Details</button>' +
       '</span>'+
       '</div></div>')[0]
   }
@@ -131,6 +136,21 @@ export default class JobsMap extends Component {
     this.props.markerCB(targetMarker)
     var map = this._mapComponent.context.googleMapObj
     targetMarker.infoWindow.open(map)
+  }
+
+  soloMarkerInfo (id) {
+    var map = this._mapComponent.context.googleMapObj
+    for(let marker in this.state.markers){
+      var m = this.state.markers[marker]
+      m.infoWindow.close()
+    }
+    for(let marker in this.state.markers){
+      var m = this.state.markers[marker]
+      if(m.key == id){
+        m.infoWindow.open(map)
+        return
+      }
+    }
   }
 
   handleMapClick(event) {

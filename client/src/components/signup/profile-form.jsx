@@ -24,7 +24,7 @@ class ProfileForm extends Component {
           component.refs.lastName.value = res.lastName
           component.refs.location.value = res.location
           component.setState({
-            avatarUrl: res.picUrl
+            avatarUrl: res.picUrl + '?' + new Date().getTime()
           })
           notify.show('Profile loaded', 'success', 700)
         } else {
@@ -54,7 +54,8 @@ class ProfileForm extends Component {
 
   onImageDrop (files) {
     this.setState({
-      loading: true
+      loading: true,
+      avatarUrl: ''
     })
     let upload = request.post('http://localhost:3000/api/v1/profilepic')
                         .field('file', files[0])
@@ -70,7 +71,7 @@ class ProfileForm extends Component {
 
       if (response.body.upload) {
         this.setState({
-          avatarUrl: response.body.upload,
+          avatarUrl: response.body.upload + '?' + new Date().getTime(),
           loading: false
         })
       }

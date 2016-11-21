@@ -14,7 +14,6 @@ class Contract extends Component {
       selectedJob: props.selectedJob,
       contract: props.contract
     })
-    console.log(props.contract)
   }
 
   render () {

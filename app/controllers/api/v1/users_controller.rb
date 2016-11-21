@@ -67,7 +67,7 @@ class Api::V1::UsersController < ApplicationController
       user.save
       { status: 'success' }
     else
-      false
+      { status: false }
     end
   end
 
