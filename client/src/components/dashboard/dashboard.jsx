@@ -91,6 +91,9 @@ class Dashboard extends Component {
       case 'dashboard':
         browserHistory.push('/dashboard')
         break
+      case 'profile':
+        $('#profileModal').modal('show')
+        break
     }
   }
 
@@ -140,7 +143,9 @@ class Dashboard extends Component {
           <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
             <NavBar loggedIn={this.state.loggedIn} navigateFunc={this.navigate.bind(this)} />
             <SearchBox searchFunc={this.handleSearch.bind(this)} />
-            {renderJobs(this.state.jobs, this)}
+            {this.state.jobs.length > 0
+              ? <div>{renderJobs(this.state.jobs, this)}</div>
+              : <div className='text-md-center noresults'>No jobs found<br />Search above to try again..</div>}
           </div>
           <div className='col-md-9'>
             <div style={{height: 100 + 'vh'}}>

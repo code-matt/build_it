@@ -81,5 +81,5 @@ const Error = ({error}) => {
 export default SignUpForm
 
 SignUpForm.propTypes = {
-  loginCB: React.PropTypes.func,
+  signupCB: React.PropTypes.func,
 }

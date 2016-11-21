@@ -37,6 +37,11 @@
   padding-bottom: 15px;
 }
 
+.error {
+  font-size: 10px;
+  padding: 3px;
+}
+
 .searchbtn {
   margin-top: 6px;
 }
@@ -112,4 +117,9 @@
 
 .has-spinner.btn-large.active .spinner {
     width: 19px;
+}
+
+.noresults{
+  padding-top: 150px;
+  color: #BDBDBD;
 }

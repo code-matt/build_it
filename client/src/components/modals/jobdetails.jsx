@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import JobDetails from '../jobs/view-job'
 import Contract from '../jobs/view-contract'
 import _jobService from '../../network/jobs'
+import _authService from '../../network/auth'
 
 class JobModal extends Component {
   constructor () {
@@ -13,29 +14,28 @@ class JobModal extends Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
   }
   componentWillReceiveProps (props) {
-    var component = this
-    this.setState({
-      selectedJob: props.selectedJob
-    })
-    if (props.selectedJob) {
-      _jobService.signedupcheck(props.selectedJob.id)
-              .then((res) => {
-                if (res.contract) {
-                  console.log('contract found')
-                  component.setState({
-                    contract: res.contract
-                  })
-                } else {
-                  console.log('contract not found')
-                  component.setState({
-                    contract: undefined
-                  })
-                }
-              })
-      // this.setState({
-      //   contract: contract
-      // })
-      this.render()
+    if (_authService.loggedIn()) {
+      var component = this
+      this.setState({
+        selectedJob: props.selectedJob
+      })
+      if (props.selectedJob) {
+        _jobService.signedupcheck(props.selectedJob.id)
+                .then((res) => {
+                  if (res.contract) {
+                    console.log('contract found')
+                    component.setState({
+                      contract: res.contract
+                    })
+                  } else {
+                    console.log('contract not found')
+                    component.setState({
+                      contract: undefined
+                    })
+                  }
+                })
+        this.render()
+      }
     }
   }
   render () {
