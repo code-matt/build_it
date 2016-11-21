@@ -93,6 +93,7 @@ class Dashboard extends Component {
         break
       case 'profile':
         $('#profileModal').modal('show')
+        this.refs.profileModal.getCurrentProfile()
         break
     }
   }
@@ -161,7 +162,7 @@ class Dashboard extends Component {
             <NewJobModal />
             <LoginModal />
             <LoginSignupModal loginCB={this.loginCB.bind(this)} />
-            <FinishProfileModal />
+            <FinishProfileModal ref='profileModal' />
           </div>
         </div>
       </div>
@@ -181,16 +182,13 @@ function renderJobs (jobs, component) {
 const Job = ({job, parent}) => {
   return (
     <div id={job.id} className='card text-md-center' onMouseOver={() => parent.focusJob(job.id)}>
-      <div className='card-header'>
-        {job.title}
-      </div>
       <div className='card-block'>
         <blockquote className='card-blockquote'>
           <p>{job.description}</p>
           <footer >
             {job.address}
             <br />
-            {job.hourly_rate / 100 + '$/hr'}<button className='btn btn-primary'>Details</button>
+            <br /><button onClick={() => parent.showJobCB({id: job.id})} className='btn btn-primary'>{job.hourly_rate / 100 + '$/hr '}Details</button>
           </footer>
         </blockquote>
       </div>

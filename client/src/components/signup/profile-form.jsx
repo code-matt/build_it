@@ -8,9 +8,30 @@ class ProfileForm extends Component {
   constructor () {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getCurrentProfile = this.getCurrentProfile.bind(this)
     this.state = {errors: [],
-      avatarUrl: undefined
+      avatarUrl: undefined,
+      loading: false
     }
+  }
+
+  getCurrentProfile () {
+    var component = this
+    _authService.profile(
+      function (res) {
+        if (res) {
+          component.refs.firstName.value = res.firstName
+          component.refs.lastName.value = res.lastName
+          component.refs.location.value = res.location
+          component.setState({
+            avatarUrl: res.picUrl
+          })
+          notify.show('Profile loaded', 'success', 700)
+        } else {
+          notify.show('Error loading profile details? :/', 'error', 2000)
+        }
+      }
+    )
   }
 
   handleSubmit (event) {
@@ -32,6 +53,9 @@ class ProfileForm extends Component {
   }
 
   onImageDrop (files) {
+    this.setState({
+      loading: true
+    })
     let upload = request.post('http://localhost:3000/api/v1/profilepic')
                         .field('file', files[0])
                         .set('Authorization', 'Bearer ' + localStorage.getItem('token'))
@@ -39,14 +63,26 @@ class ProfileForm extends Component {
     upload.end((err, response) => {
       if (err) {
         console.error(err)
+        this.setState({
+          loading: false
+        })
       }
 
       if (response.body.upload) {
         this.setState({
-          avatarUrl: response.body.upload
+          avatarUrl: response.body.upload,
+          loading: false
         })
       }
     })
+  }
+
+  spinnerClassToggle (spin) {
+    if (spin) {
+      return 'btn btn-primary searchbtn has-spinner active'
+    } else {
+      return 'btn btn-primary searchbtn has-spinner'
+    }
   }
 
   render () {
@@ -67,7 +103,7 @@ class ProfileForm extends Component {
           <label><input ref='firstName' placeholder='First Name' /></label>
           <label><input ref='lastName' placeholder='Last Name' /></label>
           <label><input ref='location' placeholder='Location' /></label><br />
-          <button className='btn btn-primary' type='submit'>Submit</button>
+          <button className={this.spinnerClassToggle(this.state.loading)} type='submit'>Submit</button>
         </form>
       </div>
     )

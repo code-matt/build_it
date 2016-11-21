@@ -2,7 +2,8 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user, only: [
                                             :is_profile_complete,
                                             :upload_profile_pic,
-                                            :edit_profile]
+                                            :edit_profile,
+                                            :profile]
   def create
     user = User.new(user_params)
     if user.valid? 
@@ -48,6 +49,16 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: user.errors.full_messages.to_json
     end
+  end
+
+  def profile
+    user = current_user
+    render json: {
+      firstName: user.first_name,
+      lastName: user.last_name,
+      location: user.location,
+      picUrl: user.avatar.url
+    }
   end
 
   def test_profile(user)

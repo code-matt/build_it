@@ -48,7 +48,7 @@ class SignUpForm extends Component {
   render () {
     return (
       <div className='text-md-center signup'>
-        Sign Up!
+        <div className='smallHeader'>Sign Up!</div>
         <form onSubmit={this.handleSubmit}>
           <label><input ref='email' placeholder='Valid Email' /></label>
           { renderErrors(this.state.errors, 'email') }

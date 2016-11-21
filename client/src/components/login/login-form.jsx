@@ -38,7 +38,7 @@ class LoginForm extends Component {
       <div className='container'>
         <div className='text-md-center signup'>
           <div>
-            Already a member? Sign in
+            <div className='smallHeader'>Already a member? Sign in</div>
             <form onSubmit={this.handleSubmit}>
               { renderErrors(this.state.errors, 'non-specific') }
               <label><input ref='email' placeholder='Valid Email' /></label>

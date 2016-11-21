@@ -3,6 +3,9 @@ import _jobService from '../../network/jobs'
 import ProfileForm from '../signup/profile-form'
 
 class FinishProfileModal extends Component {
+  getCurrentProfile () {
+    this.refs.profileForm.getCurrentProfile()
+  }
   render () {
     return (
       <div id='profileModal' className='modal fade bs-example-modal-sm alerts' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel'>
@@ -11,7 +14,7 @@ class FinishProfileModal extends Component {
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
-                  <ProfileForm />
+                  <ProfileForm ref='profileForm' />
                 </div>
               </div>
             </div>

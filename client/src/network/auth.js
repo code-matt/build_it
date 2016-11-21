@@ -44,6 +44,16 @@ module.exports = {
       }
     })
   },
+  profile (cb) {
+    cb = arguments[arguments.length - 1]
+    getProfile(res => {
+      if (res) {
+        cb(res.response)
+      } else {
+        cb(false)
+      }
+    })
+  },
   getToken () {
     return localStorage.token
   },
@@ -126,6 +136,20 @@ function signIn (email, pass, cb) {
 
 function checkProfile (cb) {
   fetch('http://localhost:3000/api/v1/profilecheck/', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      cb({
+        response: responseJson
+      })
+    })
+}
+
+function getProfile (cb) {
+  fetch('http://localhost:3000/api/v1/profile/', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
