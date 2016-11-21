@@ -9,7 +9,8 @@ class ProfileForm extends Component {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getCurrentProfile = this.getCurrentProfile.bind(this)
-    this.state = {errors: [],
+    this.state = {
+      errors: [],
       avatarUrl: undefined,
       loading: false
     }
@@ -17,39 +18,57 @@ class ProfileForm extends Component {
 
   getCurrentProfile () {
     var component = this
-    _authService.profile(
-      function (res) {
+    _authService.profile()
+      .then((res) => {
         if (res) {
-          component.refs.firstName.value = res.firstName
-          component.refs.lastName.value = res.lastName
-          component.refs.location.value = res.location
+          component.refs.firstName.value = res.response.firstName
+          component.refs.lastName.value = res.response.lastName
+          component.refs.location.value = res.response.location
           component.setState({
-            avatarUrl: res.picUrl + '?' + new Date().getTime()
+            avatarUrl: res.response.picUrl + '?' + new Date().getTime()
           })
           notify.show('Profile loaded', 'success', 700)
         } else {
           notify.show('Error loading profile details? :/', 'error', 2000)
         }
-      }
-    )
+      })
   }
 
   handleSubmit (event) {
     var $ = window.$
     event.preventDefault()
+    var component = this
     _authService.finish(
       this.refs.firstName.value,
       this.refs.lastName.value,
-      this.refs.location.value,
-      function (res) {
+      this.refs.location.value)
+      .then((res) => {
         if (res.profileComplete) {
           $('#profileModal').modal('hide')
           notify.show('Profile Edited Successfully', 'success', 2000)
         } else {
-          notify.show('Errors submitting profile :()', 'error', 2000)
+          notify.show('Errors submitting profile :(', 'error', 2000)
+          this.setState({
+            errors: component.handleErrors(res.errors)
+          })
         }
       }
     )
+  }
+
+  handleErrors (errors) {
+    var arr = []
+    for (let error in errors) {
+      var div = error
+      var errorArr = errors[error]
+      for (let err in errorArr) {
+        arr.push({
+          div: div,
+          message: errorArr[err]
+        })
+      }
+    }
+    return arr
   }
 
   onImageDrop (files) {
@@ -100,15 +119,36 @@ class ProfileForm extends Component {
               <img className='img-fluid' src={this.state.avatarUrl} />
             </div>}
         </Dropzone>
+        { renderErrors(this.state.errors, 'avatar') }
         <form onSubmit={this.handleSubmit}>
           <label><input ref='firstName' placeholder='First Name' /></label>
+          { renderErrors(this.state.errors, 'first_name') }
           <label><input ref='lastName' placeholder='Last Name' /></label>
+          { renderErrors(this.state.errors, 'last_name') }
           <label><input ref='location' placeholder='Location' /></label><br />
+          { renderErrors(this.state.errors, 'location') }
           <button className={this.spinnerClassToggle(this.state.loading)} type='submit'>Submit</button>
         </form>
       </div>
     )
   }
+}
+
+function renderErrors (errors, section) {
+  if (errors.length > 0) {
+    return errors.map((error, index) => (
+      error.div === section ? <Error key={index} error={error} /> : null
+  )) } else {
+    return []
+  }
+}
+
+const Error = ({error}) => {
+  return (
+    <div className='alert alert-danger' role='alert'>
+      <strong>{error.message}</strong>
+    </div>
+    )
 }
 
 export default ProfileForm

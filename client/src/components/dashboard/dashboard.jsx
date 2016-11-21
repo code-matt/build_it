@@ -105,13 +105,14 @@ class Dashboard extends Component {
   newJobCB () {
     var $ = window.$
     if (_authService.loggedIn()) {
-      _authService.check(function (finished) {
-        if (finished) {
-          $('#newJobModal').modal('show')
-        } else {
-          $('#profileModal').modal('show')
-        }
-      })
+      _authService.check()
+        .then((res) => {
+          if (res.response.status === 'true') {
+            $('#newJobModal').modal('show')
+          } else {
+            $('#profileModal').modal('show')
+          }
+        })
     } else {
       $('#signupModal').modal('show')
     }

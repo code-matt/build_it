@@ -14,12 +14,17 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 7 }, if: :should_validate?
   validates :email, uniqueness: true
   validates :email, email: true
+  validates_presence_of :avatar, :first_name, :last_name, if: :should_details_validate?
 
   has_many :signups
   has_many :jobs, through: :signups
 
   def should_validate?
     new_record?
+  end
+
+  def should_details_validate?
+    !new_record?
   end
 
   has_many :contracts

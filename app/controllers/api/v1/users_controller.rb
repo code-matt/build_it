@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
     user = current_user
     file = params["file"]
     user.avatar = file
-    user.save
+    user.save(:validate => false)
     render json: {
       url: user.avatar.url(:marker),
       upload: user.avatar.url
@@ -48,7 +48,7 @@ class Api::V1::UsersController < ApplicationController
       user.save
       render json: test_profile(current_user)
     else
-      render json: user.errors.full_messages.to_json
+      render json: {errors: user.errors.to_json}
     end
   end
 

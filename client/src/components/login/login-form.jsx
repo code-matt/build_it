@@ -20,19 +20,21 @@ class LoginForm extends Component {
     const pass = this.refs.pass.value
     const $ = window.$
 
-    _authService.login(email, pass, (loggedIn, errors) => {
-      if (localStorage.token) {
-        this.props.loginCB(true)
-        this.setState({errors: []})
-        $('#signupModal').modal('hide')
-        notify.show('Login Successful!', 'success', 2000)
-      } else {
-        this.props.loginCB(false)
-        this.setState({errors: errors})
-        notify.show('Login Failure :(', 'error', 2000)
-      }
-    })
+    _authService.login(email, pass)
+      .then((res) => {
+        if (localStorage.token) {
+          this.props.loginCB(true)
+          this.setState({errors: []})
+          $('#signupModal').modal('hide')
+          notify.show('Login Successful!', 'success', 2000)
+        } else {
+          this.props.loginCB(false)
+          this.setState({errors: res.errors})
+          notify.show('Login Failure :(', 'error', 2000)
+        }
+      })
   }
+
   render () {
     return (
       <div className='container'>

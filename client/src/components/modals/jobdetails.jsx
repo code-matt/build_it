@@ -23,7 +23,6 @@ class JobModal extends Component {
         _jobService.signedupcheck(props.selectedJob.id)
                 .then((res) => {
                   if (res.contract) {
-                    console.log('contract found')
                     component.setState({
                       contract: res.contract
                     })
@@ -32,7 +31,6 @@ class JobModal extends Component {
                       contract: res.contract
                     })
                   } else {
-                    console.log('contract not found')
                     component.setState({
                       contract: undefined
                     })

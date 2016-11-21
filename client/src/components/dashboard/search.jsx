@@ -18,6 +18,7 @@ class SearchBox extends Component {
     })
   }
 
+  // not used yet
   updateHistory (address) {
     var history = localStorage.searchHistory
     history.pop()

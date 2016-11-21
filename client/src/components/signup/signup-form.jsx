@@ -17,18 +17,19 @@ class SignUpForm extends Component {
     const pass = this.refs.pass.value
     var component = this
 
-    _authService.create(email, pass, (loggedIn, errors, err) => {
-      if (localStorage.token) {
-        $('#signupModal').modal('hide')
-        notify.show('SignUp Successful!', 'success', 2000)
-        this.props.loginCB(true)
-      } else {
-        notify.show('SignUp Failure! :()', 'error', 2000)
-        component.setState({
-          errors: component.handleErrors(errors.errors)
-        })
-      }
-    })
+    _authService.create(email, pass)
+      .then((res) => {
+        if (res.status === 'success') {
+          $('#signupModal').modal('hide')
+          notify.show('SignUp Successful!', 'success', 2000)
+          this.props.loginCB(true)
+        } else {
+          notify.show('SignUp Failure! :()', 'error', 2000)
+          component.setState({
+            errors: component.handleErrors(res.errors)
+          })
+        }
+      })
   }
   handleErrors (errors) {
     var arr = []
