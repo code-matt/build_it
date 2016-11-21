@@ -54,8 +54,7 @@ class JobModal extends Component {
             {this.state.contract
               ? <Contract
                 ref='contract'
-                selectedJob={this.state.selectedJob}
-                contract={this.state.contract} />
+                selectedJob={this.state.selectedJob} />
               : <JobDetails
                 ref='job'
                 selectedJob={this.state.selectedJob} />}

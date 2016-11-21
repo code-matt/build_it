@@ -41,7 +41,7 @@ module.exports = {
         return responseJson
       })
   },
-  signup (jobId) {
+  signup (jobId, proposal) {
     return fetch('http://localhost:3000/api/v1/signup', {
       method: 'POST',
       headers: {
@@ -49,7 +49,8 @@ module.exports = {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        jobId: jobId
+        jobId: jobId,
+        contract: {proposal: proposal}
       })
     }).then((response) => response.json())
       .then((responseJson) => {
@@ -64,7 +65,10 @@ module.exports = {
       }
     }).then((response) => response.json())
       .then((responseJson) => {
-        return responseJson
+        debugger
+        return {
+          contract: JSON.parse(responseJson.contract)
+        }
       })
   }
 }

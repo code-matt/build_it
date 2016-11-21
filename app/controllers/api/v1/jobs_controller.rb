@@ -17,11 +17,11 @@ module Api
         user = current_user
         owner = job.user
         if(owner != user)
-          Contract.create(
-            employee: user,
-            job: job,
-            user: owner
-          )
+          contract = Contract.new(contract_params)
+          contract.employee = user
+          contract.job = job
+          contract.user = user
+          contract.save
           render json: {status: 'success'}
         else
           render json: {status: 'fail'}
@@ -70,6 +70,10 @@ module Api
 
       def job_params
         params.require(:job).permit(:title, :description, :address, :hourly_rate)
+      end
+
+      def contract_params
+        params.require(:contract).permit(:proposal)
       end
 
     end

@@ -9,13 +9,6 @@ class Contract extends Component {
     }
   }
 
-  componentWillReceiveProps (props) {
-    this.setState({
-      selectedJob: props.selectedJob,
-      contract: props.contract
-    })
-  }
-
   render () {
     return (
       <div>
@@ -25,6 +18,10 @@ class Contract extends Component {
               {this.state.selectedJob.title}
               <br />
               {this.state.selectedJob.description}
+              <br />
+              {this.state.contract.proposal
+                ? this.state.contract.proposal
+                : null}
               <br />
             </div>
             <div>

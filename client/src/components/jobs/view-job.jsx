@@ -16,14 +16,22 @@ class JobDetails extends Component {
   handleSignUp (event) {
     var $ = window.$
     event.preventDefault()
-    _jobService.signup(
-      this.state.selectedJob.id
-    ).then((res) => {
-      if (res.status === 'success') {
-        $('#jobModal').modal('hide')
-        notify.show('signup successful', 'success', 2000)
+    var _this = this
+    _authService.check()
+    .then((res) => {
+      if (res.response.status === 'true') {
+        _jobService.signup(_this.state.selectedJob.id, _this.refs.proposal.value)
+        .then((res) => {
+          if (res.status === 'success') {
+            $('#jobModal').modal('hide')
+            notify.show('Proposal sent', 'success', 2000)
+          } else {
+            notify.show('Error sending proposal :())', 'error', 2000)
+          }
+        })
       } else {
-        notify.show('Error with signup :( ut oh)', 'error', 2000)
+        notify.show('You need to complete your profile before you submit a proposal', 'error', 8000)
+        $('#profileModal').modal('show')
       }
     })
   }
@@ -68,7 +76,7 @@ class JobDetails extends Component {
                     <li className='list-group-item'><i className='fa fa-money fa-3x' aria-hidden='true' /><span className='details-li'>{this.state.selectedJob.hourly_rate / 100 + '$/hr'}</span></li>
                   </ul>
                   <div className='text-md-center'>
-                    <textarea rows='9' className='proposal' ref='description' placeholder='Enter a proposal for this jobs owner..' />
+                    <textarea rows='9' className='proposal' ref='proposal' placeholder='Enter a proposal for this jobs owner..' />
                   </div>
                   {_authService.loggedIn()
                   ? this.checkIfOwnJob()
