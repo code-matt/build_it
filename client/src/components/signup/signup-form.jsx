@@ -22,7 +22,13 @@ class SignUpForm extends Component {
         if (res.status === 'success') {
           $('#signupModal').modal('hide')
           notify.show('SignUp Successful!', 'success', 2000)
-          this.props.loginCB(true)
+          _authService.login(email, pass)
+          .then((res) => {
+            console.log(res)
+            if (localStorage.token) {
+              component.props.loginCB(true)
+            }
+          })
         } else {
           notify.show('SignUp Failure! :()', 'error', 2000)
           component.setState({
