@@ -120,7 +120,7 @@ class Dashboard extends Component {
 
   focusJob (jobId) {
     if (jobId !== this.state.focusJob) {
-      // this.refs.map.soloMarkerInfo(jobId)
+      this.refs.map.soloMarkerInfo(jobId)
       for (let job in this.state.jobs) {
         var j = this.state.jobs[job]
         if (j.id === jobId) {

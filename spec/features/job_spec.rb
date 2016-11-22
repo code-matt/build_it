@@ -5,7 +5,7 @@ require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
 describe "jobs", js: true do
-  
+
   it "User with incomplete profile can not add job" do
     visit '/'
     find('.navbutton', :text => 'Login').click
