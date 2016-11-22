@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import _jobService from '../../network/jobs'
+import Notifications, {notify} from 'react-notify-toast'
 
 class Contract extends Component {
   constructor () {
@@ -7,6 +9,24 @@ class Contract extends Component {
       selectedJob: undefined,
       contract: undefined
     }
+    this.handleRemove = this.handleRemove.bind(this)
+  }
+
+  handleRemove (jobId) {
+    var $ = window.$
+    var component = this
+    _jobService.destroy(jobId)
+    .then((res) => {
+      if (res.status === 'success') {
+        $('#jobModal').modal('hide')
+        notify.show('Proposal successfully removed', 'success', 2000)
+        component.setState({
+          contract: undefined
+        })
+      } else {
+        console.log('Error withdrawing proposal')
+      }
+    })
   }
 
   render () {
@@ -44,6 +64,7 @@ class Contract extends Component {
                     </div>
                     : <div className='alert alert-warning text-md-center' role='alert'>
                       <strong>Pending<br />Your proposal has been sent but is waiting to be accepted or denied by this jobs owner.</strong>
+                      <div><button className='btn btn-warning job-signup-btn' onClick={() => this.handleRemove(this.state.selectedJob.id)}>Remove my proposal</button></div>
                     </div>}
                 </div>
               </div>

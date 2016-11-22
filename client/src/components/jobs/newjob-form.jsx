@@ -69,7 +69,7 @@ class NewJobForm extends Component {
           <label><textarea rows='8' ref='description' placeholder='Description' /></label><br />
           { renderErrors(this.state.errors, 'description') }
           Hourly Rate<br />
-          <label><CurrencyMaskedInput ref='rate' placeholder='0' /></label><br />
+          <label><CurrencyMaskedInput id='rate' ref='rate' placeholder='0' /></label><br />
           { renderErrors(this.state.errors, 'hourly_rate') }
           <button className='btn btn-primary' type='submit'>Submit Job</button>
         </form>

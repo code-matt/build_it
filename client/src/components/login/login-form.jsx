@@ -38,14 +38,14 @@ class LoginForm extends Component {
   render () {
     return (
       <div className='container'>
-        <div className='text-md-center signup'>
+        <div className='text-md-center login'>
           <div>
             <div className='smallHeader'>Already a member? Sign in</div>
             <form onSubmit={this.handleSubmit}>
               { renderErrors(this.state.errors, 'non-specific') }
               <label><input ref='email' placeholder='Valid Email' /></label>
               <label><input ref='pass' placeholder='Password' /></label><br />
-              <button className='btn btn-primary' type='submit'>login</button>
+              <button className='btn btn-primary' type='submit'>Login</button>
             </form>
           </div>
         </div>

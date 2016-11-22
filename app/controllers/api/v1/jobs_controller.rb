@@ -3,7 +3,7 @@ require 'open-uri'
 module Api
   module V1
     class JobsController < ApplicationController
-    before_action :authenticate_user, only: [:create, :signup, :is_signedup]
+    before_action :authenticate_user, only: [:create, :signup, :is_signedup, :remove_signup]
       def index
         coords = {lat: params["lat"], lng: params["lng"]}
         loc = Geokit::LatLng.new(coords[:lat],coords[:lng])
@@ -25,6 +25,18 @@ module Api
           render json: {status: 'success'}
         else
           render json: {status: 'fail'}
+        end
+      end
+
+      def remove_signup
+        job = Job.find(params["jobId"])
+        user = current_user
+        contracts = Contract.where(job:job, employee: user)
+        if contracts.length > 0
+          Contract.destroy(contracts[0].id)
+          render json: {status: 'success'}
+        else
+          render json: {contract: 'fail'}
         end
       end
 
@@ -55,6 +67,7 @@ module Api
           loc = Geocoder.search(params["job"]["address"])[0].coordinates
           job.lat = loc[0]
           job.lng = loc[1]
+          job.title = job.title.capitalize
           job.save
           render json: {status: 'success'}
         else

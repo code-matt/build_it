@@ -121,6 +121,7 @@ export default class JobsMap extends Component {
     controlText.style.paddingLeft = '5px';
     controlText.style.paddingRight = '5px';
     controlText.innerHTML = 'Add New Job';
+    controlUI.id = 'addjobbtn'
     controlUI.appendChild(controlText);
 
     controlUI.addEventListener('click', function() {

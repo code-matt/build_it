@@ -65,10 +65,20 @@ module.exports = {
       }
     }).then((response) => response.json())
       .then((responseJson) => {
-        debugger
         return {
           contract: JSON.parse(responseJson.contract)
         }
+      })
+  },
+  destroy (jobId) {
+    return fetch('http://localhost:3000/api/v1/removesignup?jobId=' + jobId, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        return responseJson
       })
   }
 }
