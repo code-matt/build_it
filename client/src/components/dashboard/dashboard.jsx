@@ -16,6 +16,7 @@ import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
 import FinishProfileModal from '../modals/finish-profile-guard'
 import JobModal from '../modals/jobdetails'
+import Search from '../../redux/containers/search'
 
 // toast
 import Notifications, {notify} from 'react-notify-toast'
@@ -89,11 +90,11 @@ class Dashboard extends Component {
         notify.show('Successfully logged out.', 'success', 2000)
         break
       case 'login':
-        browserHistory.push('/')
+        // browserHistory.push('/')
         $('#signupModal').modal('show')
         break
       case 'dashboard':
-        browserHistory.push('/dashboard')
+        // browserHistory.push('/dashboard')
         break
       case 'profile':
         $('#profileModal').modal('show')
@@ -119,8 +120,9 @@ class Dashboard extends Component {
   }
 
   focusJob (jobId) {
+    debugger
     if (jobId !== this.state.focusJob) {
-      this.refs.map.soloMarkerInfo(jobId)
+      // this.refs.map.soloMarkerInfo(jobId)
       for (let job in this.state.jobs) {
         var j = this.state.jobs[job]
         if (j.id === jobId) {
@@ -151,6 +153,7 @@ class Dashboard extends Component {
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
+            <Search />
             <NavBar loggedIn={this.state.loggedIn} navigateFunc={this.navigate.bind(this)} />
             <SearchBox searchFunc={this.handleSearch.bind(this)} />
             {this.state.jobs.length > 0

@@ -1,13 +1,31 @@
 import React, { Component } from 'react'
+
+// components
 import NavBar from './components/navbar/navbar'
+// import Dashboard from './components/dashboard/dashboard'
+import VisibleDashboard from './redux/containers/dashboard'
 import './App.css'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
 // import Login from './components/login/login'
-import Dashboard from './components/dashboard/dashboard'
+
+// router?artifact should prob be removed
 import { Router, Route, hashHistory, browserHistory} from 'react-router'
+
+// services
 import _authService from './network/auth'
+
+// toast
 import Notifications, {notify} from 'react-notify-toast'
+
+// redux
+import { connect }  from 'react-redux'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import buildItApp from './redux/reducers'
+
+const store = createStore(buildItApp,applyMiddleware(thunk))
 
 class App extends Component {
   constructor () {
@@ -24,10 +42,10 @@ class App extends Component {
         notify.show('Successfully logged out.', 'success', 2000)
         break
       case 'login':
-        browserHistory.push('/')
+        // browserHistory.push('/')
         break
       case 'dashboard':
-        browserHistory.push('/dashboard')
+        // browserHistory.push('/dashboard')
         break
     }
   }
@@ -43,9 +61,9 @@ class App extends Component {
         <div className='main'>
           <Notifications />
         </div>
-        <Router history={browserHistory}>
-          <Route path='/' component={Dashboard} />
-        </Router>
+        <Provider store={store}>
+          <VisibleDashboard />
+        </Provider>
       </div>
     )
   }
