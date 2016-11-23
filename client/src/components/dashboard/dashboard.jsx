@@ -120,7 +120,6 @@ class Dashboard extends Component {
   }
 
   focusJob (jobId) {
-    debugger
     if (jobId !== this.state.focusJob) {
       // this.refs.map.soloMarkerInfo(jobId)
       for (let job in this.state.jobs) {
