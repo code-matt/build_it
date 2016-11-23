@@ -30,7 +30,7 @@ class SignUpForm extends Component {
             }
           })
         } else {
-          notify.show('SignUp Failure! :()', 'error', 2000)
+          notify.show('SignUp Failure! :(', 'error', 2000)
           component.setState({
             errors: component.handleErrors(res.errors)
           })

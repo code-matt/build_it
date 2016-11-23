@@ -2,15 +2,8 @@ import React, { Component } from 'react'
 
 // components
 import NavBar from './components/navbar/navbar'
-// import Dashboard from './components/dashboard/dashboard'
 import VisibleDashboard from './redux/containers/dashboard'
 import './App.css'
-// import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
-// import Login from './components/login/login'
-
-// router?artifact should prob be removed
-import { Router, Route, hashHistory, browserHistory} from 'react-router'
 
 // services
 import _authService from './network/auth'
@@ -34,27 +27,11 @@ class App extends Component {
       loggedIn: false
     }
   }
-  navigate (data) {
-    var $ = window.$
-    switch (data) {
-      case 'logout':
-        _authService.logout()
-        notify.show('Successfully logged out.', 'success', 2000)
-        break
-      case 'login':
-        // browserHistory.push('/')
-        break
-      case 'dashboard':
-        // browserHistory.push('/dashboard')
-        break
-    }
-  }
   componentWillReceiveProps (nextProps) {
     this.setState({
       children: nextProps.children
     })
   }
-  // onEnter={requireAuth}
   render () {
     return (
       <div>

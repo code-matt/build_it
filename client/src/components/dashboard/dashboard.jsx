@@ -12,7 +12,6 @@ import JobsMap from '../map/map'
 
 // modals
 import NewJobModal from '../modals/newjob'
-import LoginModal from '../modals/login-only'
 import LoginSignupModal from '../modals/login-signup'
 import FinishProfileModal from '../modals/finish-profile-guard'
 import JobModal from '../modals/jobdetails'
@@ -90,11 +89,9 @@ class Dashboard extends Component {
         notify.show('Successfully logged out.', 'success', 2000)
         break
       case 'login':
-        // browserHistory.push('/')
         $('#signupModal').modal('show')
         break
       case 'dashboard':
-        // browserHistory.push('/dashboard')
         break
       case 'profile':
         $('#profileModal').modal('show')
@@ -120,6 +117,7 @@ class Dashboard extends Component {
   }
 
   focusJob (jobId) {
+    debugger
     if (jobId !== this.state.focusJob) {
       // this.refs.map.soloMarkerInfo(jobId)
       for (let job in this.state.jobs) {
@@ -172,7 +170,6 @@ class Dashboard extends Component {
             <JobModal
               selectedJob={this.state.selectedJob} />
             <NewJobModal />
-            <LoginModal />
             <LoginSignupModal loginCB={this.loginCB.bind(this)} />
             <FinishProfileModal ref='profileModal' />
           </div>

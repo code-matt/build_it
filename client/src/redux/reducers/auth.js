@@ -8,7 +8,7 @@ const token = (state, action) => {
       localStorage.token = action.token
       return action.token
     case 'LOGIN_FAIL':
-      localStorage.token = undefined
+      delete localStorage.token
       return action.token
     default:
       return state
