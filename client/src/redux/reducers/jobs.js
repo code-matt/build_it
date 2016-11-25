@@ -1,5 +1,36 @@
 const jobs = (state = [], action) => {
-  return state
+  switch (action.type) {
+    case 'SET_JOBS':
+      return action.jobs
+    default:
+      return state
+  }
 }
 
-export default jobs
+const searchLoc = (state = {lat: 0, lng: 0}, action) => {
+  switch (action.type) {
+    case 'SET_GEOCODED_SEARCH':
+      return action.searchLoc
+    case 'CHANGE_SEARCH_LOC_HOVER':
+      return action.searchLoc
+    default:
+      return state
+  }
+}
+
+const contract = (state = null, action) => {
+  switch(action.type) {
+    case 'CONTRACT_FOUND':
+      return action.contract
+    case 'CONTRACT_NOT_FOUND':
+      return null
+    default:
+      return state
+  }
+}
+
+export {
+  jobs,
+  searchLoc,
+  contract
+}
