@@ -61,7 +61,7 @@ class Modals extends Component {
           }
           submitProposalCB={this.handleProposal}
           removeProposalCB={this.handleRemoveProposal} />
-        <NewJobModal 
+        <NewJobModal
           errors={this.props.errors}
           modalsState={this.props.modalsState}
           valueChangeCB={this.handleValueChange.bind(this)}
@@ -71,12 +71,12 @@ class Modals extends Component {
             : () => this.props._uiActions.showNewJob()
           }
           submitJobCB={
-            (title, address, description, rate) => {
+            () => {
               this.props._jobActions.create(
-                this.props.modalsState.newJobModal.title,
-                this.props.modalsState.newJobModal.address,
-                this.props.modalsState.newJobModal.description,
-                this.props.modalsState.newJobModal.rate)
+              this.props.modalsState.newJobModal.title,
+              this.props.modalsState.newJobModal.address,
+              this.props.modalsState.newJobModal.description,
+              this.props.modalsState.newJobModal.rate)
             }
           } />
 
@@ -102,10 +102,11 @@ class Modals extends Component {
           errors={this.props.errors}
           profile={this.props.profile}
           valueChangeCB={this.handleValueChange.bind(this)}
-          editProfileCB={() => { this.props._authActions.editProfile(
-                this.props.modalsState.profileModal.firstName,
-                this.props.modalsState.profileModal.lastName,
-                this.props.modalsState.profileModal.location
+          editProfileCB={() => {
+            this.props._authActions.editProfile(
+            this.props.modalsState.profileModal.firstName,
+            this.props.modalsState.profileModal.lastName,
+            this.props.modalsState.profileModal.location
           ) }}
           changeModalCB={
             (value, fieldId, modal) => {

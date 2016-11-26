@@ -19,10 +19,6 @@ class Dashboard extends Component {
     this.handleShowJob = this.handleShowJob.bind(this)
   }
 
-  newJobCB () {
-    this.props._uiActions.showNewJob()
-  }
-
   handleNewJob () {
     this.props._uiActions.showNewJob()
   }
