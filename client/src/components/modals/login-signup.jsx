@@ -37,11 +37,14 @@ class LoginSignupModal extends Component {
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
-                  <button onClick={this.handleToggle}>close</button>
+                  <div className=''>
+                    <button onClick={this.handleToggle} className='closebutton btn btn-danger' href='#'>
+                      <i className='fa fa-window-close-o' /> Close</button>
+                  </div>
                   <div className='container'>
                     <div className='text-md-center login'>
                       <div>
-                        <div className='smallHeader'>Already a member? Sign in</div>
+                        <h3> Sign In </h3>
                         <form onSubmit={this.handleLogin}>
                           { renderErrors(this.props.errors.signup, 'non-specific') }
                           <label><input onChange={this.handleValueChange} id='loginEmail' ref='email' placeholder='Valid Email' /></label>
@@ -53,7 +56,7 @@ class LoginSignupModal extends Component {
                   </div>
                   <hr />
                   <div className='text-md-center signup'>
-                    <div className='smallHeader'>Sign Up!</div>
+                    <div className='smallHeader'><h3>Sign Up!</h3></div>
                     <form onSubmit={this.handleSignup}>
                       <label><input onChange={this.handleValueChange} id='signupEmail' ref='email' placeholder='Valid Email' /></label>
                       { renderErrors(this.props.errors.signup, 'email') }

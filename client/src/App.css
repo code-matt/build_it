@@ -31,6 +31,12 @@
   to { transform: rotate(360deg); }
 }
 
+.closebutton {
+  margin-top: 6px;
+  margin-right: 10px;
+  font-size: 13px;
+}
+
 .toast-notification {
   z-index: 1100 !important
 }

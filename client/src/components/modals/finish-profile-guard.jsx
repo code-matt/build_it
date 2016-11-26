@@ -62,7 +62,10 @@ class FinishProfileModal extends Component {
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
-                  <button onClick={this.handleToggle}>close</button>
+                  <div className='pull-right'>
+                    <button onClick={this.handleToggle} className='closebutton btn btn-danger' href='#'>
+                      <i className='fa fa-window-close-o' /> Close</button>
+                  </div>
                   <div className='text-md-center profileform'>
                     We need to know a little more about you..
                     <Dropzone

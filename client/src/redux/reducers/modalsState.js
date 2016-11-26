@@ -38,6 +38,14 @@ const modalsState = (state, action) => {
           [action.fieldId]: action.value
         }
       }
+    case 'CHANGE_MODAL_VIS':
+     return {
+        ...state,
+        [action.modal]: {
+          ...state[action.modal],
+            show: action.show
+        }
+      }
     case 'OPEN_LOGIN_MODAL':
       return {
         ...state,
