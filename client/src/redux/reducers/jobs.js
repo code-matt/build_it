@@ -29,7 +29,15 @@ const contract = (state = null, action) => {
   }
 }
 
-const selectedJob = (state = null, action) => {
+const selectedJob = (state, action) => {
+  if (!state) {
+    state = {
+      title: '',
+      description: '',
+      address: '',
+      rate: ''
+    }
+  }
   switch (action.type) {
     case 'SET_SELECTED_JOB':
       return action.selectedJob
