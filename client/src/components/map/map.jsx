@@ -57,7 +57,7 @@ export default class JobsMap extends Component {
         infoWindow.content,
         "click",
         function(){
-          component.props.showJobCB(this)
+          component.props.showJobCB(j.id)
         })
       arr.push({
         title: j.title,
@@ -134,7 +134,7 @@ export default class JobsMap extends Component {
   }
 
   handleMarkerClick(targetMarker) {
-    this.props.markerCB(targetMarker)
+    // this.props.markerCB(targetMarker)
     var map = this._mapComponent.context.googleMapObj
     targetMarker.infoWindow.open(map)
   }

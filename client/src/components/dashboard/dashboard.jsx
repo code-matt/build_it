@@ -16,6 +16,7 @@ class Dashboard extends Component {
   constructor () {
     super()
     this.handleNewJob = this.handleNewJob.bind(this)
+    this.handleShowJob = this.handleShowJob.bind(this)
   }
 
   newJobCB () {
@@ -24,6 +25,13 @@ class Dashboard extends Component {
 
   handleNewJob () {
     this.props._uiActions.showNewJob()
+  }
+
+  handleShowJob (jobId) {
+    this.props._uiActions.showJob(
+      jobId,
+      this.props.jobs
+    )
   }
 
   render () {
@@ -45,7 +53,8 @@ class Dashboard extends Component {
                   ref='map'
                   center={this.props.searchLoc}
                   jobs={this.props.jobs}
-                  newJobCB={this.handleNewJob} />
+                  newJobCB={this.handleNewJob}
+                  showJobCB={this.handleShowJob} />
               </div>
             </div>
           </div>
