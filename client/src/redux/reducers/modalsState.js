@@ -118,6 +118,14 @@ const modalsState = (state, action) => {
           show: 'hide'
         }
       }
+    case 'EDIT_PROFILE_PICTURE':
+      return {
+        ...state,
+        profileModal: {
+          ...state.profileModal,
+          picUrl: action.picUrl
+        }
+      }
     case 'JOB_SIGNUP_SUCCESS':
       return {
         ...state,

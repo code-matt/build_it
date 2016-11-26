@@ -106,7 +106,8 @@ class Modals extends Component {
             this.props._authActions.editProfile(
             this.props.modalsState.profileModal.firstName,
             this.props.modalsState.profileModal.lastName,
-            this.props.modalsState.profileModal.location
+            this.props.modalsState.profileModal.location,
+            this.props.modalsState.profileModal.picUrl
           ) }}
           changeModalCB={
             (value, fieldId, modal) => {

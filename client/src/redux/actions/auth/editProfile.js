@@ -18,7 +18,7 @@ export const editProfileActionHasErrors = (errors) => ({
   errors: errors
 })
 
-function editProfile (firstName, lastName, location) {
+function editProfile (firstName, lastName, location, picUrl) {
   return function (dispatch) {
     return fetch('http://localhost:3000/api/v1/edit_user', {
       method: 'POST',
@@ -39,11 +39,12 @@ function editProfile (firstName, lastName, location) {
       if (json.status === 'success') {
         notify.show("Edit Profile Success", "success", 2000)
         dispatch(editProfileActionSuccess())
-        dispatch(setProfileAction(firstName, lastName, location))
+        dispatch(setProfileAction(firstName, lastName, location, picUrl))
         setLocalProfile({
           firstName: json.firstName,
           lastName: json.lastName,
-          location: json.location
+          location: json.location,
+          picUrl: picUrl
         })
       } else {
         notify.show("Edit Profile Failure :(", "warning", 2000)
