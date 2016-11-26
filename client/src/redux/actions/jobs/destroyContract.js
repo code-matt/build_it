@@ -1,3 +1,5 @@
+import Notifications, {notify} from 'react-notify-toast'
+
 export const destroyContractSuccessAction = () => ({
   type: 'CONTRACT_DESTROY_SUCCESS'
 })
@@ -17,8 +19,10 @@ export default function destroyContract (jobId) {
     .then(response => response.json())
     .then(json => {
       if (json.status === 'success') {
+        notify.show('Pending proposal removed!', 'warning', 2000)
         dispatch(destroyContractSuccessAction())
       } else {
+        notify.show('Something is wrong:/ Proposal not removed', 'error', 2000)
         dispatch(destroyContractFailAction())
       }
     })
