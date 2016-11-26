@@ -77,21 +77,23 @@ class Modals extends Component {
               this.props.modalsState.newJobModal.address,
               this.props.modalsState.newJobModal.description,
               this.props.modalsState.newJobModal.rate)
-            }
-          } />
+            }}
+        />
 
         <LoginSignupModal
           modalsState={this.props.modalsState}
           errors={this.props.errors}
           valueChangeCB={this.handleValueChange.bind(this)}
-          loginCB={() => this.props._authActions.login(
+          loginCB={() => {
+            this.props._authActions.login(
             this.props.modalsState.signupModal.loginEmail,
             this.props.modalsState.signupModal.loginPassword
-          )}
-          signupCB={() => this.props._authActions.create(
+          ) }}
+          signupCB={() => {
+            this.props._authActions.create(
             this.props.modalsState.signupModal.signupEmail,
             this.props.modalsState.signupModal.signupPassword
-          )}
+          ) }}
           toggleCB={
             this.props.modalsState.signupModal.show === 'show'
             ? () => this.props._uiActions.closeLogin()
@@ -102,13 +104,14 @@ class Modals extends Component {
           errors={this.props.errors}
           profile={this.props.profile}
           valueChangeCB={this.handleValueChange.bind(this)}
-          editProfileCB={() => {
-            this.props._authActions.editProfile(
-            this.props.modalsState.profileModal.firstName,
-            this.props.modalsState.profileModal.lastName,
-            this.props.modalsState.profileModal.location,
-            this.props.modalsState.profileModal.picUrl
-          ) }}
+          editProfileCB={
+            () => {
+              this.props._authActions.editProfile(
+              this.props.modalsState.profileModal.firstName,
+              this.props.modalsState.profileModal.lastName,
+              this.props.modalsState.profileModal.location,
+              this.props.modalsState.profileModal.picUrl
+            ) }}
           changeModalCB={
             (value, fieldId, modal) => {
               this.props._modalsActions.changeModal(value, fieldId, modal)
