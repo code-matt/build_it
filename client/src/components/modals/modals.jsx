@@ -11,6 +11,7 @@ class Modals extends Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
     this.handleProposal = this.handleProposal.bind(this)
+    this.handleRemoveProposal = this.handleRemoveProposal.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -29,6 +30,13 @@ class Modals extends Component {
     this.props._jobActions.signup(
       this.props.selectedJob.id,
       this.props.modalsState.jobModal.proposal
+    )
+  }
+
+  handleRemoveProposal (event) {
+    event.preventDefault()
+    this.props._jobActions.destroyContract(
+      this.props.selectedJob.id
     )
   }
 
@@ -51,7 +59,8 @@ class Modals extends Component {
             ? () => this.props._uiActions.closeJob()
             : () => this.props._uiActions.showJob()
           }
-          submitProposalCB={this.handleProposal} />
+          submitProposalCB={this.handleProposal}
+          removeProposalCB={this.handleRemoveProposal} />
         <NewJobModal 
           errors={this.props.errors}
           modalsState={this.props.modalsState}

@@ -115,7 +115,7 @@ class JobModal extends Component {
                           </div>
                           : <div className='alert alert-warning text-md-center' role='alert'>
                             <strong>Pending<br />Your proposal has been sent but is waiting to be accepted or denied by this jobs owner.</strong>
-                            <div><button className='btn btn-warning job-signup-btn' onClick={() => this.handleRemove(this.props.selectedJob.id)}>Remove my proposal</button></div>
+                            <div><button className='btn btn-warning job-signup-btn' type='button' onClick={this.props.removeProposalCB}>Remove my proposal</button></div>
                           </div>}
                       </div>
                     </div>
@@ -132,7 +132,8 @@ class JobModal extends Component {
 JobModal.propTypes = {
   valueChangeCB: React.PropTypes.func,
   toggleCB: React.PropTypes.func,
-  submitProposalCB: React.PropTypes.func
+  submitProposalCB: React.PropTypes.func,
+  removeProposalCB: React.PropTypes.func
 }
 
 export default JobModal

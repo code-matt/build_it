@@ -24,6 +24,8 @@ const contract = (state = null, action) => {
       return action.contract
     case 'CONTRACT_NOT_FOUND':
       return null
+    case 'CONTRACT_DESTROY_SUCCESS':
+      return null
     default:
       return state
   }

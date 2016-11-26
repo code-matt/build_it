@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { showModal, changeModal, openLoginModalAction, closeLoginModalAction, openProfileModalAction, closeProfileModalAction, openNewJobModalAction, closeNewJobModalAction, showJob, closeJobModalAction } from '../actions/UI'
 import { login, create, editProfilePictureAction, editProfile } from '../actions/auth'
-import { addJob, signup } from '../actions/jobs'
+import { addJob, signup, destroyContract } from '../actions/jobs'
 import Modals from '../../components/modals/modals'
 
 const mapStateToProps = (state, ownProps) => {
@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       },
       signup: (jobId, proposal) => {
         dispatch(signup(jobId, proposal))
+      },
+      destroyContract: (jobId) => {
+        dispatch(destroyContract(jobId))
       }
     },
     _authActions: {
