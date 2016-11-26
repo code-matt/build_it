@@ -34,11 +34,10 @@ class FinishProfileModal extends Component {
     })
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.props.valueChangeCB(this.props.profile.firstName, 'firstName', 'profileModal')
     this.props.valueChangeCB(this.props.profile.lastName, 'lastName', 'profileModal')
     this.props.valueChangeCB(this.props.profile.location, 'location', 'profileModal')
-    this.props.valueChangeCB(this.props.profile.picUrl, 'picUrl', 'profileModal')
   }
 
   handleProfileEdit (event) {
@@ -63,7 +62,7 @@ class FinishProfileModal extends Component {
             <div className='container'>
               <div className='row'>
                 <div className='col-md-12'>
-                <button onClick={this.handleToggle}>close</button>
+                  <button onClick={this.handleToggle}>close</button>
                   <div className='text-md-center profileform'>
                     We need to know a little more about you..
                     <Dropzone
@@ -72,7 +71,7 @@ class FinishProfileModal extends Component {
                       accept='image/*'
                       onDrop={this.onImageDrop.bind(this)}>
                       {this.props.profile.picUrl === ''
-                        ? <div><p>Drop an image or click to select a file to upload.</p></div> 
+                        ? <div><p>Drop an image or click to select a file to upload.</p></div>
                         : <div>
                           <img className='img-fluid' src={this.props.profile.picUrl} />
                         </div>}
