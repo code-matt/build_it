@@ -32,13 +32,10 @@ class JobModal extends Component {
     } else {
       return (
         <div className='text-md-center'>
-
-            <button onClick={this.props.submitProposalCB} className='btn btn-primary job-signup-btn' type='button'>Submit Proposal</button>
-          
+          <button onClick={this.props.submitProposalCB} className='btn btn-primary job-signup-btn' type='button'>Submit Proposal</button>
         </div>
       )
     }
-    return null
   }
 
   render () {
@@ -75,8 +72,7 @@ class JobModal extends Component {
                           ? this.checkIfOwnJob()
                           : <div className='alert alert-danger error text-md-center' role='alert'>
                             <strong>You need to be logged in to sign up for jobs</strong>
-                            <div className='text-md-center'>
-                            </div>
+                            <div className='text-md-center' />
                           </div>}
                         </div>
                       </div>
