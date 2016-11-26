@@ -118,6 +118,14 @@ const modalsState = (state, action) => {
           show: 'hide'
         }
       }
+    case 'JOB_SIGNUP_SUCCESS':
+      return {
+        ...state,
+        jobModal: {
+          ...state.jobModal,
+          show: 'hide'
+        }
+      }
     default:
       return state
   }

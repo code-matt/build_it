@@ -6,12 +6,17 @@ class JobModal extends Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
     this.checkIfOwnJob = this.checkIfOwnJob.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleValueChange (event) {
     this.props.valueChangeCB(event.target.value, event.target.id, 'jobModal')
   }
 
+  handleSubmit (event) {
+    event.preventDefault()
+    this.props.submitProposalCB()
+  }
   handleToggle (event) {
     event.preventDefault()
     this.props.toggleCB()
@@ -26,7 +31,11 @@ class JobModal extends Component {
       )
     } else {
       return (
-        <div className='text-md-center'><button onClick={this.handleProposal} className='btn btn-primary job-signup-btn' >Submit Proposal</button></div>
+        <div className='text-md-center'>
+
+            <button onClick={this.props.submitProposalCB} className='btn btn-primary job-signup-btn' type='button'>Submit Proposal</button>
+          
+        </div>
       )
     }
     return null
@@ -67,7 +76,6 @@ class JobModal extends Component {
                           : <div className='alert alert-danger error text-md-center' role='alert'>
                             <strong>You need to be logged in to sign up for jobs</strong>
                             <div className='text-md-center'>
-                              <button className='btn btn-primary job-signup-btn' onClick={() => this.handleLogin()}>Login</button>
                             </div>
                           </div>}
                         </div>

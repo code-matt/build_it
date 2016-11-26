@@ -51,7 +51,7 @@ class Modals extends Component {
             ? () => this.props._uiActions.closeJob()
             : () => this.props._uiActions.showJob()
           }
-          submitProposalCB={this.handleProposal.bind(this)} />
+          submitProposalCB={this.handleProposal} />
         <NewJobModal 
           errors={this.props.errors}
           modalsState={this.props.modalsState}

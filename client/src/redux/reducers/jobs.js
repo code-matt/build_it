@@ -7,7 +7,7 @@ const jobs = (state = [], action) => {
   }
 }
 
-const searchLoc = (state = {lat: 0, lng: 0}, action) => {
+const searchLoc = (state = {lat: 42.370909999, lng: -71.236019}, action) => {
   switch (action.type) {
     case 'SET_GEOCODED_SEARCH':
       return action.searchLoc
