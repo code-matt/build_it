@@ -22,16 +22,6 @@ const errors = (state, action) => {
         ...state,
         signup: action.errors
       }
-    case 'EDIT_PROFILE_SUCCESS':
-      return {
-        ...state,
-        profile: {}
-      }
-    case 'EDIT_PROFILE_ERRORS':
-      return {
-        ...state,
-        profile: action.errors
-      }
     case 'ADD_JOB_SUCCESS':
       return {
         ...state,
@@ -42,11 +32,30 @@ const errors = (state, action) => {
         ...state,
         addJob: action.errors
       }
+    case 'EDIT_PROFILE_ERRORS':
+      return {
+        ...state,
+        profile: action.errors
+      }
+    case 'EDIT_PROFILE_SUCCESS':
+      return {
+        ...state,
+        profile: {}
+      }
+    case 'ADD_JOB_RETURNED_ERRORS':
+      return {
+        ...state,
+        addJob: action.errors
+      }
+    case 'ADD_JOB_SUCCESS':
+      return {
+        ...state,
+        addJob: {}
+      }
     default:
       return state
   }
 }
-
 export { 
   errors
 }

@@ -19,7 +19,7 @@ const searchLoc = (state = {lat: 0, lng: 0}, action) => {
 }
 
 const contract = (state = null, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'CONTRACT_FOUND':
       return action.contract
     case 'CONTRACT_NOT_FOUND':
@@ -29,8 +29,18 @@ const contract = (state = null, action) => {
   }
 }
 
+const selectedJob = (state = null, action) => {
+  switch (action.type) {
+    case 'SET_SELECTED_JOB':
+      return action.selectedJob
+    default:
+      return state
+  }
+}
+
 export {
   jobs,
   searchLoc,
-  contract
+  contract,
+  selectedJob
 }

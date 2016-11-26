@@ -1,9 +1,12 @@
+import login from './login'
+import parseErrors from '../../lib/parseErrors'
+
 export const createActionSuccess = () => ({
-  type: 'CREATE_SUCCESS'
+  type: 'CREATE_USER_SUCCESS'
 })
 
 export const createActionReturnedErrors = (errors) => ({
-  type: 'CREATE_ERRORS',
+  type: 'CREATE_USER_FORM_ERRORS',
   errors: errors
 })
 
@@ -28,10 +31,11 @@ function create (email, pass) {
     })
     .then(response => response.json())
     .then(json => {
-      if (!json.errors) {
+      if (json.status === 'success') {
         dispatch(createActionSuccess())
+        dispatch(login(email, pass))
       } else {
-        dispatch(createActionReturnedErrors(json.errors))
+        dispatch(createActionReturnedErrors(parseErrors(json.errors)))
       }
     }).catch(error => dispatch(createActionCriticalFail()))
   }

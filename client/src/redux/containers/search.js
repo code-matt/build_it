@@ -1,30 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchJobs } from '../actions'
+import { geocodeSearch } from '../actions/jobs'
 
-let Search = ({ dispatch }) => {
+let VisibleSearch = ({ dispatch }) => {
   let input
 
   return (
-    <div>
+    <div className='text-md-center'>
+      <hr />
+      <h4>Search</h4>
       <form onSubmit={e => {
         e.preventDefault()
         if (!input.value.trim()) {
           return
         }
-        dispatch(fetchJobs())
+        dispatch(geocodeSearch(input.value))
         input.value = ''
       }}>
         <input ref={node => {
           input = node
-        }} />
-        <button type='submit'>
-          Add Todo
-        </button>
+        }} placeholder='Valid Address' />
+        <button type='submit' className='btn btn-primary searchbtn'>Submit</button>
       </form>
+      <hr />
     </div>
   )
 }
-Search = connect()(Search)
+VisibleSearch = connect()(VisibleSearch)
 
-export default Search
+export default VisibleSearch

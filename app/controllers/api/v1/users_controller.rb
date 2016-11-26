@@ -48,7 +48,7 @@ class Api::V1::UsersController < ApplicationController
       user.save
       render json: test_profile(current_user)
     else
-      render json: {errors: user.errors.to_json}
+      render json: {errors: user.errors}
     end
   end
 

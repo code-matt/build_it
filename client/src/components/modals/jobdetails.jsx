@@ -1,68 +1,46 @@
 import React, { Component } from 'react'
 import JobDetails from '../jobs/view-job'
 import Contract from '../jobs/view-contract'
-import _jobService from '../../network/jobs'
-import _authService from '../../network/auth'
 
 class JobModal extends Component {
   constructor () {
     super()
-    this.state = {
-      selectedJob: undefined,
-      contract: undefined
-    }
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
+    this.handleToggle = this.handleToggle.bind(this)
   }
-  componentWillReceiveProps (props) {
-    var component = this
-    this.setState({
-      selectedJob: props.selectedJob
-    })
-    if (_authService.loggedIn()) {
-      if (props.selectedJob) {
-        _jobService.signedupcheck(props.selectedJob.id)
-                .then((res) => {
-                  if (res.contract) {
-                    component.setState({
-                      contract: res.contract
-                    })
-                    component.refs.contract.setState({
-                      selectedJob: props.selectedJob,
-                      contract: res.contract
-                    })
-                  } else {
-                    component.setState({
-                      contract: undefined
-                    })
-                    component.refs.job.setState({
-                      selectedJob: props.selectedJob
-                    })
-                  }
-                })
-      }
-    } else {
-      component.setState({
-        contract: undefined
-      })
-    }
+  handleToggle (event) {
+    event.preventDefault()
+    this.props.toggleCB()
   }
+
   render () {
     return (
-      <div id='jobModal' className='modal fade bs-example-modal-lg alerts' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel'>
+      <div id='jobModal' className='modal fade bs-example-modal-lg alerts' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel' data-backdrop='static' data-keyboard='false'>
         <div className='modal-dialog modal-lg' role='document'>
           <div className='modal-content'>
-            {this.state.contract
+            <button onClick={this.handleToggle}>close</button>
+            {this.props.contract
               ? <Contract
                 ref='contract'
-                selectedJob={this.state.selectedJob} />
+                selectedJob={this.props.selectedJob}
+                contract={this.props.contract} />
               : <JobDetails
                 ref='job'
-                selectedJob={this.state.selectedJob} />}
+                valueChangeCB={this.props.valueChangeCB}
+                selectedJob={this.props.selectedJob}
+                buildItId={this.props.buildItId}
+                token={this.props.token}
+                submitProposalCB={this.props.submitProposalCB} />}
           </div>
         </div>
       </div>
     )
   }
+}
+
+JobModal.propTypes = {
+  valueChangeCB: React.PropTypes.func,
+  toggleCB: React.PropTypes.func,
+  submitProposalCB: React.PropTypes.func
 }
 
 export default JobModal

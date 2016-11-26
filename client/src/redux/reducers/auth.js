@@ -1,3 +1,7 @@
+import clearLocalProfile from '../lib/profile'
+import setLocalProfile from '../lib/profile'
+
+
 const token = (state, action) => {
   var localStorage = window.localStorage
   if (!state) {
@@ -53,13 +57,34 @@ const profileComplete = (state, action) => {
 }
 
 const profile = (state, action) => {
+  var localStorage = window.localStorage
   if (!state) {
-    state = localStorage.profile || {}
+    if (localStorage.profile) {
+      state = JSON.parse(localStorage.profile)
+    } else {
+      state = {
+        picUrl: '',
+        firstName: '',
+        lastName: '',
+        location: ''
+      }
+    }
   }
   switch (action.type) {
+    case 'EDIT_PROFILE_PICTURE':
+      return {
+        ...state,
+        picUrl: action.picUrl
+      }
     case 'SET_PROFILE':
-      localStorage.profile = action.profile
-      return action.profile
+      if (action.profile.picUrl !== undefined) {
+        return action.profile
+      } else {
+        return {
+          ...action.profile,
+          picUrl: state.profile.picUrl
+        }
+      }
     case 'LOGIN_FAIL':
       delete localStorage.profile
       return {}
@@ -72,7 +97,7 @@ const profile = (state, action) => {
 }
 
 
-export { 
+export {
   token,
   buildItId,
   profileComplete,

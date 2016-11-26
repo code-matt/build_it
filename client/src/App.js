@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
-
-// components
-import NavBar from './components/navbar/navbar'
+// container
 import VisibleDashboard from './redux/containers/dashboard'
+
+// :i
 import './App.css'
 
-// services
-import _authService from './network/auth'
-
-// toast
+// toast // need to reimplement
 import Notifications, {notify} from 'react-notify-toast'
 
 // redux
-import { connect }  from 'react-redux'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
@@ -43,14 +39,6 @@ class App extends Component {
         </Provider>
       </div>
     )
-  }
-}
-function requireAuth (nextState, replace) {
-  if (!_authService.loggedIn()) {
-    replace({
-      pathname: '/',
-      state: { nextPathname: nextState.location.pathname }
-    })
   }
 }
 

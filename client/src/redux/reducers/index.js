@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { errors } from './formErrors.js'
-import { jobs, searchLoc, contract } from './jobs'
+import { jobs, searchLoc, contract, selectedJob } from './jobs'
 import { token, buildItId, profileComplete, profile } from './auth'
 import { modalsState } from './modalsState'
 
@@ -13,7 +13,8 @@ const buildItApp = combineReducers({
   profile,
   searchLoc,
   contract,
-  modalsState
+  modalsState,
+  selectedJob
 })
 
 export default buildItApp

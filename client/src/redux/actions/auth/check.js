@@ -16,13 +16,13 @@
           'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
       })
-    .then(response => response.json())
-    .then(json => {
-      if (json.status === 'true') {
-        dispatch(setProfileCompleteAction())
-      } else {
-        dispatch(setProfileIncompleteAction())
-      }
-    })
+      .then(response => response.json())
+      .then(json => {
+        if (json.status === 'true') {
+          dispatch(setProfileCompleteAction())
+        } else {
+          dispatch(setProfileIncompleteAction())
+        }
+      })
     }
   }

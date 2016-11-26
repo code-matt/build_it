@@ -1,4 +1,6 @@
 import { closeLoginModalAction } from '../UI'
+import { getProfile } from './getProfile'
+import getId from './id'
 
 export const loginActionSuccess = (jwt) => ({
   type: 'LOGIN_SUCCESS',
@@ -7,7 +9,11 @@ export const loginActionSuccess = (jwt) => ({
 
 export const loginActionFail = () => ({
   type: 'LOGIN_FAIL',
-  token: null
+  token: null,
+  error: [{
+    div: 'non-specific',
+    message: 'Username and or password do not match'
+  }]
 })
 
 function login (email, pass) {
@@ -27,6 +33,8 @@ function login (email, pass) {
     .then(response => response.json())
     .then(json => {
       dispatch(loginActionSuccess(json.jwt))
+      dispatch(getId())
+      dispatch(getProfile())
       dispatch(closeLoginModalAction())
     }).catch(error => dispatch(loginActionFail()))
   }

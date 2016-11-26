@@ -72,7 +72,7 @@ module Api
           render json: {status: 'success'}
         else
           if(valid_address)
-            render json: {errors: job.errors.full_messages}
+            render json: {errors: job.errors}
           else
             errors = job.errors
             errors["address"] = ["Address is invalid!"]

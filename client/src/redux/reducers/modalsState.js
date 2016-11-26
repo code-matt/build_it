@@ -23,6 +23,7 @@ const modalsState = (state, action) => {
         rate: ''
       },
       jobModal: {
+        proposal: '',
         show: 'hide'
       }
     }
@@ -50,6 +51,70 @@ const modalsState = (state, action) => {
         ...state,
         signupModal: {
           ...state.signupModal,
+          show: 'hide'
+        }
+      }
+    case 'OPEN_PROFILE_MODAL':
+      return {
+        ...state,
+        profileModal: {
+          ...state.profileModal,
+          show: 'show'
+        }
+      }
+    case 'CLOSE_PROFILE_MODAL':
+      return {
+        ...state,
+        profileModal: {
+          ...state.profileModal,
+          show: 'hide'
+        }
+      }
+    case 'OPEN_NEWJOB_MODAL':
+      return {
+        ...state,
+        newJobModal: {
+          ...state.newJobModal,
+          show: 'show'
+        }
+      }
+    case 'CLOSE_NEWJOB_MODAL':
+      return {
+        ...state,
+        newJobModal: {
+          ...state.newJobModal,
+          show: 'hide'
+        }
+      }
+    case 'ADD_JOB_SUCCESS':
+      return {
+        ...state,
+        newJobModal: {
+          ...state.newJobModal,
+          show: 'hide'
+        }
+      }
+    case 'OPEN_JOB_MODAL':
+      return {
+        ...state,
+        jobModal: {
+          ...state.jobModal,
+          show: 'show'
+        }
+      }
+    case 'CLOSE_JOB_MODAL':
+      return {
+        ...state,
+        jobModal: {
+          ...state.jobModal,
+          show: 'hide'
+        }
+      }
+    case 'EDIT_PROFILE_SUCCESS':
+      return {
+        ...state,
+        profileModal: {
+          ...state.profileModal,
           show: 'hide'
         }
       }
