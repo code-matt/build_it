@@ -1,3 +1,5 @@
+import Notifications, {notify} from 'react-notify-toast'
+
 import {setProfileAction} from './getProfile'
 import setLocalProfile from '../../lib/profile'
 import parseErrors from '../../lib/parseErrors'
@@ -35,6 +37,7 @@ function editProfile (firstName, lastName, location) {
     .then(response => response.json())
     .then(json => {
       if (json.status === 'success') {
+        notify.show("Edit Profile Success", "success", 2000)
         dispatch(editProfileActionSuccess())
         dispatch(setProfileAction(firstName, lastName, location))
         setLocalProfile({
@@ -43,6 +46,7 @@ function editProfile (firstName, lastName, location) {
           location: json.location
         })
       } else {
+        notify.show("Edit Profile Failure :(", "warning", 2000)
         dispatch(editProfileActionHasErrors(parseErrors(json.errors)))
       }
     })

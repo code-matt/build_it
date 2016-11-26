@@ -1,3 +1,5 @@
+import Notifications, {notify} from 'react-notify-toast'
+
 import { closeLoginModalAction } from '../UI'
 import { getProfile } from './getProfile'
 import getId from './id'
@@ -32,11 +34,15 @@ function login (email, pass) {
     })
     .then(response => response.json())
     .then(json => {
+      notify.show('Login Successful!', 'success', 2000)
       dispatch(loginActionSuccess(json.jwt))
       dispatch(getId())
       dispatch(getProfile())
       dispatch(closeLoginModalAction())
-    }).catch(error => dispatch(loginActionFail()))
+    }).catch(error => {
+        notify.show('Login Failure :(', 'error', 2000)
+        dispatch(loginActionFail())
+      })
   }
 }
 

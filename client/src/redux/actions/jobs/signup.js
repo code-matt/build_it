@@ -1,3 +1,5 @@
+import Notifications, {notify} from 'react-notify-toast'
+
 export const jobSignupSuccessAction = () => ({
   type: 'JOB_SIGNUP_SUCCESS'
 })
@@ -22,8 +24,10 @@ export default function signup (jobId, proposal) {
     .then(response => response.json())
     .then(json => {
       if (json.status === 'success') {
+        notify.show('Proposal sent! Good luck.', 'success', 2000)
         dispatch(jobSignupSuccessAction())
       } else {
+        notify.show('Proposal not sent.. something is wrong:/', 'success', 2000)
         dispatch(jobSignupFailAction())
       }
     })

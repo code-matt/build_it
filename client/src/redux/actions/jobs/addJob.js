@@ -1,3 +1,4 @@
+import Notifications, {notify} from 'react-notify-toast'
 import parseErrors from '../../lib/parseErrors'
 
 export const createJobSuccessAction = () => ({
@@ -29,8 +30,10 @@ export default function addJob (title, address, description, rate) {
     .then(response => response.json())
     .then(json => {
       if (json.errors) {
+        notify.show("Errors with job submission :(", "error", 2000)
         dispatch(createJobErrorsAction(parseErrors(json.errors)))
       } else {
+        notify.show("WooHoo! Job added successfully!", "success", 2000)
         dispatch(createJobSuccessAction())
       }
     })

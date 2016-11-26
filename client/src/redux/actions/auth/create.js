@@ -1,3 +1,5 @@
+import Notifications, {notify} from 'react-notify-toast'
+
 import login from './login'
 import parseErrors from '../../lib/parseErrors'
 
@@ -32,9 +34,11 @@ function create (email, pass) {
     .then(response => response.json())
     .then(json => {
       if (json.status === 'success') {
+        notify.show('Welcome! Signup Successful.', 'success', 2000)
         dispatch(createActionSuccess())
         dispatch(login(email, pass))
       } else {
+        notify.show('Noooo! Errors with signup.', 'error', 2000)
         dispatch(createActionReturnedErrors(parseErrors(json.errors)))
       }
     }).catch(error => dispatch(createActionCriticalFail()))
