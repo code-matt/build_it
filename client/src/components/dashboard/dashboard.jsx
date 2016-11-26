@@ -13,10 +13,19 @@ import Notifications, {notify} from 'react-notify-toast'
 
 class Dashboard extends Component {
 
+  constructor () {
+    super()
+    this.handleNewJob = this.handleNewJob.bind(this)
+  }
+
   newJobCB () {
     this.props._uiActions.showNewJob()
   }
-  
+
+  handleNewJob () {
+    this.props._uiActions.showNewJob()
+  }
+
   render () {
     return (
       <div>
@@ -35,7 +44,8 @@ class Dashboard extends Component {
                 <JobsMap
                   ref='map'
                   center={this.props.searchLoc}
-                  jobs={this.props.jobs} />
+                  jobs={this.props.jobs}
+                  newJobCB={this.handleNewJob} />
               </div>
             </div>
           </div>

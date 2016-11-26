@@ -115,7 +115,7 @@ function showNewJob () {
         if (json.status === 'true') {
           dispatch(openNewJobModalAction())
         } else {
-          dispatch(closeNewJobModalAction())
+          dispatch(openProfileModalAction())
         }
       })
     } else {
