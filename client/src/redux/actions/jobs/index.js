@@ -4,7 +4,6 @@ import addJob from './addJob'
 import signup from './signup'
 import checkSignup from './checkSignup'
 import destroyContract from './destroyContract'
-import selectJob from './selectJob'
 
 export {
   getJobs,
@@ -12,6 +11,5 @@ export {
   addJob,
   signup,
   checkSignup,
-  destroyContract,
-  selectJob
+  destroyContract
 }

@@ -1,4 +1,4 @@
-import changeModal from './index'
+import {changeModal} from '.'
 
 function showNewJob () {
   return function (dispatch) {

@@ -1,8 +1,17 @@
-import changeModal from './index'
-import openJobModalAction from './index'
-import contractFoundAction from '../jobs/checkSignup'
-import contractNotFoundAction from '../jobs/checkSignup'
-import selectJob from '../../lib/selectJob'
+import {openJobModalAction, setSelectedJob} from '.'
+import {contractFoundAction, contractNotFoundAction} from '../jobs/checkSignup'
+
+function selectJob (id, jobs) {
+  return function (dispatch) {
+    for (let job in jobs) {
+      var j = jobs[job]
+      if (j.id === id) {
+        localStorage.job = j
+        dispatch(setSelectedJob(j))
+      }
+    }
+  }
+}
 
 function showJob (jobId, jobs) {
   return function (dispatch) {

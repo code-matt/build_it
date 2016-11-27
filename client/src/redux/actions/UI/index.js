@@ -6,9 +6,9 @@ const openJobModalAction = (jobId) => ({
   jobId: jobId
 })
 
-export const setSelectedJob = (job) => ({
+const setSelectedJob = (job) => ({
   type: 'SET_SELECTED_JOB',
-  selectJob: job
+  selectedJob: job
 })
 
 const hoverChangeSearchLocationAction = (location) => ({
@@ -27,6 +27,7 @@ const changeModal = (value, fieldId, modal) => ({
 })
 
 export {
+  setSelectedJob,
   openJobModalAction,
   changeModal,
   hoverChangeSearchLocationAction,

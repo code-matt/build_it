@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { login, getId, create, editProfile, checkProfileComplete, logout, getProfile } from '../actions/auth'
 import { getJobs, geocode, addJob, signup, checkSignup, destroyContract } from '../actions/jobs'
-import { openLoginModalAction, closeLoginModalAction, hoverChangeSearchLocationAction, showNewJob, showJob } from '../actions/UI'
+import { hoverChangeSearchLocationAction, showNewJob, showJob } from '../actions/UI'
 import Dashboard from '../../components/dashboard/dashboard'
 
 const mapStateToProps = (state, ownProps) => {
@@ -63,12 +63,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     _uiActions: {
-      showLogin: () => {
-        dispatch(openLoginModalAction())
-      },
-      hideLogin: () => {
-        dispatch(closeLoginModalAction())
-      },
       changeLocation: (coords) => {
         dispatch(hoverChangeSearchLocationAction(coords))
       },

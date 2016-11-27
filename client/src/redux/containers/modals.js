@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { showModal, changeModal, openLoginModalAction, closeLoginModalAction, openProfileModalAction, closeProfileModalAction, openNewJobModalAction, closeNewJobModalAction, showJob, closeJobModalAction } from '../actions/UI'
+import { changeModal, closeNewJobModalAction, showJob, closeJobModalAction } from '../actions/UI'
 import { login, create, editProfilePictureAction, editProfile } from '../actions/auth'
 import { addJob, signup, destroyContract } from '../actions/jobs'
 import Modals from '../../components/modals/modals'
@@ -52,8 +52,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       closeNewJob: () => {
         dispatch(closeNewJobModalAction())
       },
-      showJob: (id) => {
-        dispatch(showJob(id))
+      showJob: (id, jobs) => {
+        dispatch(showJob(id, jobs))
       },
       closeJob: () => {
         dispatch(closeJobModalAction())
