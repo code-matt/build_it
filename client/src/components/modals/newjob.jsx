@@ -25,28 +25,45 @@ class NewJobModal extends Component {
           <div className='modal-content'>
             <div className='row'>
               <div className='col-md-12'>
-                <div className='pull-right'>
-                  <button onClick={this.handleToggle} className='closebutton btn btn-danger' href='#'>
-                    <i className='fa fa-window-close-o' /> Close</button>
-                </div>
-                <div className='text-md-center job'>
-                  <form onSubmit={e => {
-                    e.preventDefault()
-                    this.props.submitJobCB()
-                  }}>
-                    <h4>Add New Job</h4>
-                    <hr />
-                    <label><input onChange={this.handleValueChange} id='title' ref='title' placeholder='Title' /></label><br />
-                    { renderErrors(this.props.errors.addJob, 'title') }
-                    <label><input onChange={this.handleValueChange} id='address' ref='address' placeholder='Valid Address' /></label><br />
-                    { renderErrors(this.props.errors.addJob, 'address') }
-                    <label><textarea onChange={this.handleValueChange} id='description' rows='8' ref='description' placeholder='Description' /></label><br />
-                    { renderErrors(this.props.errors.addJob, 'description') }
-                    Hourly Rate<br />
-                    <label><input onChange={this.handleValueChange} id='rate' ref='rate' placeholder='0' /></label><br />
-                    { renderErrors(this.props.errors.addJob, 'hourly_rate') }
-                    <button className='btn btn-primary' type='submit'>Submit Job</button>
-                  </form>
+                <div className='card'>
+                  <div className='card-header text-md-center'>
+                    <div className=''>
+                      <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
+                        <i className='fa fa-window-close-o'>
+                        </i>
+                      </div>
+                    </div>
+                    <h2>Add Job</h2>
+                  </div>
+                  <div className='text-md-center job'>
+                    <form onSubmit={e => {
+                      e.preventDefault()
+                      this.props.submitJobCB()
+                    }}>
+                      <ul className='list-group list-group-flush login-list'>
+                        <div class='input-group'>
+                          <span class='input-group-addon' id='basic-addon8'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='title' ref='title' placeholder='Title' type='text' class='form-control' aria-describedby='basic-addon8' />
+                        </div>
+                        <hr />
+                        { renderErrors(this.props.errors.addJob, 'title') }
+                        <div class='input-group'>
+                          <span class='input-group-addon' id='basic-addon9'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='address' ref='address' placeholder='Address' type='text' class='form-control' aria-describedby='basic-addon9' />
+                        </div>
+                        <hr />
+                        { renderErrors(this.props.errors.addJob, 'address') }
+                        <div class='input-group'>
+                          <textarea rows='10' onChange={this.handleValueChange} id='description' ref='description' placeholder='Description' type='text' />
+                        </div>
+                        { renderErrors(this.props.errors.addJob, 'description') }
+                        Hourly Rate<br />
+                        <label><input onChange={this.handleValueChange} id='rate' ref='rate' placeholder='0' /></label><br />
+                        { renderErrors(this.props.errors.addJob, 'hourly_rate') }
+                        <button className='btn btn-primary' type='submit'>Submit Job</button>
+                      </ul>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

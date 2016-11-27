@@ -90,9 +90,11 @@ class JobModal extends Component {
                 <div className='col-md-12'>
                   <div className='card'>
                     <div className='card-header'>
-                      <div className='pull-right'>
-                        <button onClick={this.handleToggle} className='closebutton btn btn-danger' href='#'>
-                          <i className='fa fa-window-close-o' /> Close</button>
+                      <div className=''>
+                        <div onClick={this.handleToggle} className='closebutton-lgmodal btn-danger' href='#'>
+                          <i className='fa fa-window-close-o'>
+                          </i>
+                        </div>
                       </div>
                       <h4>{this.props.selectedJob.title}</h4></div>
                     <div className='card-block'>

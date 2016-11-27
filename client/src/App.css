@@ -14,6 +14,14 @@
   color: white;
 }
 
+.login-button {
+  margin-top: 10px;
+}
+
+.login-list {
+  padding-top: 10px;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -32,9 +40,21 @@
 }
 
 .closebutton {
+  width: 15px;
+
   margin-top: 6px;
-  margin-right: 10px;
   font-size: 13px;
+  -webkit-transform: translate(221px,-10px);
+  cursor: pointer;
+}
+
+.closebutton-lgmodal {
+  width: 20px;
+  padding: 5px;
+  margin-top: 6px;
+  font-size: 13px;
+  -webkit-transform: translate(364px,-10px);
+  cursor: pointer;
 }
 
 .toast-notification {

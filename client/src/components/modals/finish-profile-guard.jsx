@@ -63,10 +63,12 @@ class FinishProfileModal extends Component {
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='card'>
-                    <div className='card-header'>
-                      <div className='pull-right'>
-                        <button onClick={this.handleToggle} className='closebutton btn btn-danger' href='#'>
-                          <i className='fa fa-window-close-o' /> Close</button>
+                    <div className='card-header text-md-center'>
+                      <div className=''>
+                        <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
+                          <i className='fa fa-window-close-o'>
+                          </i>
+                        </div>
                       </div>
                       <h4>Edit Profile</h4>
                     </div>
@@ -88,7 +90,7 @@ class FinishProfileModal extends Component {
                         </Dropzone>
                         { renderErrors(this.props.errors.profile, 'avatar') }
                         <form onSubmit={this.handleProfileEdit}>
-                          <ul className='list-group list-group-flush'>
+                          <ul className='list-group list-group-flush login-list'>
                             <div class='input-group'>
                               <span class='input-group-addon' id='basic-addon1'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
                               <input onChange={this.handleValueChange} id='firstName' ref='firstName' placeholder='First Name' defaultValue={this.props.profile.firstName} type='text' class='form-control' aria-describedby='basic-addon1' />
