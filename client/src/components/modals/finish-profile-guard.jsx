@@ -100,10 +100,10 @@ class FinishProfileModal extends Component {
                           accept='image/*'
                           onDrop={this.onImageDrop.bind(this)}>
                           {this.props.profile.picUrl || !this.isLoading()
-                          ? <div>
-                            <img className='img-fluid' src={this.props.profile.picUrl} />
-                          </div>
-                          : this.isLoading()
+                            ? <div>
+                              <img className='img-fluid' src={this.props.profile.picUrl} />
+                            </div>
+                            : this.isLoading()
                           }
                         </Dropzone>
                         { renderErrors(this.props.errors.profile, 'avatar') }
