@@ -13,18 +13,22 @@ module Api
       end
 
       def signup
-        job = Job.find(params["jobId"])
         user = current_user
-        owner = job.user
-        if(owner != user)
-          contract = Contract.new(contract_params)
-          contract.employee = user
-          contract.job = job
-          contract.user = user
-          contract.save
-          render json: {status: 'success'}
+        if !user.profile_finished
+          render json: {status: "profile_incomplete"}
         else
-          render json: {status: 'fail'}
+          job = Job.find(params["jobId"])
+          owner = job.user
+          if(owner != user)
+            contract = Contract.new(contract_params)
+            contract.employee = user
+            contract.job = job
+            contract.user = user
+            contract.save
+            render json: {status: 'success'}
+          else
+            render json: {status: 'fail'}
+          end
         end
       end
 

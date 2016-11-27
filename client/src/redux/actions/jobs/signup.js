@@ -1,4 +1,5 @@
 import {notify} from 'react-notify-toast'
+import {changeModal} from '../UI'
 
 export const jobSignupSuccessAction = () => ({
   type: 'JOB_SIGNUP_SUCCESS'
@@ -26,6 +27,9 @@ export default function signup (jobId, proposal) {
       if (json.status === 'success') {
         notify.show('Proposal sent! Good luck.', 'success', 2000)
         dispatch(jobSignupSuccessAction())
+      } else if (json.status === 'profile_incomplete') {
+        notify.show('Please finish your profile before submitting proposals', 'success', 3500)
+        dispatch(changeModal('show', 'show', 'profileModal'))
       } else {
         notify.show('Proposal not sent.. something is wrong:/', 'success', 2000)
         dispatch(jobSignupFailAction())
