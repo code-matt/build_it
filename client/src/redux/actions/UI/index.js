@@ -1,64 +1,15 @@
+import showJob from './showJob'
+import showNewJob from './showNewJob'
+
 const openJobModalAction = (jobId) => ({
   type: 'OPEN_JOB_MODAL',
   jobId: jobId
 })
 
-// /////////////////////////////////////////////////////////
-const contractFoundAction = (contract) => ({
-  type: 'CONTRACT_FOUND',
-  contract: contract
-})
-
-const contractNotFoundAction = (contract) => ({
-  type: 'CONTRACT_NOT_FOUND',
-  contract: null
-})
-
-const setSelectedJob = (job) => ({
+export const setSelectedJob = (job) => ({
   type: 'SET_SELECTED_JOB',
-  selectedJob: job
+  selectJob: job
 })
-
-function selectJob (id, jobs) {
-  return function (dispatch) {
-    for (let job in jobs) {
-      var j = jobs[job]
-      if (j.id === id) {
-        localStorage.job = j
-        dispatch(setSelectedJob(j))
-      }
-    }
-  }
-}
-
-function showJob (jobId, jobs) {
-  return function (dispatch) {
-    dispatch(selectJob(jobId, jobs))
-    if (localStorage.token) {
-      return fetch('http://localhost:3000/api/v1/signupcheck?jobId=' + jobId, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      })
-      .then(response => response.json())
-      .then(json => {
-        if (json.contract) {
-          dispatch(contractFoundAction(JSON.parse(json.contract)))
-          dispatch(openJobModalAction(jobId))
-        } else {
-          dispatch(contractNotFoundAction())
-          dispatch(openJobModalAction(jobId))
-        }
-      })
-    } else {
-      dispatch(contractNotFoundAction())
-      dispatch(openJobModalAction(jobId))
-    }
-  }
-}
-
-// ///////////////////////////
 
 const hoverChangeSearchLocationAction = (location) => ({
   type: 'CHANGE_SEARCH_LOC_HOVER',
@@ -75,30 +26,8 @@ const changeModal = (value, fieldId, modal) => ({
   modal: modal
 })
 
-function showNewJob () {
-  return function (dispatch) {
-    if (localStorage.token) {
-      return fetch('http://localhost:3000/api/v1/profilecheck/', {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      })
-      .then(response => response.json())
-      .then(json => {
-        if (json.status === 'true') {
-          dispatch(changeModal('show', 'show', 'newJobModal'))
-        } else {
-          dispatch(changeModal('show', 'show', 'profileModal'))
-        }
-      })
-    } else {
-      dispatch(changeModal('show', 'show', 'signupModal'))
-    }
-  }
-}
-
 export {
+  openJobModalAction,
   changeModal,
   hoverChangeSearchLocationAction,
   showNewJob,
