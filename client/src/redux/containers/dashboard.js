@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
-import { login, getId, create, editProfile, checkProfileComplete, logout, getProfile } from '../actions/auth'
-import { getJobs, geocode, addJob, signup, checkSignup, destroyContract } from '../actions/jobs'
+import { getJobs } from '../actions/jobs'
 import { hoverChangeSearchLocationAction, showNewJob, showJob } from '../actions/UI'
 import Dashboard from '../../components/dashboard/dashboard'
 
