@@ -12,7 +12,9 @@ function renderErrors (errors, section) {
 const Error = ({error}) => {
   return (
     <div className='alert alert-danger error' role='alert'>
-      <strong>{error.div} - {error.message}</strong>
+      {error.div === 'non-specific'
+      ? <strong>{error.message}</strong>
+      : <strong>{error.div} - {error.message}</strong>}
     </div>
     )
 }
