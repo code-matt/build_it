@@ -1,4 +1,4 @@
-import Notifications, {notify} from 'react-notify-toast'
+import {notify} from 'react-notify-toast'
 
 import {setProfileAction} from './getProfile'
 import setLocalProfile from '../../lib/profile'

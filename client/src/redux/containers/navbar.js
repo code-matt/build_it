@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { openLoginModalAction, closeLoginModalAction, openProfileModalAction, closeProfileModalAction, changeModal } from '../actions/UI'
+import { changeModal } from '../actions/UI'
 import { login, logout, getProfile } from '../actions/auth'
 import Navbar from '../../components/navbar/navbar'
 

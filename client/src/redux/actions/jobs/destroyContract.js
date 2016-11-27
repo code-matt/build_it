@@ -1,4 +1,4 @@
-import Notifications, {notify} from 'react-notify-toast'
+import {notify} from 'react-notify-toast'
 
 export const destroyContractSuccessAction = () => ({
   type: 'CONTRACT_DESTROY_SUCCESS'

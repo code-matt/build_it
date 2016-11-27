@@ -1,4 +1,4 @@
-import Notifications, {notify} from 'react-notify-toast'
+import {notify} from 'react-notify-toast'
 
 import login from './login'
 import parseErrors from '../../lib/parseErrors'

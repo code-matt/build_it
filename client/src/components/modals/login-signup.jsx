@@ -54,13 +54,13 @@ class LoginSignupModal extends Component {
                     <div className='card-block text-md-center'>
                       <form onSubmit={this.handleLogin}>
                         { renderErrors(this.props.errors.signup, 'non-specific') }     
-                        <div class='input-group'>
-                          <span class='input-group-addon' id='basic-addon4'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                          <input onChange={this.handleValueChange} id='loginEmail' ref='email' placeholder='Valid Email' type='text' class='form-control' aria-describedby='basic-addon4' />
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon4'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='loginEmail' ref='email' placeholder='Valid Email' type='text' className='form-control' aria-describedby='basic-addon4' />
                         </div>
-                        <div class='input-group'>
-                          <span class='input-group-addon' id='basic-addon5'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                          <input onChange={this.handleValueChange} id='loginPassword' ref='password' placeholder='Password' type='text' class='form-control' aria-describedby='basic-addon5' />
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon5'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='loginPassword' ref='password' placeholder='Password' type='text' className='form-control' aria-describedby='basic-addon5' />
                         </div>
                         <button className='btn btn-primary login-button' type='submit'>Login</button>
                       </form>
@@ -71,14 +71,14 @@ class LoginSignupModal extends Component {
                         <h3>Sign Up!</h3>
                       </div>
                       <form onSubmit={this.handleSignup}>
-                          <div class='input-group'>
-                            <span class='input-group-addon' id='basic-addon7'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                            <input onChange={this.handleValueChange} id='signupEmail' ref='email' placeholder='Valid Email' type='text' class='form-control' aria-describedby='basic-addon7' />
+                          <div className='input-group'>
+                            <span className='input-group-addon' id='basic-addon7'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                            <input onChange={this.handleValueChange} id='signupEmail' ref='email' placeholder='Valid Email' type='text' className='form-control' aria-describedby='basic-addon7' />
                           </div>
                           { renderErrors(this.props.errors.signup, 'email') }
-                          <div class='input-group'>
-                            <span class='input-group-addon' id='basic-addon6'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                            <input onChange={this.handleValueChange} id='signupPassword' ref='password' placeholder='Password' type='text' class='form-control' aria-describedby='basic-addon6' />
+                          <div className='input-group'>
+                            <span className='input-group-addon' id='basic-addon6'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                            <input onChange={this.handleValueChange} id='signupPassword' ref='password' placeholder='Password' type='text' className='form-control' aria-describedby='basic-addon6' />
                           </div>
                           { renderErrors(this.props.errors.signup, 'password') }
                         <button className='btn btn-primary login-button' type='submit'>SignUp</button>

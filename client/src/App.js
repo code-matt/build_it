@@ -6,7 +6,7 @@ import VisibleDashboard from './redux/containers/dashboard'
 import './App.css'
 
 // toast // need to reimplement
-import Notifications, {notify} from 'react-notify-toast'
+import Notifications from 'react-notify-toast'
 
 // redux
 import { Provider } from 'react-redux'

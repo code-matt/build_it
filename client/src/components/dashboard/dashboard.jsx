@@ -8,9 +8,6 @@ import VisibleSearch from '../../redux/containers/search'
 import VisibleModals from '../../redux/containers/modals'
 import VisibleNavbar from '../../redux/containers/navbar'
 
-// toast
-import Notifications, {notify} from 'react-notify-toast'
-
 class Dashboard extends Component {
 
   constructor () {

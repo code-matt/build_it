@@ -1,4 +1,4 @@
-import Notifications, {notify} from 'react-notify-toast'
+import {notify} from 'react-notify-toast'
 
 import { changeModal } from '../UI'
 import { getProfile } from './getProfile'

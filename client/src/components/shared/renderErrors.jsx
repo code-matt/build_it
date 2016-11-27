@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 function renderErrors (errors, section) {
   if (errors.length > 0) {

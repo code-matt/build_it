@@ -26,11 +26,6 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
 
 export default class JobsMap extends Component {
 
-  constructor () {
-    super()
-    this.soloMarkerInfo = this.soloMarkerInfo.bind(this)
-  }
-
   state = {
     markers: [],
     map: null

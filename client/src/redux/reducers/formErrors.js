@@ -47,16 +47,6 @@ const errors = (state, action) => {
         ...state,
         profile: {}
       }
-    case 'ADD_JOB_RETURNED_ERRORS':
-      return {
-        ...state,
-        addJob: action.errors
-      }
-    case 'ADD_JOB_SUCCESS':
-      return {
-        ...state,
-        addJob: {}
-      }
     default:
       return state
   }

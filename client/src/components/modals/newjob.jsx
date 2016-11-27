@@ -41,19 +41,19 @@ class NewJobModal extends Component {
                       this.props.submitJobCB()
                     }}>
                       <ul className='list-group list-group-flush login-list'>
-                        <div class='input-group'>
-                          <span class='input-group-addon' id='basic-addon8'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                          <input onChange={this.handleValueChange} id='title' ref='title' placeholder='Title' type='text' class='form-control' aria-describedby='basic-addon8' />
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon8'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='title' ref='title' placeholder='Title' type='text' className='form-control' aria-describedby='basic-addon8' />
                         </div>
                         <hr />
                         { renderErrors(this.props.errors.addJob, 'title') }
-                        <div class='input-group'>
-                          <span class='input-group-addon' id='basic-addon9'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                          <input onChange={this.handleValueChange} id='address' ref='address' placeholder='Address' type='text' class='form-control' aria-describedby='basic-addon9' />
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon9'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='address' ref='address' placeholder='Address' type='text' className='form-control' aria-describedby='basic-addon9' />
                         </div>
                         <hr />
                         { renderErrors(this.props.errors.addJob, 'address') }
-                        <div class='input-group'>
+                        <div className='input-group'>
                           <textarea rows='10' onChange={this.handleValueChange} id='description' ref='description' placeholder='Description' type='text' />
                         </div>
                         { renderErrors(this.props.errors.addJob, 'description') }
