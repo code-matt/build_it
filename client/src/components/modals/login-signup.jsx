@@ -71,16 +71,16 @@ class LoginSignupModal extends Component {
                         <h3>Sign Up!</h3>
                       </div>
                       <form onSubmit={this.handleSignup}>
-                          <div className='input-group'>
-                            <span className='input-group-addon' id='basic-addon7'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                            <input onChange={this.handleValueChange} id='signupEmail' ref='email' placeholder='Valid Email' type='text' className='form-control' aria-describedby='basic-addon7' />
-                          </div>
-                          { renderErrors(this.props.errors.signup, 'email') }
-                          <div className='input-group'>
-                            <span className='input-group-addon' id='basic-addon6'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
-                            <input onChange={this.handleValueChange} id='signupPassword' ref='password' placeholder='Password' type='text' className='form-control' aria-describedby='basic-addon6' />
-                          </div>
-                          { renderErrors(this.props.errors.signup, 'password') }
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon7'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='signupEmail' ref='email' placeholder='Valid Email' type='text' className='form-control' aria-describedby='basic-addon7' />
+                        </div>
+                        { renderErrors(this.props.errors.signup, 'email') }
+                        <div className='input-group'>
+                          <span className='input-group-addon' id='basic-addon6'><i className='fa fa-id-badge fa-2x' aria-hidden='true' /></span>
+                          <input onChange={this.handleValueChange} id='signupPassword' ref='password' placeholder='Password' type='text' className='form-control' aria-describedby='basic-addon6' />
+                        </div>
+                        { renderErrors(this.props.errors.signup, 'password') }
                         <button className='btn btn-primary login-button' type='submit'>SignUp</button>
                       </form>
                     </div>
