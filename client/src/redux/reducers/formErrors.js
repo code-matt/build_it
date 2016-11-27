@@ -7,6 +7,11 @@ const errors = (state, action) => {
     }
   }
   switch (action.type) {
+    case 'LOGIN_SUCCESS':
+      return {
+        ...state,
+        signup: {}
+      }
     case 'LOGIN_FAIL':
       return {
         ...state,
