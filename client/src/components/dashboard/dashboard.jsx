@@ -17,10 +17,22 @@ class Dashboard extends Component {
     super()
     this.handleNewJob = this.handleNewJob.bind(this)
     this.handleShowJob = this.handleShowJob.bind(this)
+    this.componentWillMount = this.componentWillMount.bind(this)
   }
 
   handleNewJob () {
     this.props._uiActions.showNewJob()
+  }
+
+  componentWillMount () {
+    this.props._uiActions.changeLocation({
+      lat: 42.3600825,
+      lng: -71.0588801
+    })
+    this.props._jobActions.getJobs({
+      lat: 42.3600825,
+      lng: -71.0588801
+    })
   }
 
   handleShowJob (jobId) {
