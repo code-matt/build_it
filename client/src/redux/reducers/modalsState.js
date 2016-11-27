@@ -6,25 +6,29 @@ const modalsState = (state, action) => {
         loginEmail: '',
         loginPassword: '',
         signupEmail: '',
-        signupPassword: ''
+        signupPassword: '',
+        loading: false
       },
       profileModal: {
         show: 'hide',
         picUrl: '',
         firstName: '',
         lastName: '',
-        location: ''
+        location: '',
+        loading: false
       },
       newJobModal: {
         show: 'hide',
         title: '',
         address: '',
         description: '',
-        rate: ''
+        rate: '',
+        loading: false
       },
       jobModal: {
         proposal: '',
-        show: 'hide'
+        show: 'hide',
+        loading: false
       }
     }
   }

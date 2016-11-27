@@ -10,9 +10,11 @@ class FinishProfileModal extends Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.handleProfileEdit = this.handleProfileEdit.bind(this)
     this.handleValueChange = this.handleValueChange.bind(this)
+    this.isLoading = this.isLoading.bind(this)
   }
 
   onImageDrop (files) {
+    this.props.valueChangeCB(true, 'loading', 'profileModal')
     let upload = request.post('http://localhost:3000/api/v1/profilepic')
                         .field('file', files[0])
                         .set('Authorization', 'Bearer ' + localStorage.getItem('token'))
@@ -20,6 +22,7 @@ class FinishProfileModal extends Component {
     upload.end((err, response) => {
       if (err) {
         console.error(err)
+        this.props.uiActions.changeModal(false, 'loading', 'profileModal')
       }
 
       if (response.body.upload) {
@@ -30,8 +33,25 @@ class FinishProfileModal extends Component {
           'profileModal'
         )
         this.props.editPicCB(url)
+        this.props.valueChangeCB(false, 'loading', 'profileModal')
       }
     })
+  }
+
+  isLoading () {
+    if (this.props.modalsState.profileModal.loading) {
+      return (
+        <div>
+          <div className='fa fa-spinner fa-spin fa-3x' />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h5 className='text-md-center'>Click here or drop image to add profile picture</h5>
+        </div>
+      )
+    }
   }
 
   componentWillMount () {
@@ -66,8 +86,7 @@ class FinishProfileModal extends Component {
                     <div className='card-header text-md-center'>
                       <div className=''>
                         <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
-                          <i className='fa fa-window-close-o'>
-                          </i>
+                          <i className='fa fa-window-close-o' />
                         </div>
                       </div>
                       <h4>Edit Profile</h4>
@@ -80,13 +99,12 @@ class FinishProfileModal extends Component {
                           multiple={false}
                           accept='image/*'
                           onDrop={this.onImageDrop.bind(this)}>
-                          {this.props.profile.picUrl
+                          {this.props.profile.picUrl || !this.isLoading()
                           ? <div>
                             <img className='img-fluid' src={this.props.profile.picUrl} />
                           </div>
-                          : <div>
-                            <h5 className='text-md-center'>Click here or drop image to add profile picture</h5>
-                          </div>}
+                          : this.isLoading()
+                          }
                         </Dropzone>
                         { renderErrors(this.props.errors.profile, 'avatar') }
                         <form onSubmit={this.handleProfileEdit}>

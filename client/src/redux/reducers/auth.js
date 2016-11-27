@@ -1,7 +1,3 @@
-import clearLocalProfile from '../lib/profile'
-import setLocalProfile from '../lib/profile'
-
-
 const token = (state, action) => {
   var localStorage = window.localStorage
   if (!state) {
