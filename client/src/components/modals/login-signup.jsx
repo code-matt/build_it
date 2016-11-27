@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import renderErrors from '../shared/renderErrors'
 
+import './login-signup.css'
+
 class LoginSignupModal extends Component {
   constructor () {
     super()
@@ -45,7 +47,7 @@ class LoginSignupModal extends Component {
                           </i>
                         </div>
                       </div>
-                      <div className='text-md-center login'>
+                      <div className='text-md-center'>
                         <div>
                           <h3> Sign In </h3>
                         </div>

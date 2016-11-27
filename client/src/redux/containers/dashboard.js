@@ -19,47 +19,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    _authActions: {
-      login: (email, pass) => {
-        dispatch(login(email, pass))
-      },
-      getId: () => {
-        dispatch(getId())
-      },
-      create: (email, pass) => {
-        dispatch(create(email, pass))
-      },
-      editProfile: (firstName, lastName, loc) => {
-        dispatch(editProfile(firstName, lastName, loc))
-      },
-      checkProfileComplete: () => {
-        dispatch(checkProfileComplete())
-      },
-      logout: () => {
-        dispatch(logout())
-      },
-      getProfile: () => {
-        dispatch(getProfile())
-      }
-    },
     _jobActions: {
       getJobs: (coords) => {
         dispatch(getJobs(coords))
-      },
-      geocode: (address) => {
-        dispatch(geocode(address))
-      },
-      addJob: (title, description, address, rate) => {
-        dispatch(addJob(title, description, address, rate))
-      },
-      signup: (jobId, proposal) => {
-        dispatch(signup(jobId, proposal))
-      },
-      checkSignup: (jobId) => {
-        dispatch(checkSignup(jobId))
-      },
-      destroyContract: (jobId) => {
-        dispatch(destroyContract(jobId))
       }
     },
     _uiActions: {

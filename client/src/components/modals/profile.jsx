@@ -3,7 +3,9 @@ import Dropzone from 'react-dropzone'
 import request from 'superagent'
 import renderErrors from '../shared/renderErrors'
 
-class FinishProfileModal extends Component {
+import './profile.css'
+
+class EditProfileModal extends Component {
 
   constructor () {
     super()
@@ -124,7 +126,7 @@ class FinishProfileModal extends Component {
                               <input onChange={this.handleValueChange} id='location' ref='location' placeholder='Location' defaultValue={this.props.profile.location} type='text' className='form-control' aria-describedby='basic-addon2' />
                             </div>
                             { renderErrors(this.props.errors.profile, 'location') }
-                            <button className={'btn btn-primary searchbtn'} type='submit'>Submit</button>
+                            <button className={'btn btn-primary profilebtn'} type='submit'>Submit</button>
                           </ul>
                         </form>
                       </div>
@@ -140,10 +142,10 @@ class FinishProfileModal extends Component {
   }
 }
 
-FinishProfileModal.propTypes = {
+EditProfileModal.propTypes = {
   changeModalCB: React.PropTypes.func,
   editPicCB: React.PropTypes.func,
   editProfileCB: React.PropTypes.func
 }
 
-export default FinishProfileModal
+export default EditProfileModal

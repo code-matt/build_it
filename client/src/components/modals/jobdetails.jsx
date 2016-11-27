@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './jobdetails.css'
+
 class JobModal extends Component {
   constructor () {
     super()

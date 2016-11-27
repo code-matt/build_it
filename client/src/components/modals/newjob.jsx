@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import renderErrors from '../shared/renderErrors'
 import CurrencyMaskedInput from 'react-currency-masked-input'
 
+import './newJob.css'
+
 class NewJobModal extends Component {
   constructor () {
     super()

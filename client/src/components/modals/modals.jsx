@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import JobModal from './jobdetails'
-import FinishProfileModal from './finish-profile-guard'
+import EditProfileModal from './profile'
 import LoginSignupModal from './login-signup'
 import NewJobModal from './newjob'
 
@@ -87,7 +87,7 @@ class Modals extends Component {
             this.props.modalsState.signupModal.signupPassword
           ) }}
           closeCB={() => this.props._uiActions.changeModal('hide', 'show', 'signupModal')} />
-        <FinishProfileModal
+        <EditProfileModal
           modalsState={this.props.modalsState}
           errors={this.props.errors}
           profile={this.props.profile}

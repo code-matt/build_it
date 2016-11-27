@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 // components
 import JobsMap from '../map/map'
 
+// css
+import './dashboard.css'
+
 // containers
 import VisibleSearch from '../../redux/containers/search'
 import VisibleModals from '../../redux/containers/modals'

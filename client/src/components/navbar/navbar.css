@@ -1,0 +1,16 @@
+.navbuttons {
+  margin: 6px;
+}
+
+.navbutton {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.jobresult:hover{
+  background-color: #AAE7ED
+}
+
+.leftjob {
+  overflow: scroll;
+}
