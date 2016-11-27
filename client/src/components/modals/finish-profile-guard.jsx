@@ -73,11 +73,13 @@ class FinishProfileModal extends Component {
                       multiple={false}
                       accept='image/*'
                       onDrop={this.onImageDrop.bind(this)}>
-                      {this.props.profile.picUrl === ''
-                        ? <div><p>Drop an image or click to select a file to upload.</p></div>
-                        : <div>
-                          <img className='img-fluid' src={this.props.profile.picUrl} />
-                        </div>}
+                      {this.props.profile.picUrl
+                      ? <div>
+                        <img className='img-fluid' src={this.props.profile.picUrl} />
+                      </div>
+                      : <div>
+                        <h5 className='text-md-center'>Click here or drop image to add profile picture</h5>
+                      </div>}
                     </Dropzone>
                     { renderErrors(this.props.errors.profile, 'avatar') }
                     <form onSubmit={this.handleProfileEdit}>

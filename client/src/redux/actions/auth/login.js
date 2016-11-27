@@ -6,7 +6,7 @@ import getId from './id'
 
 export const loginActionSuccess = (jwt) => ({
   type: 'LOGIN_SUCCESS',
-  token: jwt
+  token: jwt,
 })
 
 export const loginActionFail = () => ({
@@ -18,7 +18,7 @@ export const loginActionFail = () => ({
   }]
 })
 
-function login (email, pass) {
+function login (email, pass, justSignedUp = false) {
   return function (dispatch) {
     return fetch('http://localhost:3000/api/v1/knock/auth_token', {
       method: 'POST',

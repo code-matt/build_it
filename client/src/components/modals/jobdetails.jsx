@@ -110,7 +110,7 @@ class JobModal extends Component {
                         <li className='list-group-item'><i className='fa fa-money fa-3x' aria-hidden='true' /><span className='details-li'>{this.props.selectedJob.hourly_rate / 100 + '$/hr'}</span></li>
                       </ul>
                       <div className='alert alert-success text-md-center'>
-                        Proposal
+                        <h5>Proposal</h5>
                         <hr />
                         {this.props.contract.proposal}
                         <hr />
