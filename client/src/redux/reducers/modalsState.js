@@ -38,62 +38,6 @@ const modalsState = (state, action) => {
           [action.fieldId]: action.value
         }
       }
-    case 'CHANGE_MODAL_VIS':
-     return {
-        ...state,
-        [action.modal]: {
-          ...state[action.modal],
-            show: action.show
-        }
-      }
-    case 'OPEN_LOGIN_MODAL':
-      return {
-        ...state,
-        signupModal: {
-          ...state.signupModal,
-          show: 'show'
-        }
-      }
-    case 'CLOSE_LOGIN_MODAL':
-      return {
-        ...state,
-        signupModal: {
-          ...state.signupModal,
-          show: 'hide'
-        }
-      }
-    case 'OPEN_PROFILE_MODAL':
-      return {
-        ...state,
-        profileModal: {
-          ...state.profileModal,
-          show: 'show'
-        }
-      }
-    case 'CLOSE_PROFILE_MODAL':
-      return {
-        ...state,
-        profileModal: {
-          ...state.profileModal,
-          show: 'hide'
-        }
-      }
-    case 'OPEN_NEWJOB_MODAL':
-      return {
-        ...state,
-        newJobModal: {
-          ...state.newJobModal,
-          show: 'show'
-        }
-      }
-    case 'CLOSE_NEWJOB_MODAL':
-      return {
-        ...state,
-        newJobModal: {
-          ...state.newJobModal,
-          show: 'hide'
-        }
-      }
     case 'ADD_JOB_SUCCESS':
       return {
         ...state,

@@ -11,7 +11,7 @@ class NewJobModal extends Component {
 
   handleToggle (event) {
     event.preventDefault()
-    this.props.toggleCB()
+    this.props.closeCB()
   }
 
   handleValueChange (event) {
@@ -77,7 +77,7 @@ class NewJobModal extends Component {
 NewJobModal.propTypes = {
   submitJobCB: React.PropTypes.func,
   valueChangeCB: React.PropTypes.func,
-  toggleCB: React.PropTypes.func
+  closeCB: React.PropTypes.func
 }
 
 export default NewJobModal

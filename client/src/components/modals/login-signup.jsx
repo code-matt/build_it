@@ -12,7 +12,7 @@ class LoginSignupModal extends Component {
 
   handleToggle (event) {
     event.preventDefault()
-    this.props.toggleCB()
+    this.props.closeCB()
   }
 
   handleLogin (event) {
@@ -101,6 +101,6 @@ LoginSignupModal.propTypes = {
   loginCB: React.PropTypes.func,
   signupCB: React.PropTypes.func,
   valueChangeCB: React.PropTypes.func,
-  toggleCB: React.PropTypes.func
+  closeCB: React.PropTypes.func
 }
 

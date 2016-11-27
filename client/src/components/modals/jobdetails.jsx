@@ -19,7 +19,7 @@ class JobModal extends Component {
   }
   handleToggle (event) {
     event.preventDefault()
-    this.props.toggleCB()
+    this.props.closeCB()
   }
 
   checkIfOwnJob () {
@@ -141,7 +141,7 @@ class JobModal extends Component {
 
 JobModal.propTypes = {
   valueChangeCB: React.PropTypes.func,
-  toggleCB: React.PropTypes.func,
+  closeCB: React.PropTypes.func,
   submitProposalCB: React.PropTypes.func,
   removeProposalCB: React.PropTypes.func
 }

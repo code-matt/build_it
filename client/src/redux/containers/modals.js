@@ -49,21 +49,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     _uiActions: {
-      showLogin: () => {
-        dispatch(openLoginModalAction())
-      },
-      closeLogin: () => {
-        dispatch(closeLoginModalAction())
-      },
-      showProfile: () => {
-        dispatch(openProfileModalAction())
-      },
-      closeProfile: () => {
-        dispatch(closeProfileModalAction())
-      },
-      showNewJob: () => {
-        dispatch(openNewJobModalAction())
-      },
       closeNewJob: () => {
         dispatch(closeNewJobModalAction())
       },
@@ -72,6 +57,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       },
       closeJob: () => {
         dispatch(closeJobModalAction())
+      },
+      changeModal: (value, fieldId, modal) => {
+        dispatch(changeModal(value, fieldId, modal))
       }
     }
   }

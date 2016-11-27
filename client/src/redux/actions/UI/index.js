@@ -1,31 +1,3 @@
-const openLoginModalAction = () => ({
-  type: 'OPEN_LOGIN_MODAL'
-})
-
-const closeLoginModalAction = () => ({
-  type: 'CLOSE_LOGIN_MODAL'
-})
-
-const openProfileModalAction = () => ({
-  type: 'OPEN_PROFILE_MODAL'
-})
-
-const closeProfileModalAction = () => ({
-  type: 'CLOSE_PROFILE_MODAL'
-})
-
-const openNewJobModalAction = () => ({
-  type: 'OPEN_NEWJOB_MODAL'
-})
-
-const closeNewJobModalAction = () => ({
-  type: 'CLOSE_NEWJOB_MODAL'
-})
-
-const closeJobModalAction = () => ({
-  type: 'CLOSE_JOB_MODAL'
-})
-
 const openJobModalAction = (jobId) => ({
   type: 'OPEN_JOB_MODAL',
   jobId: jobId
@@ -86,6 +58,8 @@ function showJob (jobId, jobs) {
   }
 }
 
+// ///////////////////////////
+
 const hoverChangeSearchLocationAction = (location) => ({
   type: 'CHANGE_SEARCH_LOC_HOVER',
   searchLoc: {
@@ -113,26 +87,20 @@ function showNewJob () {
       .then(response => response.json())
       .then(json => {
         if (json.status === 'true') {
-          dispatch(openNewJobModalAction())
+          dispatch(changeModal('show', 'show', 'newJobModal'))
         } else {
-          dispatch(openProfileModalAction())
+          dispatch(changeModal('show', 'show', 'profileModal'))
         }
       })
     } else {
-      dispatch(openLoginModalAction())
+      dispatch(changeModal('show', 'show', 'signupModal'))
     }
   }
 }
 
 export {
-  openLoginModalAction,
-  closeLoginModalAction,
-  closeProfileModalAction,
-  openProfileModalAction,
   changeModal,
   hoverChangeSearchLocationAction,
   showNewJob,
-  closeNewJobModalAction,
-  closeJobModalAction,
   showJob
 }

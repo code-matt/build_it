@@ -47,7 +47,7 @@ class FinishProfileModal extends Component {
 
   handleToggle (event) {
     event.preventDefault()
-    this.props.toggleCB()
+    this.props.closeCB()
   }
 
   handleValueChange (event) {

@@ -1,6 +1,6 @@
 import Notifications, {notify} from 'react-notify-toast'
 
-import { closeLoginModalAction } from '../UI'
+import { changeModal } from '../UI'
 import { getProfile } from './getProfile'
 import getId from './id'
 
@@ -38,7 +38,7 @@ function login (email, pass, justSignedUp = false) {
       dispatch(loginActionSuccess(json.jwt))
       dispatch(getId())
       dispatch(getProfile())
-      dispatch(closeLoginModalAction())
+      dispatch(changeModal('hide', 'show', 'signupModal'))
     }).catch(error => {
         notify.show('Login Failure :(', 'error', 2000)
         dispatch(loginActionFail())

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { openLoginModalAction, closeLoginModalAction, openProfileModalAction, closeProfileModalAction } from '../actions/UI'
+import { openLoginModalAction, closeLoginModalAction, openProfileModalAction, closeProfileModalAction, changeModal } from '../actions/UI'
 import { login, logout, getProfile } from '../actions/auth'
 import Navbar from '../../components/navbar/navbar'
 
@@ -12,17 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     _uiActions: {
-      showLogin: () => {
-        dispatch(openLoginModalAction())
-      },
-      closeLogin: () => {
-        dispatch(closeLoginModalAction())
-      },
-      showProfile: () => {
-        dispatch(openProfileModalAction())
-      },
-      closeProfile: () => {
-        dispatch(closeProfileModalAction())
+      changeModal: (value, fieldId, modal) => {
+        dispatch(changeModal(value, fieldId, modal))
       }
     },
     _authActions: {

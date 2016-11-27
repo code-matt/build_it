@@ -54,22 +54,14 @@ class Modals extends Component {
           contract={this.props.contract}
           selectedJob={this.props.selectedJob}
           token={this.props.token}
-          toggleCB={
-            this.props.modalsState.jobModal.show === 'show'
-            ? () => this.props._uiActions.closeJob()
-            : () => this.props._uiActions.showJob()
-          }
+          closeCB={() => this.props._uiActions.changeModal('hide', 'show', 'jobModal')}
           submitProposalCB={this.handleProposal}
           removeProposalCB={this.handleRemoveProposal} />
         <NewJobModal
           errors={this.props.errors}
           modalsState={this.props.modalsState}
           valueChangeCB={this.handleValueChange.bind(this)}
-          toggleCB={
-            this.props.modalsState.newJobModal.show === 'show'
-            ? () => this.props._uiActions.closeNewJob()
-            : () => this.props._uiActions.showNewJob()
-          }
+          closeCB={() => this.props._uiActions.changeModal('hide', 'show', 'newJobModal')}
           submitJobCB={
             () => {
               this.props._jobActions.create(
@@ -94,11 +86,7 @@ class Modals extends Component {
             this.props.modalsState.signupModal.signupEmail,
             this.props.modalsState.signupModal.signupPassword
           ) }}
-          toggleCB={
-            this.props.modalsState.signupModal.show === 'show'
-            ? () => this.props._uiActions.closeLogin()
-            : () => this.props._uiActions.showLogin()
-          } />
+          closeCB={() => this.props._uiActions.changeModal('hide', 'show', 'signupModal')} />
         <FinishProfileModal
           modalsState={this.props.modalsState}
           errors={this.props.errors}
@@ -122,11 +110,7 @@ class Modals extends Component {
               this.props._authActions.editProfilePic(url)
             }
           }
-          toggleCB={
-            this.props.modalsState.profileModal.show === 'show'
-            ? () => this.props._uiActions.closeProfile()
-            : () => this.props._uiActions.showProfile()
-          } />
+          closeCB={() => this.props._uiActions.changeModal('hide', 'show', 'profileModal')} />
       </div>
     )
   }
