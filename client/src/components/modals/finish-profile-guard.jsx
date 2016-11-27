@@ -99,7 +99,7 @@ class FinishProfileModal extends Component {
                           multiple={false}
                           accept='image/*'
                           onDrop={this.onImageDrop.bind(this)}>
-                          {this.props.profile.picUrl || !this.isLoading()
+                          {this.props.profile.picUrl && this.props.modalsState.profileModal.loading === false
                             ? <div>
                               <img className='img-fluid' src={this.props.profile.picUrl} />
                             </div>
