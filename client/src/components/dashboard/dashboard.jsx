@@ -89,14 +89,13 @@ const Job = ({job, parent, jobs}) => {
         lng: job.lng
       })}>
       <div className='card-block'>
-        <blockquote className='card-blockquote'>
-          <p>{job.description}</p>
-          <footer >
-            {job.address}
-            <br />
-            <br /><button onClick={() => parent.props._uiActions.showJob(job.id, jobs)} className='btn btn-primary'>{job.hourly_rate / 100 + '$/hr '}Details</button>
-          </footer>
-        </blockquote>
+        <h4 className='card-title'>{job.title}</h4>
+        <h6 className='card-subtitle text-muted'>{job.address}</h6>
+      </div>
+      <img className='searchresult-img' src={'https://builditreact.s3.amazonaws.com/uploads/user/avatar/' + job.user_id + '/image.png'} alt='Card image' />
+      <div className='card-block'>
+        <p className='card-text'>{job.description}</p>
+        <p><button onClick={() => parent.props._uiActions.showJob(job.id, jobs)} className='btn btn-primary'>{job.hourly_rate / 100 + '$/hr '}Details</button></p>
       </div>
     </div>
   )

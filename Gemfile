@@ -12,6 +12,8 @@ gem "fog-aws"
 gem 'carrierwave-aws'
 gem 'rmagick'
 gem "mini_magick"
+gem "forgery"
+
 
 #auth
 gem 'knock', '~> 1.5'

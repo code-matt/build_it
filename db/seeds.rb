@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 user = User.create(
   email: "qq@qq.com",
   password: "12345678", 
@@ -46,43 +47,35 @@ user3.avatar = file2
 user3.save
 user4.avatar = file3
 user4.save
-job1 = Job.create(title: "Plowing Job Title",
- description: "Plowing with my plow and plower bros in the snow.",
+job1 = Job.create(title: "Help plow next storm",
+ description: Forgery(:lorem_ipsum).words(17),
  user_id: user2.id,
- address: "33 Harrison Ave. Boston, Ma",
- lat: 42.3705967,
- lng: -71.23602439999999,
+ address: "77 Summer St, Boston MA",
+ lat: 42.3540205,
+ lng: -71.0588729,
  hourly_rate: "1000",
  pic_url: user2.avatar.url)
-job2 = Job.create(title: "Raking Job title",
- description: "Rake some leaves for me this fall!",
+job2 = Job.create(title: "Raking some leaves",
+ description: Forgery(:lorem_ipsum).words(14),
  user_id: user.id,
- address: "33 Harrison Ave. Boston, Ma",
- lat: 42.3703967,
- lng: -71.23602439999999,
+ address: "Causway St, Boston MA",
+ lat: 42.3656486,
+ lng: -71.0607837,
  hourly_rate: "100",
  pic_url: user.avatar.url)
-job3 = Job.create(title: "Construction Job Title",
- description: "Hey, know how to use a hammer and nails? Join us on the construction site",
+job3 = Job.create(title: "Walk my dogs each weekend",
+ description: Forgery(:lorem_ipsum).words(17),
  user_id: user3.id,
- address: "33 Harrison Ave. Boston, Ma",
- lat: 42.3708567,
- lng: -71.23602439999999,
+ address: "100 State St, Boston MA",
+ lat: 42.359283,
+ lng: -71.0550435,
  hourly_rate: "1600",
  pic_url: user3.avatar.url)
-job4 = Job.create(title: "Moving Job Title",
- description: "Like lifting heavy things? Come work with us for a day!",
+job4 = Job.create(title: "Help moving furniture",
+ description: Forgery(:lorem_ipsum).words(15),
  user_id: user2.id,
- address: "33 Harrison Ave. Boston, Ma",
- lat: 42.3708967,
- lng: 31.23602439999999,
+ address: "South Station, Boston MA",
+ lat: 42.35187759999,
+ lng: -71.0551042,
  hourly_rate: "10000",
  pic_url: user2.avatar.url)
- job5 = Job.create(title: "Washing dishes",
- description: "Need some help washing dishes",
- user_id: user4.id,
- address: "66 Durbin st, Watertown MA",
- lat: 42.3702967,
- lng: 31.23502439999999,
- hourly_rate: "10000",
- pic_url: user4.avatar.url)

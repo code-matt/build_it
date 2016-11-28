@@ -19,7 +19,8 @@ let VisibleSearch = ({ dispatch }) => {
       }}>
         <input ref={node => {
           input = node
-        }} placeholder='Valid Address' />
+        }} placeholder='Valid Address'
+          defaultValue='77 Summer st, Boston MA' />
         <button type='submit' className='btn btn-primary searchbtn'>Submit</button>
       </form>
       <hr />

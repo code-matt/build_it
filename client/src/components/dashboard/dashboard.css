@@ -2,3 +2,7 @@
   padding-top: 150px;
   color: #BDBDBD;
 }
+
+.searchresult-img {
+  max-height: 130px;
+}

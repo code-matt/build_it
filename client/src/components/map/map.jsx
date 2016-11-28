@@ -44,12 +44,6 @@ export default class JobsMap extends Component {
       var infoWindow = new google.maps.InfoWindow({pixelOffset: new google.maps.Size(0, -40)});
       infoWindow.setContent(contentString);
       infoWindow.setPosition({lat:j.lat,lng:j.lng})
-      google.maps.event.addDomListener(
-        infoWindow.content,
-        "click",
-        function(){
-          component.props.showJobCB(j.id)
-        })
       arr.push({
         title: j.title,
         position: {
@@ -66,11 +60,10 @@ export default class JobsMap extends Component {
   }
   infoBoxInstance (title, rate, address, id) {
     var $ = window.$
-    return $('<div id="' + id + '" class="marker-info-win text-md-center">'+
+    return $('<div style="overflow: hidden" id="' + id + '" class="marker-info-win text-md-center">'+
       '<div class="marker-inner-win"><span class="info-content" style="padding-bottom: 4px;">'+
-      '<h3 class="marker-heading">'+ title +'</h3><hr />'+
+      '<h3 class="marker-heading">'+ title +'</h3>'+
       address + '<br />' + 
-      '<button class="btn btn-primary" id="jobInfo' + id + '">' + rate/100 + '$/hr Details</button>' +
       '</span>'+
       '</div></div>')[0]
   }

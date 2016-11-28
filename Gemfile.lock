@@ -92,6 +92,7 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    forgery (0.6.0)
     formatador (0.2.5)
     geocoder (1.4.0)
     geokit (1.10.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   carrierwave-aws
   dotenv-rails
   fog-aws
+  forgery
   geocoder
   geokit
   geokit-rails
