@@ -23,7 +23,7 @@ export default function addJob (title, address, description, rate) {
           title: title,
           description: description,
           address: address,
-          hourly_rate: rate
+          hourly_rate: rate * 100
         }
       })
     })

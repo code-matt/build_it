@@ -31,8 +31,7 @@ class NewJobModal extends Component {
                   <div className='card-header text-md-center'>
                     <div className=''>
                       <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
-                        <i className='fa fa-window-close-o'>
-                        </i>
+                        <i className='fa fa-window-close-o' />
                       </div>
                     </div>
                     <h2>Add Job</h2>
@@ -60,7 +59,7 @@ class NewJobModal extends Component {
                         </div>
                         { renderErrors(this.props.errors.addJob, 'description') }
                         Hourly Rate<br />
-                        <label><input onChange={this.handleValueChange} id='rate' ref='rate' placeholder='0' /></label><br />
+                        <span>$</span><input className='rate-input' onChange={this.handleValueChange} id='rate' placeholder='Hourly Rate' type='number' min='0.01' step='0.01' max='2500' /><br />
                         { renderErrors(this.props.errors.addJob, 'hourly_rate') }
                         <button className='btn btn-primary' type='submit'>Submit Job</button>
                       </ul>
