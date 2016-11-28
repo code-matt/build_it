@@ -57,8 +57,7 @@ class NewJobModal extends Component {
                         <div className='input-group'>
                           <textarea rows='10' onChange={this.handleValueChange} id='description' ref='description' placeholder='Description' type='text' />
                         </div>
-                        { renderErrors(this.props.errors.addJob, 'description') }
-                        Hourly Rate<br />
+                        { renderErrors(this.props.errors.addJob, 'description') }<br />
                         <span>$</span><input className='rate-input' onChange={this.handleValueChange} id='rate' placeholder='Hourly Rate' type='number' min='0.01' step='0.01' max='2500' /><br />
                         { renderErrors(this.props.errors.addJob, 'hourly_rate') }
                         <button className='btn btn-primary' type='submit'>Submit Job</button>

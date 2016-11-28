@@ -18,7 +18,7 @@ export const loginActionFail = () => ({
   }]
 })
 
-function login (email, pass, justSignedUp = false) {
+function login (email, pass) {
   return function (dispatch) {
     return fetch('http://localhost:3000/api/v1/knock/auth_token', {
       method: 'POST',
@@ -40,9 +40,9 @@ function login (email, pass, justSignedUp = false) {
       dispatch(getProfile())
       dispatch(changeModal('hide', 'show', 'signupModal'))
     }).catch(error => {
-        notify.show('Login Failure :(', 'error', 2000)
-        dispatch(loginActionFail())
-      })
+      notify.show('Login Failure :(', 'error', 2000)
+      dispatch(loginActionFail())
+    })
   }
 }
 
