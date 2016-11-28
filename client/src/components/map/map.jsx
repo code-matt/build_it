@@ -4,7 +4,7 @@ import {
   GoogleMap,
   Marker,
   OverlayView
-} from '../../lib'
+} from '../../lib/react-google-map'
 
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
@@ -30,10 +30,6 @@ export default class JobsMap extends Component {
     markers: [],
     map: null
   };
-
-  props = {
-    jobs: []
-  }
   
   componentWillReceiveProps (props) {
     this.setState({markers: this.jobs2markers(props.jobs)});
@@ -129,7 +125,6 @@ export default class JobsMap extends Component {
   }
 
   handleMarkerClick(targetMarker) {
-    // this.props.markerCB(targetMarker)
     var map = this._mapComponent.context.googleMapObj
     targetMarker.infoWindow.open(map)
   }

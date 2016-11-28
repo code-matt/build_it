@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "BuildIt",
+  "version": "2.0.0",
   "private": true,
   "devDependencies": {
     "node-sass": "^3.13.0",
