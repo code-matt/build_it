@@ -1,4 +1,5 @@
 import { setLocalProfile } from '../../lib/profile'
+import {newFetch} from '../../lib/fetch'
 
 const setProfileAction = (profile) => ({
   type: 'SET_PROFILE',
@@ -7,12 +8,7 @@ const setProfileAction = (profile) => ({
 
 function getProfile () {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/profile/', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+    return newFetch('GET', true, '/api/v1/profile/')
     .then(response => response.json())
     .then(json => {
       dispatch(setProfileAction({

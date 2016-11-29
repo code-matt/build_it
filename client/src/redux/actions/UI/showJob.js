@@ -1,5 +1,6 @@
 import {openJobModalAction, setSelectedJob} from '.'
 import {contractFoundAction, contractNotFoundAction} from '../jobs/checkSignup'
+import { newFetch } from '../../lib/fetch'
 
 function selectJob (id, jobs) {
   return function (dispatch) {
@@ -17,12 +18,7 @@ function showJob (jobId, jobs) {
   return function (dispatch) {
     dispatch(selectJob(jobId, jobs))
     if (localStorage.token) {
-      return fetch('http://localhost:3000/api/v1/signupcheck?jobId=' + jobId, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+      return newFetch('GET', true, '/api/v1/signupcheck?jobId=' + jobId)
       .then(response => response.json())
       .then(json => {
         if (json.contract) {

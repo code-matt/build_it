@@ -1,5 +1,5 @@
 import {notify} from 'react-notify-toast'
-
+import { newFetch } from '../../lib/fetch'
 import login from './login'
 import parseErrors from '../../lib/parseErrors'
 
@@ -19,17 +19,11 @@ export const createActionCriticalFail = () => ({
 
 function create (email, pass) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: {
-          email: email,
-          password: pass
-        }
-      })
+    return newFetch('POST', false, '/api/v1/users', {
+      user: {
+        email: email,
+        password: pass
+      }
     })
     .then(response => response.json())
     .then(json => {

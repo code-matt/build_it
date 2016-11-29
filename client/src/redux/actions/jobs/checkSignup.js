@@ -1,3 +1,5 @@
+import { newFetch } from '../../lib/fetch'
+
 export const contractFoundAction = (contract) => ({
   type: 'CONTRACT_FOUND',
   contract: contract
@@ -10,12 +12,7 @@ export const contractNotFoundAction = (contract) => ({
 
 export default function checkSignup (jobId) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/signupcheck?jobId=' + jobId, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
+    return newFetch('GET', true, '/api/v1/signupcheck?jobId=' + jobId)
     .then(response => response.json())
     .then(json => {
       if (json.contract) {

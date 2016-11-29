@@ -1,5 +1,6 @@
 import {notify} from 'react-notify-toast'
 import {changeModal} from '../UI'
+import { newFetch } from '../../lib/fetch'
 
 export const jobSignupSuccessAction = () => ({
   type: 'JOB_SIGNUP_SUCCESS'
@@ -11,16 +12,9 @@ export const jobSignupFailAction = () => ({
 
 export default function signup (jobId, proposal) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/signup', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        jobId: jobId,
-        contract: {proposal: proposal}
-      })
+    return newFetch('POST', true, '/api/v1/signup', {
+      jobId: jobId,
+      contract: {proposal: proposal}
     })
     .then(response => response.json())
     .then(json => {

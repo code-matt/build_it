@@ -48,14 +48,14 @@ class Dashboard extends Component {
         <VisibleModals />
         <div className='container-fluid'>
           <div className='row'>
-            <div className='col-md-3 leftjob' style={{height: 100 + 'vh'}}>
+            <div className='col-md-3 col-sm-3' style={{height: 100 + 'vh'}}>
               <VisibleNavbar />
               <VisibleSearch />
               {this.props.jobs.length > 0
                 ? <div>{renderJobs(this.props.jobs, this)}</div>
                 : <div className='text-md-center noresults'>No jobs found<br />Search above to try again..</div>}
             </div>
-            <div className='col-md-9'>
+            <div className='col-md-9 col-sm-9'>
               <div style={{height: 100 + 'vh'}}>
                 <JobsMap
                   ref='map'

@@ -1,3 +1,5 @@
+import { newFetch } from '../../lib/fetch'
+
 export const setJobsAction = (jobs) => ({
   type: 'SET_JOBS',
   jobs: jobs
@@ -5,9 +7,7 @@ export const setJobsAction = (jobs) => ({
 
 export default function getJobs (coords) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/jobs?lat=' + coords.lat + '&lng=' + coords.lng, {
-      method: 'GET'
-    })
+    return newFetch('GET', false, '/api/v1/jobs?lat=' + coords.lat + '&lng=' + coords.lng)
     .then(response => response.json())
     .then(json =>
       dispatch(setJobsAction(json))

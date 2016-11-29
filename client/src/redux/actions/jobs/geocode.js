@@ -1,4 +1,5 @@
 import getJobs from './getJobs'
+import { newFetch } from '../../lib/fetch'
 
 export const setGeocodeResultAction = (location) => ({
   type: 'SET_GEOCODED_SEARCH',
