@@ -88,6 +88,7 @@ rails db:migrate
 rails db:seed
 rails s
 Tab2:
+cd client
 npm install
 npm start
 visit localhost:3001
