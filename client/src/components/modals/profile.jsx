@@ -17,7 +17,10 @@ class EditProfileModal extends Component {
 
   onImageDrop (files) {
     this.props.valueChangeCB(true, 'loading', 'profileModal')
-    let upload = request.post('http://localhost:3000/api/v1/profilepic')
+    var urlPath = '/api/v1/profilepic'
+    let upload = request.post(process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_PROD_HOST + urlPath
+      : process.env.REACT_APP_DEV_HOST + urlPath)
                         .field('file', files[0])
                         .set('Authorization', 'Bearer ' + localStorage.getItem('token'))
 

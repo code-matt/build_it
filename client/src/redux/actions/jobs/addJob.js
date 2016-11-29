@@ -1,5 +1,6 @@
 import {notify} from 'react-notify-toast'
 import parseErrors from '../../lib/parseErrors'
+import { newFetch } from '../../lib/fetch'
 
 export const createJobSuccessAction = () => ({
   type: 'ADD_JOB_SUCCESS'
@@ -12,20 +13,13 @@ export const createJobErrorsAction = (errors) => ({
 
 export default function addJob (title, address, description, rate) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/jobs/', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        job: {
-          title: title,
-          description: description,
-          address: address,
-          hourly_rate: rate * 100
-        }
-      })
+    return newFetch('POST', true, '/api/v1/jobs', {
+      job: {
+        title: title,
+        description: description,
+        address: address,
+        hourly_rate: rate * 100
+      }
     })
     .then(response => response.json())
     .then(json => {

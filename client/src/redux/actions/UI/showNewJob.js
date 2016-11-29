@@ -1,14 +1,10 @@
 import {changeModal} from '.'
+import { newFetch } from '../../lib/fetch'
 
 function showNewJob () {
   return function (dispatch) {
     if (localStorage.token) {
-      return fetch('http://localhost:3000/api/v1/profilecheck/', {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      })
+      return newFetch('GET', true, '/api/v1/profilecheck')
       .then(response => response.json())
       .then(json => {
         if (json.status === 'true') {

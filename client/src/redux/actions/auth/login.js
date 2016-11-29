@@ -1,7 +1,10 @@
 import {notify} from 'react-notify-toast'
-
+import { newFetch } from '../../lib/fetch'
 import { changeModal } from '../UI'
 import { getProfile } from './getProfile'
+
+import {process} from 'dotenv'
+
 import getId from './id'
 
 export const loginActionSuccess = (jwt) => ({
@@ -18,19 +21,13 @@ export const loginActionFail = () => ({
   }]
 })
 
-function login (email, pass, justSignedUp = false) {
+function login (email, pass) {
   return function (dispatch) {
-    return fetch('http://localhost:3000/api/v1/knock/auth_token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        auth: {
-          email: email,
-          password: pass
-        }
-      })
+    return newFetch('POST', false, '/api/v1/knock/auth_token', {
+      auth: {
+        email: email,
+        password: pass
+      }
     })
     .then(response => response.json())
     .then(json => {
@@ -40,9 +37,9 @@ function login (email, pass, justSignedUp = false) {
       dispatch(getProfile())
       dispatch(changeModal('hide', 'show', 'signupModal'))
     }).catch(error => {
-        notify.show('Login Failure :(', 'error', 2000)
-        dispatch(loginActionFail())
-      })
+      notify.show('Login Failure :(', 'error', 2000)
+      dispatch(loginActionFail())
+    })
   }
 }
 

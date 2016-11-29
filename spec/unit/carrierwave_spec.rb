@@ -4,7 +4,7 @@ require_relative '../spec_helper.rb'
 describe 'carrierwave' do
   it 'should successfully upload files' do
     a = User.create(email: "qq@qq.com", password: "12345678")
-    src = File.join(Rails.root,"client/public/edited_lp.png")
+    src = File.join(Rails.root,"client/public/seed_1.png")
     file = File.new(src)
     a.avatar = file
     a.save
