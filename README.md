@@ -1,4 +1,4 @@
-# BuiltIt 2.0
+# BuildIt 2.0
 ## https://build-it-la.herokuapp.com
 
 ### React + Redux + Rails simple job posting app
