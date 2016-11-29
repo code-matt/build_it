@@ -2,6 +2,7 @@
 ## https://build-it-la.herokuapp.com
 
 ### React + Redux + Rails simple job posting app
+#### (last feature not implemented yet past submitting job proposals)
 
 This app is a redo of my breakable toy from Launch Academy.
 The old app can be found on the old_rails_version branch which was
@@ -18,7 +19,6 @@ some very messy jqerry + ajax + erb and not a very good SPA.
   "react-helmet": "^3.2.2",
   "react-notify-toast": "^0.1.3",
   "react-redux": "^4.4.5",
-  "react-router": "^3.0.0",
   "redux-thunk": "^2.1.0",
   "superagent": "^2.3.0"
 }
