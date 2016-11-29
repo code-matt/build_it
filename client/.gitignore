@@ -5,6 +5,7 @@ node_modules
 
 # testing
 coverage
+build
 
 # production
 # misc
