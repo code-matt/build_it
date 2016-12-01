@@ -49,7 +49,7 @@ class Dashboard extends Component {
         <VisibleModals />
         <div className='container-fluid'>
           <div className='row'>
-            <div className='col-md-3 col-sm-3' style={{height: 100 + 'vh'}}>
+            <div className='col-md-3 col-sm-3 leftjob' style={{height: 100 + 'vh'}}>
               <VisibleNavbar />
               <VisibleSearch />
               {this.props.jobs.length > 0
