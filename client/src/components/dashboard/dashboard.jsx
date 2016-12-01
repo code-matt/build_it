@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 // components
 import JobsMap from '../map/map'
+import SlideMenu from '../mobile-slideMenu/slideMenu'
 
 // css
 import './dashboard.css'
