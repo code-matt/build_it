@@ -4,4 +4,5 @@ class Contract < ActiveRecord::Base
   belongs_to :job, class_name: 'Job'
 
   validates :proposal, length: { minimum: 20, maximum: 300}
+  validates :proposal, presence: true
 end
