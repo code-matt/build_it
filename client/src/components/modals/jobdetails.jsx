@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import renderErrors from '../shared/renderErrors'
 
 import './jobdetails.css'
 
@@ -77,6 +78,7 @@ class JobModal extends Component {
                         <div className='text-md-center'>
                           <textarea onChange={this.handleValueChange} id='proposal' rows='9' className='proposal' ref='proposal' placeholder='Enter a proposal for this jobs owner..' />
                         </div>
+                        { renderErrors(this.props.errors.contract, 'proposal') }
                         {this.props.token
                         ? this.checkIfOwnJob()
                         : <div className='alert alert-danger error text-md-center' role='alert'>
