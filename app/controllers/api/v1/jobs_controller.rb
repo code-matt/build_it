@@ -24,8 +24,12 @@ module Api
             contract.employee = user
             contract.job = job
             contract.user = user
-            contract.save
-            render json: {status: 'success'}
+            if contract.valid?
+              contract.save
+              render json: {status: 'success'}
+            else
+              render json: {errors: contract.errors}
+            end
           else
             render json: {status: 'fail'}
           end

@@ -1,13 +1,15 @@
 import {notify} from 'react-notify-toast'
 import {changeModal} from '../UI'
 import { newFetch } from '../../lib/fetch'
+import parseErrors from '../../lib/parseErrors'
 
 export const jobSignupSuccessAction = () => ({
   type: 'JOB_SIGNUP_SUCCESS'
 })
 
-export const jobSignupFailAction = () => ({
-  type: 'JOB_SIGNUP_FAIL'
+export const jobSignupFailAction = (errors) => ({
+  type: 'JOB_SIGNUP_FAIL',
+  errors: errors
 })
 
 export default function signup (jobId, proposal) {
@@ -26,7 +28,7 @@ export default function signup (jobId, proposal) {
         dispatch(changeModal('show', 'show', 'profileModal'))
       } else {
         notify.show('Proposal not sent.. something is wrong:/', 'success', 2000)
-        dispatch(jobSignupFailAction())
+        dispatch(jobSignupFailAction(parseErrors(json.errors)))
       }
     })
   }

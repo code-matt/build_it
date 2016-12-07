@@ -3,7 +3,8 @@ const errors = (state, action) => {
     state = {
       signup: {},
       profile: {},
-      addJob: {}
+      addJob: {},
+      contract: {}
     }
   }
   switch (action.type) {
@@ -16,6 +17,16 @@ const errors = (state, action) => {
       return {
         ...state,
         signup: action.error
+      }
+    case 'JOB_SIGNUP_FAIL':
+      return {
+        ...state,
+        contract: action.errors
+      }
+    case 'JOB_SIGNUP_SUCCESS':
+      return {
+        ...state,
+        contract: {}
       }
     case 'CREATE_USER_SUCCESS':
       return {
