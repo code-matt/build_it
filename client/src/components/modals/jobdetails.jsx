@@ -10,6 +10,7 @@ class JobModal extends Component {
     this.handleValueChange = this.handleValueChange.bind(this)
     this.checkIfOwnJob = this.checkIfOwnJob.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getProposalLength = this.getProposalLength.bind(this)
   }
 
   handleValueChange (event) {
@@ -23,6 +24,11 @@ class JobModal extends Component {
   handleToggle (event) {
     event.preventDefault()
     this.props.closeCB()
+  }
+
+  getProposalLength () {
+    var str = this.props.modalsState.jobModal.proposal
+    return str.length
   }
 
   checkIfOwnJob () {
@@ -78,6 +84,7 @@ class JobModal extends Component {
                         <div className='text-md-center'>
                           <textarea onChange={this.handleValueChange} id='proposal' rows='9' className='proposal' ref='proposal' placeholder='Enter a proposal for this jobs owner..' />
                         </div>
+                        Character Count: {this.getProposalLength()}/200
                         { renderErrors(this.props.errors.contract, 'proposal') }
                         {this.props.token
                         ? this.checkIfOwnJob()
