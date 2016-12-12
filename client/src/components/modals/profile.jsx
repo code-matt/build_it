@@ -86,14 +86,12 @@ class EditProfileModal extends Component {
           <div className='modal-content'>
             <div className='container'>
               <div className='row'>
+                <div onClick={this.handleToggle} className='closebutton-lgmodal btn-danger pull-right' href='#'>
+                  <i className='fa fa-window-close-o' />
+                </div>
                 <div className='col-md-12'>
                   <div className='card'>
                     <div className='card-header text-md-center'>
-                      <div className=''>
-                        <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
-                          <i className='fa fa-window-close-o' />
-                        </div>
-                      </div>
                       <h4>Edit Profile</h4>
                     </div>
                     <div className='card-block'>

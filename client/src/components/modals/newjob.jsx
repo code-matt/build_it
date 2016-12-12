@@ -23,19 +23,17 @@ class NewJobModal extends Component {
     return (
       <div id='newJobModal' className='modal fade bs-example-modal-lg alerts' tabIndex='-1' role='dialog' aria-labelledby='myLargeModalLabel' data-backdrop='static' data-keyboard='false'>
         <div className='modal-dialog modal-sm' role='document'>
-          <div className='modal-content'>
+          <div className='modal-content container'>
             <div className='row'>
+              <div onClick={this.handleToggle} className='closebutton-lgmodal btn-danger pull-right' href='#'>
+                <i className='fa fa-window-close-o' />
+              </div>
               <div className='col-md-12'>
                 <div className='card'>
                   <div className='card-header text-md-center'>
-                    <div className=''>
-                      <div onClick={this.handleToggle} className='closebutton btn-danger' href='#'>
-                        <i className='fa fa-window-close-o' />
-                      </div>
-                    </div>
                     <h2>Add Job</h2>
                   </div>
-                  <div className='text-md-center job'>
+                  <div className='text-md-center job card-block'>
                     <form onSubmit={e => {
                       e.preventDefault()
                       this.props.submitJobCB()

@@ -11,12 +11,7 @@
 }
 
 .closebutton-lgmodal {
-  width: 20px;
   padding: 5px;
-  margin-top: 6px;
-  font-size: 13px;
-  -webkit-transform: translate(364px,-10px);
-  cursor: pointer;
 }
 
 .job-signup-btn {
