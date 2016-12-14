@@ -19,8 +19,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     _jobActions: {
-      getJobs: (coords) => {
-        dispatch(getJobs(coords))
+      getJobs: (coords, distance) => {
+        dispatch(getJobs(coords, distance))
       }
     },
     _uiActions: {

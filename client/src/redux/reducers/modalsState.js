@@ -29,6 +29,9 @@ const modalsState = (state, action) => {
         proposal: '',
         show: 'hide',
         loading: false
+      },
+      search: {
+        distance: 5
       }
     }
   }
