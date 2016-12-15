@@ -33,7 +33,7 @@ class Dashboard extends Component {
     this.props._jobActions.getJobs({
       lat: 42.3600825,
       lng: -71.0588801
-    })
+    }, 5)
   }
 
   handleShowJob (jobId) {

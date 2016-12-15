@@ -1,33 +1,32 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { geocodeSearch } from '../actions/jobs'
+import { changeSearch } from '../actions/UI'
+import Search from '../../components/search/search'
 
-let VisibleSearch = ({ dispatch }) => {
-  let input
-
-  return (
-    <div className='text-md-center'>
-      <hr />
-      <h4>Search</h4>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(geocodeSearch(input.value))
-        input.value = ''
-      }}>
-        <input ref={node => {
-          input = node
-        }} placeholder='Valid Address'
-          defaultValue='77 Summer st, Boston MA'
-          className='search-adress-input' /><br />
-        <button type='submit' className='btn btn-primary searchbtn'>Submit</button>
-      </form>
-      <hr />
-    </div>
-  )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    searchState: state.searchState
+  }
 }
-VisibleSearch = connect()(VisibleSearch)
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    _jobActions: {
+      geocodeSearch: (coords, distance) => {
+        dispatch(geocodeSearch(coords, distance))
+      }
+    },
+    _UIActions: {
+      changeSearch: (value, fieldId, name) => {
+        dispatch(changeSearch(value, fieldId, name))
+      }
+    }
+  }
+}
+
+const VisibleSearch = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search)
 
 export default VisibleSearch

@@ -5,9 +5,9 @@ export const setJobsAction = (jobs) => ({
   jobs: jobs
 })
 
-export default function getJobs (coords) {
+export default function getJobs (coords, distance) {
   return function (dispatch) {
-    return newFetch('GET', false, '/api/v1/jobs?lat=' + coords.lat + '&lng=' + coords.lng)
+    return newFetch('GET', false, '/api/v1/jobs?lat=' + coords.lat + '&lng=' + coords.lng + '&distance=' + distance)
     .then(response => response.json())
     .then(json =>
       dispatch(setJobsAction(json))

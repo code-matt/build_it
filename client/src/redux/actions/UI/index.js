@@ -19,6 +19,13 @@ const hoverChangeSearchLocationAction = (location) => ({
   }
 })
 
+const changeSearch = (value, fieldId, name) => ({
+  type: 'CHANGE_SEARCH',
+  fieldId: fieldId,
+  value: value,
+  name: name
+})
+
 const changeModal = (value, fieldId, modal) => ({
   type: 'CHANGE_MODAL',
   fieldId: fieldId,
@@ -32,5 +39,6 @@ export {
   changeModal,
   hoverChangeSearchLocationAction,
   showNewJob,
-  showJob
+  showJob,
+  changeSearch
 }
