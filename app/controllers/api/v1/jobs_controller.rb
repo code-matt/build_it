@@ -5,7 +5,6 @@ module Api
     class JobsController < ApplicationController
     before_action :authenticate_user, only: [:create, :signup, :is_signedup, :remove_signup]
       def index
-        byebug
         coords = {lat: params["lat"], lng: params["lng"]}
         loc = Geokit::LatLng.new(coords[:lat],coords[:lng])
         jobs = Job.within(10,origin: loc)
