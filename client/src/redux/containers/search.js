@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
 import { geocodeSearch } from '../actions/jobs'
-import { changeModal } from '../actions/UI'
+import { changeSearch } from '../actions/UI'
 import Search from '../../components/search/search'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    searchState: state.searchState
   }
 }
 
@@ -16,8 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     _UIActions: {
-      changeModal: (value, fieldId, modal) => {
-        dispatch(changeModal(value, fieldId, modal))
+      changeSearch: (value, fieldId, name) => {
+        dispatch(changeSearch(value, fieldId, name))
       }
     }
   }

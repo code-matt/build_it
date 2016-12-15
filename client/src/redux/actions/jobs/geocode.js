@@ -11,7 +11,7 @@ export const geocodeResultHasErrorsAction = (location) => ({
   searchLoc: location
 })
 
-export default function geocodeSearch (address) {
+export default function geocodeSearch (address, distance) {
   return function (dispatch) {
     var key = "AIzaSyD-6m0bT_U-ShiqoqaqV7VcxZgFl5qtzh4"
     return fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + key, {})
@@ -25,7 +25,8 @@ export default function geocodeSearch (address) {
             dispatch(getJobs({
               lat: json.results[0].geometry.location.lat,
               lng: json.results[0].geometry.location.lng
-            }))
+            },
+            distance))
           } else {
             dispatch(geocodeResultHasErrorsAction([
               {

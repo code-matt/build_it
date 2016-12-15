@@ -3,6 +3,7 @@ import { errors } from './formErrors.js'
 import { jobs, searchLoc, contract, selectedJob } from './jobs'
 import { token, buildItId, profileComplete, profile } from './auth'
 import { modalsState } from './modalsState'
+import { searchState } from './searchState'
 
 const buildItApp = combineReducers({
   token,
@@ -14,7 +15,8 @@ const buildItApp = combineReducers({
   searchLoc,
   contract,
   modalsState,
-  selectedJob
+  selectedJob,
+  searchState
 })
 
 export default buildItApp

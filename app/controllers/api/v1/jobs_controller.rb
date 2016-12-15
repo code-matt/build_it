@@ -7,7 +7,7 @@ module Api
       def index
         coords = {lat: params["lat"], lng: params["lng"]}
         loc = Geokit::LatLng.new(coords[:lat],coords[:lng])
-        jobs = Job.within(10,origin: loc)
+        jobs = Job.within(params["distance"],origin: loc)
 
         render json: jobs.to_json
       end
