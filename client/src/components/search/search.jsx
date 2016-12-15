@@ -10,7 +10,6 @@ class Search extends Component {
   }
 
   handleSubmit (event) {
-    debugger
     event.preventDefault()
     this.props._jobActions.geocodeSearch(
       event.target[0].value,
